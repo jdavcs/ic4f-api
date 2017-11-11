@@ -1,62 +1,48 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-
-    <div class="container ic4f-container">
-    
-      <div class="row ic4f-contact-row">
-        <div class="col">
-          social media
-        </div>
-      </div>
-    
-      <div class="row ic4f-logo-row">
-        <div class="col-sm-4">
-          <a class="ic4f-logo" href="/">i<span class="part-c">c</span><span class="part-ode">ode</span>4<span class="part-dot">.</span>f<span class="part-un">un</span>
-          </a>
-    
-        </div>
-        <div class="col-sm-8 ic4f-nav-container">
-           <%- include('includes/main-menu.ejs') %>
-        </div>
-      </div>
-    </div>
-    
-    <div class="ic4f-hline"></div>
-    
-    <div class="container ic4f-container">
-      <div class="row">
-        <div class="col ic4f-content">
-            <h1 class="ic4f-main-heading"> page.title </h1>
+<%- include('includes/layout-header.ejs') %>
 
 
-        </div>
-      </div>
-    </div>
-    
-    <div class="ic4f-hline"></div>
-    
-    <div class="container ic4f-container">
-      <div class="row">
-        <div class="col ic4f-footer">
-          Site modified:...
-        </div>
-      </div>
-    </div>
-    
-    <div id="modal">
-      <img id="modal-img" alt="" src="#">
-      <div id="modal-caption"></div>
-    </div>
 
-    <%- include('includes/footer-js.ejs') %>
-  </body>
-</html>
+<%= content %>
+
+<p class="ic4f-blog-list-date">October 20, 2017</p>
+<p class="ic4f-blog-list-title"><a href="/blog/2017/10/planting-science/">Week 5 of Planting Science program</a></p>
+<p class="ic4f-blog-list-excerpt">It has been 5 weeks of Planting Science program and my online mentorship of high school
+students teams in their plant investigations.
+  <a class="ic4f-blog-list-more" href="/blog/2017/10/planting-science/">...read more</a></p>
+
+<p class="ic4f-blog-list-date">October  4, 2017</p>
+<p class="ic4f-blog-list-title"><a href="/blog/2017/10/invasive-species/">New (or old?) mode of transport for invasive species</a></p>
+<p class="ic4f-blog-list-excerpt">Carlton et al. Science 29 Sep 2017:
+
+”..We document 289 living Japanese coastal marine species from
+16 phyla transported over 6 years on objects that traveled thousands of kilometers across the
+Pacific Ocean
+  <a class="ic4f-blog-list-more" href="/blog/2017/10/invasive-species/">...read more</a></p>
+
+<p class="ic4f-blog-list-date">July 29, 2017</p>
+<p class="ic4f-blog-list-title"><a href="/blog/2017/07/another-trip-to-colorado/">Yet another trip to Colorado</a></p>
+<p class="ic4f-blog-list-excerpt">Last week I spent in Colorado Springs at the Digging Deeper Summer Professional Development workshop
+which is part of my Planting Science fellowship I received earlier this year.
+  <a class="ic4f-blog-list-more" href="/blog/2017/07/another-trip-to-colorado/">...read more</a></p>
+
+<p class="ic4f-blog-list-date">May 10, 2017</p>
+<p class="ic4f-blog-list-title"><a href="/blog/2017/05/genbank/">Our GenBank submission has just been approved!</a></p>
+<p class="ic4f-blog-list-excerpt">Our GenBank submission has just been approved! Here it is:
+  <a class="ic4f-blog-list-more" href="/blog/2017/05/genbank/">...read more</a></p>
+
+<p class="ic4f-blog-list-date">April 21, 2017</p>
+<p class="ic4f-blog-list-title"><a href="/blog/2017/04/student-posters/">Three poster presentations of my students. Great job, guys!</a></p>
+<p class="ic4f-blog-list-excerpt">Today my students presented their molecular biology term projects at 4th Annual Grand View
+Scholarship Symposium. Very exciting!
+  <a class="ic4f-blog-list-more" href="/blog/2017/04/student-posters/">...read more</a></p>
+
+<p class="ic4f-blog-list-date">March 10, 2017</p>
+<p class="ic4f-blog-list-title"><a href="/blog/2017/03/paper-published/">Paper published in Insects!</a></p>
+<p class="ic4f-blog-list-excerpt">My paper from my postdoctoral work has been just published in Insects, in special issue “Invasive
+insect species
+  <a class="ic4f-blog-list-more" href="/blog/2017/03/paper-published/">...read more</a></p>
+
+
+
+
+<%- include('includes/layout-footer.ejs') %>
