@@ -1,6 +1,44 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+const language_ids = [
+  "bash",
+  "c",
+  "c_sharp",
+  "java",
+  "javascript",
+  "mumps",
+  "php",
+  "python",
+  "ruby",
+  "typescript",
+  "vbscript",
+  "vimscript",
+  "sql",
+  "html",
+  "css",
+  "sass",
+  "yaml"
+];
+
+const framework_ids = [
+  "django",
+  "flask",
+  "asp",
+  "dot_net",
+  "node",
+  "express",
+  "angular",
+  "bootstrap"
+];
+
+const database_ids = [
+  "access",
+  "sql_server",
+  "mysql",
+  "mongodb"
+];
+
 const languageSchema = new mongoose.Schema({
   _id: {
     type: String, 
@@ -41,7 +79,7 @@ const frameworkSchema = new mongoose.Schema({
 
 const databaseSchema = new mongoose.Schema({
   _id: {
-    type: String, 
+    type: String,
     lowercase: true
   },
   name: {
@@ -56,7 +94,7 @@ const databaseSchema = new mongoose.Schema({
 
 const projectSchema = new mongoose.Schema({
   _id: {
-    type: String, 
+    type: String,
     lowercase: true
   },
   name: {
@@ -79,9 +117,15 @@ const projectSchema = new mongoose.Schema({
     default: false,
   },
   types: [String],
-  languages: enum,...................................
-  frameworks: [frameworkSchema],
-  databases: [databaseSchema],
+  languages: [{
+    type: String,
+    enum: language_ids}],
+  frameworks: [{
+    type: String,
+    enum: framework_ids}],
+  databases: [{
+    type: String,
+    enum: database_ids}],
   content: String
 });
 
@@ -89,4 +133,3 @@ mongoose.model('Language', languageSchema, 'languages');
 mongoose.model('Framework', frameworkSchema, 'frameworks');
 mongoose.model('Database', databaseSchema, 'databases');
 mongoose.model('Project', projectSchema, 'projects');
-
