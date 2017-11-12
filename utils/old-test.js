@@ -16,7 +16,6 @@ function loadData() {
   console.log('Loading data');
   require('../app_server/models/projects.js');
 
-  const Language = dbconn.model('Language');
   //const fram = dbconn.model('Framework');
   //const db = dbconn.model('Database');
   //const proj = dbconn.model('Project');
@@ -25,6 +24,7 @@ function loadData() {
   //first remove all
   //
   //this needs to come from a json file
+  const Language = dbconn.model('Language');
   let p = new Language();
   p._id = 'python219';
   p.name = 'Python';

@@ -10,10 +10,9 @@ const languageSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  type: {
-    type: String,
-    required: true,
-    enum: ["programming", "other"],
+  order: {
+    type: Number,
+    default: 0
   },
   projects: {
     type: Number,
@@ -29,6 +28,10 @@ const frameworkSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
+  },
+  order: {
+    type: Number,
+    default: 0
   },
   projects: {
     type: Number,
@@ -60,7 +63,6 @@ const projectSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  type: [String],
   year_start: {
     type: Number,
     required: true,
@@ -72,14 +74,15 @@ const projectSchema = new mongoose.Schema({
   },
   websiteUrl: String,
   githubUrl: String,
-  isFeatured: {
+  featured: {
     type: Boolean,
     default: false,
   },
-  content: String,
-  languages: [languageSchema],
+  types: [String],
+  languages: enum,...................................
   frameworks: [frameworkSchema],
   databases: [databaseSchema],
+  content: String
 });
 
 mongoose.model('Language', languageSchema, 'languages');

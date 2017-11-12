@@ -1,0 +1,31 @@
+[
+  {
+    "model": "Project",
+    "documents": [
+      {
+        "_id":         "icode4fun",
+        "name":        "icode4.fun",
+        "year_start":   2017,
+        "status":      "active",
+        "website_url": "http://icode4.fun",
+        "github_url":  "https://github.com/ic4f/ic4f",
+        "featured":     true,
+        "types":       ["website"],
+        "languages":   ["html", "css", "javascript", "sql", "json", "typescript", "sass"],
+        "frameworks":  ["node", "express", "angular", "bootstrap"],
+        "databases":   ["mongodb"]
+      }, {
+        "_id":         "alinaavanesyan2",
+        "name":        "alinaavanesyan.com",
+        "year_start":   2017,
+        "status":      "active",
+        "website_url": "http://alinaavanesyan.com",
+        "github_url":  "https://github.com/ic4f/aw4s",
+        "featured":     true,
+        "types":       ["website"],
+        "languages":   ["javascript", "ruby", "html", "css", "sass", "yaml"],
+        "frameworks":  ["jekyll", "bootstrap"]
+      }
+    ]
+  }
+]
