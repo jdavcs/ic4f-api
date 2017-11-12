@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 const languageSchema = new mongoose.Schema({
   _id: {
@@ -81,4 +82,8 @@ const projectSchema = new mongoose.Schema({
   databases: [databaseSchema],
 });
 
+mongoose.model('Language', languageSchema, 'languages');
+mongoose.model('Framework', frameworkSchema, 'frameworks');
+mongoose.model('Database', databaseSchema, 'databases');
 mongoose.model('Project', projectSchema, 'projects');
+
