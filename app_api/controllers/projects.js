@@ -1,11 +1,34 @@
 const mongoose = require('mongoose');
 const Project = mongoose.model('Project');
-const documentType = 'project';
+
+
+const Language = mongoose.model('Language');
+//
+//
+//
+//
+//
+const documentType = 'project'; //TODO this is bad
 
 
 const languageList = function(req, res){
-  res.status(200);
-  res.json({"status": "success"});
+  Language.getSorted(function(err, lang) {
+    res.status(200);
+    res.json(lang);
+  });
+
+ // Language.find({}).sort({
+
+//  Language.find({}, function(err, lang) {
+//    if (err) {
+//      res
+//        .status(404)
+//        .json(err);
+//      return;
+//    }
+//    res.status(200);
+//    res.json(lang);
+//  });
 };
 
 const frameworkList = function(req, res){
@@ -19,8 +42,6 @@ const databaseList = function(req, res){
 };
 
 const projectList = function(req, res){
-
-
 
   res.status(200);
   res.json({"status": "success"});

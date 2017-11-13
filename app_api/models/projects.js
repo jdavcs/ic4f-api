@@ -1,100 +1,49 @@
 const mongoose = require('mongoose');
 
-const language_ids = [
-  "bash",
-  "c",
-  "c_sharp",
-  "java",
-  "javascript",
-  "mumps",
-  "php",
-  "python",
-  "ruby",
-  "typescript",
-  "vbscript",
-  "vimscript",
-  "sql",
-  "html",
-  "css",
-  "sass",
-  "yaml"
-];
+const ids = require('./ids');
+const project_ids   = ids.projects;
+const language_ids  = ids.languages;
+const framework_ids = ids.frameworks; 
+const database_ids  = ids.databases;
+//
+//
+//const Language = require('./language');
+//const Database = require('./database');
 
-const framework_ids = [
-  "django",
-  "flask",
-  "asp",
-  "dot_net",
-  "node",
-  "express",
-  "angular",
-  "bootstrap"
-];
 
-const database_ids = [
-  "access",
-  "sql_server",
-  "mysql",
-  "mongodb"
-];
 
-const languageSchema = new mongoose.Schema({
-  _id: {
-    type: String, 
-    lowercase: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  order: {
-    type: Number,
-    default: 0
-  },
-  projects: {
-    type: Number,
-    default: 0
-  }
-});
+//require('./testme');
+var x = require('./testme');
+//console.log(x);
 
-const frameworkSchema = new mongoose.Schema({
-  _id: {
-    type: String, 
-    lowercase: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  order: {
-    type: Number,
-    default: 0
-  },
-  projects: {
-    type: Number,
-    default: 0
-  }
-});
 
-const databaseSchema = new mongoose.Schema({
-  _id: {
-    type: String,
-    lowercase: true
-  },
-  name: {
-    type: String,
-    required: true
-  },
-  projects: {
-    type: Number,
-    default: 0
-  }
-});
+//console.log('foo = ' + foo);
+//console.log('x.foo = ' + x.foo);
+//x.sayHello();
+sayHello(); //WHY DOES THIS WORK???????
+//maybe i shouldn't define the function at the top level???
+//
+//x.sayIt();
+//
+
+/*****************************************************************************
+ * Define schemas.
+ ****************************************************************************/
+
+
+
+
+
+
+
+
+
 
 const projectSchema = new mongoose.Schema({
   _id: {
     type: String,
-    lowercase: true
+    lowercase: true,
+    enum: project_ids
   },
   name: {
     type: String,
@@ -128,7 +77,4 @@ const projectSchema = new mongoose.Schema({
   content: String
 });
 
-mongoose.model('Language', languageSchema, 'languages');
-mongoose.model('Framework', frameworkSchema, 'frameworks');
-mongoose.model('Database', databaseSchema, 'databases');
 mongoose.model('Project', projectSchema, 'projects');
