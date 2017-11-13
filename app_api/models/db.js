@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 let dbURI = 'mongodb://localhost/ic4f';
 mongoose.connect(dbURI, { useMongoClient: true, });
@@ -40,3 +41,5 @@ process.on('SIGTERM', () => {
     process.exit(0);
   });
 });
+
+require('./projects');
