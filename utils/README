@@ -1,0 +1,14 @@
+These files are used to update (override) the database.
+
+Usage:
+- to update all projects' metadata:
+
+node load-data.js
+
+- to update all projects' page content:
+
+node load-content.js
+
+- to update all projects data and content:
+
+./load-all.sh

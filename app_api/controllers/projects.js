@@ -2,7 +2,26 @@ const mongoose = require('mongoose');
 const Project = mongoose.model('Project');
 const documentType = 'project';
 
+
+const languageList = function(req, res){
+  res.status(200);
+  res.json({"status": "success"});
+};
+
+const frameworkList = function(req, res){
+  res.status(200);
+  res.json({"status": "success"});
+};
+
+const databaseList = function(req, res){
+  res.status(200);
+  res.json({"status": "success"});
+};
+
 const projectList = function(req, res){
+
+
+
   res.status(200);
   res.json({"status": "success"});
 };
@@ -35,6 +54,9 @@ const projectReadOne = function(req, res){
 };
 
 module.exports = {
+  languageList,
+  frameworkList,
+  databaseList,
   projectList,
   projectReadOne
 };
