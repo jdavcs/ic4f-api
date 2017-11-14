@@ -21,4 +21,12 @@ const Framework = new mongoose.Schema({
   }
 });
 
+Framework.statics.getSorted = function(cb) {
+  return this.
+    find({}).
+    sort({'order': 1}).
+    sort({'_id': 1}).
+    exec(cb);
+};
+
 mongoose.model('Framework', Framework, 'frameworks');

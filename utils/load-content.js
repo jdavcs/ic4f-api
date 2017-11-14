@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 
-require('../app_api/models/db');
-require('../app_api/models/projects');
+require('../app_api/models/dbconn');
+require('../app_api/models/project');
 const Project = mongoose.model('Project');
 
 const dataDir = '../data/project-pages/';
@@ -26,7 +26,7 @@ const processFile = function(file, callback) {
   });
 };
 
-async.each(files, processFile, function (err) {
+async.each(files, processFile, (err) => {
   if (err) throw err;
   mongoose.disconnect();
 });

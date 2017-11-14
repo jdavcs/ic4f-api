@@ -1,51 +1,36 @@
 const mongoose = require('mongoose');
-
-
-require('../models/language'); //TODO maybe move this to projects controller?
-require('../models/project');
-require('../models/database');
-
 const Project = mongoose.model('Project');
 const Language = mongoose.model('Language');
+const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
-console.log(Project);
 
-
-
+//TODO must handle errors
 const languageList = function(req, res){
-  Language.getSorted(function(err, lang) {
+  Language.getSorted(function(err, data) {
     res.status(200);
-    res.json(lang);
-  });
-
- // Language.find({}).sort({
-
-//  Language.find({}, function(err, lang) {
-//    if (err) {
-//      res
-//        .status(404)
-//        .json(err);
-//      return;
-//    }
-//    res.status(200);
-//    res.json(lang);
-//  });
-};
-
-const databaseList = function(req, res){
-  Database.getSorted(function(err, db) {
-    res.status(200);
-    res.json(db);
+    res.json(data);
   });
 };
 
 const frameworkList = function(req, res){
-  res.status(200);
-  res.json({"status": "success"});
+  Framework.getSorted(function(err, data) {
+    res.status(200);
+    res.json(data);
+  });
 };
 
-const projectList = function(req, res){
+const databaseList = function(req, res){
+  Database.getSorted(function(err, data) {
+    res.status(200);
+    res.json(data);
+  });
+};
 
+
+
+
+const projectList = function(req, res){
+  // work on this one
   res.status(200);
   res.json({"status": "success"});
 };

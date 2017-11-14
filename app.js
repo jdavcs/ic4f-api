@@ -5,9 +5,14 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
+
 require('./app_api/models/dbconn');
-require('./app_api/models/project'); //TODO maybe move this to projects controller?
-//require('./app_api/models/language'); //TODO maybe move this to projects controller?
+
+// Require all models here; until I need a different architecture
+require('./app_api/models/project');
+require('./app_api/models/language');
+require('./app_api/models/framework');
+require('./app_api/models/database');
 
 const webRoutes = require('./app_server/routes/index');
 const apiRoutes = require('./app_api/routes/index');
