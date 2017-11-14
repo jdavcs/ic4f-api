@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-//const ids = require('./ids');
 const language_ids = require('./ids').languages;
 
 const Language = new mongoose.Schema({

@@ -3,9 +3,9 @@
  * Before adding a new document to any of these collections, first add
  * its new ID to one of these lists.
  *
- * This is not quite DRY: the same IDs are present in the json data files that
- * are used to populate the collections. However, this helps manage the data
- * set and ensure its relational integrity.
+ * (DRY) Even though the same IDs are present in the json data files that are
+ * used to populate the collections, this file is the definitive source of
+ * knowledge about document IDs.
  ****************************************************************************/
 
 const languages = [
@@ -38,20 +38,25 @@ const frameworks = [
   "flask",
   "node"
 ];
-
+  
 const databases = [
   "access",
   "mongodb",
   "mysql",
   "sql_server"
-];
-
+]; 
+  
 const projects = [
+  "alina_site1",
+  "alina_site2",
   "avocado",
-  "kronofoto",
+  "codegen",
+  "csm",
   "icode4fun",
+  "kronofoto",
+  "playerc",
   "vim_journal",
   "vim_timestamp"
 ];
 
-//module.exports = [languages, frameworks, databases, projects];
+module.exports = {languages, frameworks, databases, projects};

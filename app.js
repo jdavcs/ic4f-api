@@ -5,9 +5,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-require('./app_api/models/db');
-require('./app_api/models/projects'); //TODO maybe move this to projects controller?
-require('./app_api/models/language'); //TODO maybe move this to projects controller?
+require('./app_api/models/dbconn');
+require('./app_api/models/project'); //TODO maybe move this to projects controller?
+//require('./app_api/models/language'); //TODO maybe move this to projects controller?
 
 const webRoutes = require('./app_server/routes/index');
 const apiRoutes = require('./app_api/routes/index');

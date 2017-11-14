@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
-const ids = require('./ids');
-const database_ids = ids.databases;
+const database_ids = require('./ids').databases;
 
 const Database = new mongoose.Schema({
   _id: {
@@ -18,5 +16,13 @@ const Database = new mongoose.Schema({
     default: 0
   }
 });
+
+Database.statics.getSorted = function(cb) {
+  return this.
+    find({}).
+    sort({'order': 1}).
+    sort({'_id': 1}).
+    exec(cb);
+};
 
 mongoose.model('Database', Database, 'databases');

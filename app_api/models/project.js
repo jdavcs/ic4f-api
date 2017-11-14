@@ -1,45 +1,11 @@
 const mongoose = require('mongoose');
-
 const ids = require('./ids');
 const project_ids   = ids.projects;
 const language_ids  = ids.languages;
 const framework_ids = ids.frameworks; 
 const database_ids  = ids.databases;
-//
-//
-//const Language = require('./language');
-//const Database = require('./database');
 
-
-
-//require('./testme');
-var x = require('./testme');
-//console.log(x);
-
-
-//console.log('foo = ' + foo);
-//console.log('x.foo = ' + x.foo);
-//x.sayHello();
-sayHello(); //WHY DOES THIS WORK???????
-//maybe i shouldn't define the function at the top level???
-//
-//x.sayIt();
-//
-
-/*****************************************************************************
- * Define schemas.
- ****************************************************************************/
-
-
-
-
-
-
-
-
-
-
-const projectSchema = new mongoose.Schema({
+const Project = new mongoose.Schema({
   _id: {
     type: String,
     lowercase: true,
@@ -77,4 +43,4 @@ const projectSchema = new mongoose.Schema({
   content: String
 });
 
-mongoose.model('Project', projectSchema, 'projects');
+mongoose.model('Project', Project, 'projects');

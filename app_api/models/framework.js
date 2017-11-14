@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-
-const ids = require('./ids');
-const framework_ids = ids.frameworks;
+const framework_ids = require('./ids').framesorks;
 
 const Framework = new mongoose.Schema({
   _id: {
