@@ -21,7 +21,7 @@ const Framework = new mongoose.Schema({
   }
 });
 
-Framework.statics.getSorted = function(cb) {
+Framework.statics.getList = function(cb) {
   return this.
     find({}).
     sort({'order': 1}).

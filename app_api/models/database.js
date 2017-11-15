@@ -17,7 +17,7 @@ const Database = new mongoose.Schema({
   }
 });
 
-Database.statics.getSorted = function(cb) {
+Database.statics.getList = function(cb) {
   return this.
     find({}).
     sort({'_id': 1}).

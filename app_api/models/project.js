@@ -43,4 +43,11 @@ const Project = new mongoose.Schema({
   content: String
 });
 
+Project.statics.getList = function(cb) {
+  return this.
+    find({},{content:0}).
+    sort({'_id': 1}).
+    exec(cb);
+};
+
 mongoose.model('Project', Project, 'projects');

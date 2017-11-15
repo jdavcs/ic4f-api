@@ -1,5 +1,52 @@
-module.exports.index = function(req, res) {
-  res.render('projects', { title: 'My Projects',
-    content: " encode/decode this before serving"}
-  );
+const request = require('request');
+
+const apiOptions = {
+  server : 'http://localhost:3000'
+};
+if (process.env.NODE_ENV === 'production') {
+  //TODO change this to my own
+  apiOptions.server = 'https://pure-temple-67771.herokuapp.com';
+}
+
+
+
+
+
+const projectList = function(req, res) {
+  console.log('CALLED: projectlist server controller called============================');
+  //res.status(200);
+  //res.json({'test': 'ok'});
+
+
+  res.render('projects', {title: 'My Projects'});
+
+
+
+  //const requestOptions = {
+  //  url: apiOptions.server + '/api/projects',
+  //  json: {}
+  //};
+
+  //request(
+  //  requestOptions, 
+  //  (err, response, body) => {
+  //    if (response.statusCode === 200) {
+  //      renderProjectList(req,res, body);
+  //    }
+  //  }
+  //);
+
+};
+
+
+//const renderProjectList = function(req, res, responseBody) {
+//  //console.log(body);
+//  res.render('projects', { title: 'My Projects',
+//    content:  responseBody}
+//  );
+//};
+
+
+module.exports = {
+  projectList
 };

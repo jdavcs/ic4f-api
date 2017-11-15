@@ -21,8 +21,7 @@ const Language = new mongoose.Schema({
   }
 });
 
-Language.statics.getSorted = function(cb) {
-  console.log(this);
+Language.statics.getList = function(cb) {
   return this.
     find({}).
     sort({'order': 1}).
