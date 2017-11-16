@@ -9,18 +9,19 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
+const about = function(req, res) {
+  res.render('about', {title: 'About Me'});
+}
 
 
+const blog = function(req, res) {
+  console.log('CALLED: blog server controller called============================');
+  res.render('blog', {title: 'Blog'});
+}
 
 const projectList = function(req, res) {
   console.log('CALLED: projectlist server controller called============================');
-  //res.status(200);
-  //res.json({'test': 'ok'});
-
-
   res.render('projects', {title: 'My Projects'});
-
-
 
   //const requestOptions = {
   //  url: apiOptions.server + '/api/projects',
@@ -48,5 +49,7 @@ const projectList = function(req, res) {
 
 
 module.exports = {
-  projectList
+  projectList,
+  about, 
+  blog
 };

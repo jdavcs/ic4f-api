@@ -6,13 +6,15 @@ var router = express.Router();
 
 var cProjects = require('../controllers/projects');
 router.get('/projects/', cProjects.projectList);
+router.get('/about/', cProjects.about);
+router.get('/', cProjects.blog);
 
 
+//var cOther    = require('../controllers/other');
 
 
 
 //var cBlog     = require('../controllers/blog');
-//var cOther    = require('../controllers/other');
 
 /* GET home page. */
 //router.get('/', cBlog.index);
