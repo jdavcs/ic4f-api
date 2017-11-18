@@ -5,9 +5,9 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-require('./app_api/models/dbconn');
-
-// Require all models here; until I need a different architecture
+//db connection 
+require('./db');
+// register all models
 require('./app_api/models/project');
 require('./app_api/models/language');
 require('./app_api/models/framework');

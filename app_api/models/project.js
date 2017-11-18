@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const ids = require('./ids');
+const ids = require('./_ids');
 const project_ids   = ids.projects;
 const language_ids  = ids.languages;
 const framework_ids = ids.frameworks; 
@@ -45,6 +45,10 @@ const Project = new mongoose.Schema({
 });
 
 //TODO create virtuals for SORTED lists of langs/frms/dbs?
+
+Project.virtual('url').get(function() {
+  return 'projects/' + this._id;
+});
 
 Project.statics.getList = function(cb) {
   return this.

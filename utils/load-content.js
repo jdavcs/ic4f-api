@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 
-require('../app_api/models/dbconn');
+require('../db');
 require('../app_api/models/project');
 const Project = mongoose.model('Project');
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const database_ids = require('./ids').databases;
+const database_ids = require('./_ids').databases;
 
 const Database = new mongoose.Schema({
   _id: {
