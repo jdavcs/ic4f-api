@@ -11,35 +11,6 @@ const Language = mongoose.model('Language');
 const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
 
-const updateLanguage = function(lang, callback) {
-  Project.countByLanguage(lang['_id'], function(err, count) {
-    lang.projects = count;
-    lang.save(function(err) { 
-      console.log('updated project count for ' + lang['_id']);
-      callback(null);
-    });
-  });
-};
-
-const updateFramework = function(frm, callback) {
-  Project.countByFramework(frm['_id'], function(err, count) {
-    frm.projects = count;
-    frm.save(function(err) {
-      console.log('updated project count for ' + frm['_id']);
-      callback(null);
-    });
-  });
-};
-
-const updateDatabase = function(db, callback) {
-  Project.countByDatabase(db['_id'], function(err, count) {
-    db.projects = count;
-    db.save(function(err) {
-      console.log('updated project count for ' + db['_id']);
-      callback(null);
-    });
-  });
-};
 
 async.parallel([
   function(callback) {
@@ -69,3 +40,33 @@ async.parallel([
 ],function(err, results) {
   mongoose.disconnect();
 });
+
+const updateLanguage = function(lang, callback) {
+  Project.countByLanguage(lang['_id'], function(err, count) {
+    lang.projects = count;
+    lang.save(function(err) { 
+      console.log('updated project count for ' + lang['_id']);
+      callback(null);
+    });
+  });
+};
+
+const updateFramework = function(frm, callback) {
+  Project.countByFramework(frm['_id'], function(err, count) {
+    frm.projects = count;
+    frm.save(function(err) {
+      console.log('updated project count for ' + frm['_id']);
+      callback(null);
+    });
+  });
+};
+
+const updateDatabase = function(db, callback) {
+  Project.countByDatabase(db['_id'], function(err, count) {
+    db.projects = count;
+    db.save(function(err) {
+      console.log('updated project count for ' + db['_id']);
+      callback(null);
+    });
+  });
+};
