@@ -10,7 +10,6 @@ const Project = mongoose.model('Project');
 const dataDir = '../data/project-pages/';
 const files = fs.readdirSync(dataDir);
 
-
 const processFile = function(file, callback) {
   let projectId = path.basename(file, '.html');
   let dataFile = path.resolve(dataDir, file);

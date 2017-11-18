@@ -15,12 +15,10 @@ const about = function(req, res) {
 
 
 const blog = function(req, res) {
-  console.log('CALLED: blog server controller called============================');
-  res.render('blog', {title: 'Blog'});
+  res.send('asdgsdg');
 }
 
 const projectList = function(req, res) {
-  console.log('CALLED: projectlist server controller called============================');
   res.render('projects', {title: 'My Projects'});
 
   //const requestOptions = {

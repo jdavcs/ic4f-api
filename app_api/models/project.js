@@ -31,6 +31,7 @@ const Project = new mongoose.Schema({
     default: false,
   },
   types: [String],
+
   languages: [{
     type: String,
     enum: language_ids}],
@@ -42,6 +43,8 @@ const Project = new mongoose.Schema({
     enum: database_ids}],
   content: String
 });
+
+//TODO create virtuals for SORTED lists of langs/frms/dbs?
 
 Project.statics.getList = function(cb) {
   return this.
