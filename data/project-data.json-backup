@@ -3,34 +3,34 @@
     "model": "Language",
     "documents": [
       {"_id": "bash",       "name": "Bash",       "order": 0},
-      {"_id": "c",          "name": "C",          "order": 1},
-      {"_id": "c_sharp",    "name": "C#",         "order": 2},
-      {"_id": "java",       "name": "Java",       "order": 3},
-      {"_id": "javascript", "name": "JavaScript", "order": 4},
-      {"_id": "mumps",      "name": "MUMPS",      "order": 5},
-      {"_id": "php",        "name": "PHP",        "order": 6},
-      {"_id": "python",     "name": "Python",     "order": 7},
-      {"_id": "ruby",       "name": "Ruby",       "order": 8},
-      {"_id": "typescript", "name": "TypeScript", "order": 9},
-      {"_id": "vbscript",   "name": "VBScript",   "order": 10},
-      {"_id": "vimscript",  "name": "Vimscript",  "order": 11},
-      {"_id": "sql",        "name": "SQL",        "order": 30},
-      {"_id": "html",       "name": "HTML",       "order": 40},
-      {"_id": "css",        "name": "CSS",        "order": 41},
-      {"_id": "sass",       "name": "Sass",       "order": 42},
-      {"_id": "yaml",       "name": "YAML",       "order": 43}
+      {"_id": "c",          "name": "C",          "order": 0},
+      {"_id": "c_sharp",    "name": "C#",         "order": 0},
+      {"_id": "java",       "name": "Java",       "order": 0},
+      {"_id": "javascript", "name": "JavaScript", "order": 0},
+      {"_id": "mumps",      "name": "MUMPS",      "order": 0},
+      {"_id": "php",        "name": "PHP",        "order": 0},
+      {"_id": "python",     "name": "Python",     "order": 0},
+      {"_id": "ruby",       "name": "Ruby",       "order": 0},
+      {"_id": "typescript", "name": "TypeScript", "order": 0},
+      {"_id": "vbscript",   "name": "VBScript",   "order": 0},
+      {"_id": "vimscript",  "name": "Vimscript",  "order": 0},
+      {"_id": "sql",        "name": "SQL",        "order": 1},
+      {"_id": "html",       "name": "HTML",       "order": 2},
+      {"_id": "css",        "name": "CSS",        "order": 3},
+      {"_id": "sass",       "name": "Sass",       "order": 4},
+      {"_id": "yaml",       "name": "YAML",       "order": 5}
     ]
   }, { 
     "model": "Framework",
     "documents": [
-      {"_id": "asp",       "name": "ASP",       "order": 0},
-      {"_id": "dot_net",   "name": ".NET",      "order": 1},
-      {"_id": "django",    "name": "Django",    "order": 10},
-      {"_id": "flask",     "name": "Flask",     "order": 11},
+      {"_id": "django",    "name": "Django",    "order": 0},
+      {"_id": "flask",     "name": "Flask",     "order": 1},
+      {"_id": "dot_net",   "name": ".NET",      "order": 11},
       {"_id": "node",      "name": "Node",      "order": 20},
       {"_id": "express",   "name": "Express",   "order": 21},
       {"_id": "angular",   "name": "Angular",   "order": 22},
-      {"_id": "bootstrap", "name": "Bootstrap", "order": 30}
+      {"_id": "bootstrap", "name": "Bootstrap", "order": 80},
+      {"_id": "asp",       "name": "ASP",       "order": 10}
     ]
   }, { 
     "model": "Database",
@@ -130,25 +130,7 @@
         "github_url":  "", 
         "featured":    "", 
         "types":       ["website"],
-        "languages":   [
-          "bash",      
-          "c",         
-          "c_sharp",   
-          "java",      
-          "javascript",
-          "mumps",     
-          "php",       
-          "python",    
-          "ruby",      
-          "typescript",
-          "vbscript",  
-          "vimscript", 
-          "sql",       
-          "html",      
-          "css",       
-          "sass",      
-          "yaml"     
-        ],
+        "languages":   ["c_sharp", "sql"],
         "frameworks":  [],
         "databases":   ["mysql"]
       }

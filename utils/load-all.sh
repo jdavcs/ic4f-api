@@ -2,3 +2,4 @@
 
 node load-data.js
 node load-content.js
+node update-counts.js

@@ -27,5 +27,5 @@ const processFile = function(file, callback) {
 
 async.each(files, processFile, (err) => {
   if (err) throw err;
-  mongoose.disconnect();
+  mongoose.disconnect(); //TODO doesn't look right: why for each file?
 });

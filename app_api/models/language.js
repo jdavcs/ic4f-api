@@ -25,7 +25,6 @@ Language.statics.getList = function(cb) {
   return this.
     find({}).
     sort({'order': 1}).
-    sort({'_id': 1}).
     exec(cb);
 };
 
