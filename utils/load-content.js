@@ -1,84 +1,67 @@
-const async = require('async');
+// This scirpt:
+// 1. Get list of filenames from the 'data' directory
+// 2. For each filename:
+//    2.1. Read the file content
+//    2.2. Update the corresponding porject in the db.
+// 3. When all files are processed, close db connection.
+//
+// NOTE: We can use the async library to process all files in parallel.  
+// But we can also do the same with simple callbacks and a counter. 
+
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 
 require('../db');
 require('../app_api/models/project');
+
 const Project = mongoose.model('Project');
-
 const dataDir = '../data/project-pages/';
-const files = fs.readdirSync(dataDir);
+const fileExt = '.html';
+let toProcess = 0;
 
-
-
-
-//readContent('kronofoto.html', updateProject);
 main();
 
 function main() {
-  async.each(files, readContent, function onDone(err) {
+  fs.readdir(dataDir, (err, files) => {
     if (err) throw err;
-    console.log('done, disconnecting');
-    //mongoose.disconnect();
+    toProcess = files.length; 
+    for (let f of files) {
+      //readContent(f, cleanup, updateProject);
+      readContent(f);
+    }
   });
 };
 
-
-
-function readContent(filename, cb) {
-  cb();
-  console.log('called on ' + filename);
-  let projectId = path.basename(filename, '.html');
+function readContent(filename) {
+  let projectId = path.basename(filename, fileExt);
   let filePath = path.resolve(dataDir, filename);
-
   fs.readFile(filePath, 'utf8', (err, content) => {
     if (err) throw err;
-    cb(projectId, content, logResult);
+    updateProject(projectId, content, cleanup);
   });
-};
+}
 
-function updateProject(projectId, data, cb) {
-  console.log('called');
+//function readContent(filename, nextCallback, callback) {
+//  let projectId = path.basename(filename, fileExt);
+//  let filePath = path.resolve(dataDir, filename);
+//  fs.readFile(filePath, 'utf8', (err, content) => {
+//    if (err) throw err;
+//    callback(projectId, content, nextCallback);
+//  });
+//}
+
+function updateProject(projectId, data, callback) {
   Project.update({_id: projectId}, {content: data}, (err, dbResponse) => {
     if (err) throw err;
-    cb(dbResponse);
+    callback(projectId, dbResponse);
   });
-};
+}
 
-function logResult(message) {
-  console.log(message);
-  //mongoose.disconnect();
-};
-
-
-
-
-
-
-
-
-
-
-
-//const processFile = function(file, callback) {
-
-function processFile(file, callback) {
-  let projectId = path.basename(file, '.html');
-  let dataFile = path.resolve(dataDir, file);
-
-  fs.readFile(dataFile, 'utf8', (err, html) => {
-    if (err) throw err;
-  
-    Project.update( {_id: projectId}, {content: html}, (err, raw) => {
-      if (err) throw err;
-      console.log(`updated content for ${projectId}`);
-      callback(null);
-    });
-  });
-};
-
-//async.each(files, processFile, (err) => {
-//  if (err) throw err;
-//  mongoose.disconnect(); //TODO doesn't look right: why for each file?
-//});
+function cleanup(projectId, dbResponse) {
+    console.log('UPDATED ' + projectId + ': ' + JSON.stringify(dbResponse));
+    toProcess--; 
+    if (toProcess === 0) {
+      mongoose.disconnect();
+    }
+}

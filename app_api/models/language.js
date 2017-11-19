@@ -21,11 +21,11 @@ const Language = new mongoose.Schema({
   }
 });
 
-Language.statics.getList = function(cb) {
-  return this.
-    find({}).
-    sort({'order': 1}).
-    exec(cb);
+Language.statics.getList = function(callback) {
+  return this
+    .find({})
+    .sort({'order': 1})
+    .exec(callback);
 };
 
 mongoose.model('Language', Language, 'languages');
