@@ -41,10 +41,24 @@ async.parallel([
   mongoose.disconnect();
 });
 
-const updateLanguage = function(lang, callback) {
-  Project.countByLanguage(lang['_id'], function(err, count) {
+//TODO maybe use this syntax instead:
+function updateLanguage(lang, callback) {
+  Project.countByLanguage(lang['_id'], function onCounted(err, count) {
     lang.projects = count;
-    lang.save(function(err) { 
+    lang.save(function onUpdated(err) { 
+      console.log('updated project count for ' + lang['_id']);
+      callback(null);
+    });
+  });
+};
+
+//TODO always pass err as first arg?
+
+//TODO name your closures?
+const updateLanguagebackup = function(lang, callback) {
+  Project.countByLanguage(lang['_id'], function onCounted(err, count) {
+    lang.projects = count;
+    lang.save(function onUpdated(err) { 
       console.log('updated project count for ' + lang['_id']);
       callback(null);
     });

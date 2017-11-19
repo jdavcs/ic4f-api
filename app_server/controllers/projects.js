@@ -27,9 +27,7 @@ const blog = function(req, res) {
 
 const projectList = function(req, res) {
 
-  let foo = Project.countByData('year-start', 2017);
-
-  res.render('projects', {title: 'My Projects', foo: foo});
+  res.render('projects', {title: 'My Projects'});
 
   //const requestOptions = {
   //  url: apiOptions.server + '/api/projects',
