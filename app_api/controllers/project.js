@@ -4,31 +4,38 @@ const Language = mongoose.model('Language');
 const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
 
-//TODO must handle errors
+//TODO: decide HOW to handle errors: use api on webpages, and then decide.
 
-const languageList = function(req, res) {
+function languageList(req, res) {
   Language.getList((err, data) => {
-    res.status(200);
-    res.json(data);
+    if (err) {
+      res.status(500);
+      res.json({error: err.toString()});
+    } else {
+      res.status(200);
+      res.json(data);
+    }
   });
 };
 
-const frameworkList = function(req, res){
+function frameworkList(req, res, next) {
   Framework.getList((err, data) => {
+    if (err) return next(err); 
     res.status(200);
     res.json(data);
   });
 };
 
-const databaseList = function(req, res){
+function databaseList(req, res, next) {
   Database.getList((err, data) => {
+    if (err) return next(err); 
     res.status(200);
     res.json(data);
   });
 };
 
-//TODO is this how i handle errors?
-const projectList = function(req, res){
+
+function list(req, res, next){
   console.log('api called');
   Project.getList((err, data) => {
     if (err) {
@@ -41,7 +48,7 @@ const projectList = function(req, res){
   });
 };
 
-const projectReadOne = function(req, res){
+function view(req, res, next){
   if (req.params && req.params.id) {
     Project
       .findById(req.params.id)
@@ -72,6 +79,6 @@ module.exports = {
   languageList,
   frameworkList,
   databaseList,
-  projectList,
-  projectReadOne
+  list,
+  view
 };

@@ -34,15 +34,15 @@ const Project = new mongoose.Schema({
 
   languages: [{
     type: String,
-    ref: "Language",
+    ref: 'Language',
     enum: language_ids}],
   frameworks: [{
     type: String,
-    ref: "Framework",
+    ref: 'Framework',
     enum: framework_ids}],
   databases: [{
     type: String,
-    ref: "Database",
+    ref: 'Database',
     enum: database_ids}],
   content: String
 });
@@ -52,25 +52,25 @@ Project.virtual('url').get(function() {
 });
 
 Project.statics.getList = function(callback) {
-  return this.
-    find({},{content:0}).
-    sort({'_id': 1}).
-    populate({
-      path: "languages",
-      select: "id name",
+  return this
+    .find({},{content:0})
+    .sort({'_id': 1})
+    .populate({
+      path: 'languages',
+      select: 'id name',
       options: {sort: { order: 1 }}
-    }).
-    populate({
-      path: "frameworks",
-      select: "id name",
+    })
+    .populate({
+      path: 'frameworks',
+      select: 'id name',
       options: {sort: { order: 1 }}
-    }).
-    populate({
-      path: "databases",
-      select: "id name",
+    })
+    .populate({
+      path: 'databases',
+      select: 'id name',
       options: {sort: { _id: 1 }}
-    }).
-    exec(callback);
+    })
+    .exec(callback);
 };
 
 Project.statics.countByLanguage = function(language, callback) {

@@ -18,10 +18,10 @@ const Database = new mongoose.Schema({
 });
 
 Database.statics.getList = function(cb) {
-  return this.
-    find({}).
-    sort({'_id': 1}).
-    exec(cb);
+  return this
+    .find({})
+    .sort({'_id': 1})
+    .exec(cb);
 };
 
 mongoose.model('Database', Database, 'databases');

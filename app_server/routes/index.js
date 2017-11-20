@@ -4,10 +4,10 @@ console.log('router file');
 var express = require('express');
 var router = express.Router();
 
-var cProjects = require('../controllers/projects');
-router.get('/projects/', cProjects.projectList);
-router.get('/about/', cProjects.about);
-router.get('/', cProjects.blog);
+var project = require('../controllers/project');
+router.get('/projects/', project.projectList);
+//router.get('/about/', cProject.about);
+//router.get('/', cProject.blog);
 
 
 //var cOther    = require('../controllers/other');

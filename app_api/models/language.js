@@ -22,6 +22,9 @@ const Language = new mongoose.Schema({
 });
 
 Language.statics.getList = function(callback) {
+ //TODO remove this code
+  //return callback(new Error('thadgsdgs is what happened...'));
+  //
   return this
     .find({})
     .sort({'order': 1})

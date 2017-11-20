@@ -9,54 +9,54 @@
  ****************************************************************************/
 
 const languages = [
-  "bash",
-  "c",
-  "c_sharp",
-  "sass",
-  "css",
-  "html",
-  "java",
-  "javascript",
-  "mumps",
-  "php",
-  "python",
-  "ruby",
-  "sql",
-  "typescript",
-  "vbscript",
-  "vimscript",
-  "yaml"
+  'bash',
+  'c',
+  'c_sharp',
+  'sass',
+  'css',
+  'html',
+  'java',
+  'javascript',
+  'mumps',
+  'php',
+  'python',
+  'ruby',
+  'sql',
+  'typescript',
+  'vbscript',
+  'vimscript',
+  'yaml'
 ];
 
 const frameworks = [
-  "angular",
-  "asp",
-  "bootstrap",
-  "django",
-  "dot_net",
-  "express",
-  "flask",
-  "node"
+  'angular',
+  'asp',
+  'bootstrap',
+  'django',
+  'dot_net',
+  'express',
+  'flask',
+  'node'
 ];
   
 const databases = [
-  "access",
-  "mongodb",
-  "mysql",
-  "sql_server"
+  'access',
+  'mongodb',
+  'mysql',
+  'sql_server'
 ]; 
   
 const projects = [
-  "alina_site1",
-  "alina_site2",
-  "avocado",
-  "codegen",
-  "csm",
-  "icode4fun",
-  "kronofoto",
-  "playerc",
-  "vim_journal",
-  "vim_timestamp"
+  'alina_site1',
+  'alina_site2',
+  'avocado',
+  'codegen',
+  'csm',
+  'icode4fun',
+  'kronofoto',
+  'playerc',
+  'vim_journal',
+  'vim_timestamp'
 ];
 
 module.exports = {languages, frameworks, databases, projects};

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const framework_ids = require('./_ids').framesorks;
+const framework_ids = require('./_ids').frameworks;
 
 const Framework = new mongoose.Schema({
   _id: {
@@ -22,10 +22,10 @@ const Framework = new mongoose.Schema({
 });
 
 Framework.statics.getList = function(cb) {
-  return this.
-    find({}).
-    sort({'order': 1}).
-    exec(cb);
+  return this
+    .find({})
+    .sort({'order': 1})
+    .exec(cb);
 };
 
 mongoose.model('Framework', Framework, 'frameworks');

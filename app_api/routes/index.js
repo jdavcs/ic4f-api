@@ -1,25 +1,25 @@
 const express = require('express');
 const router = express.Router();
-const cProjects = require('../controllers/projects');
+const project = require('../controllers/project');
 
 router
   .route('/languages')
-  .get(cProjects.languageList);
+  .get(project.languageList);
 
 router
   .route('/frameworks')
-  .get(cProjects.frameworkList);
+  .get(project.frameworkList);
 
 router
   .route('/databases')
-  .get(cProjects.databaseList);
+  .get(project.databaseList);
 
 router
   .route('/projects')
-  .get(cProjects.projectList);
+  .get(project.list);
 
 router
   .route('/projects/:id')
-  .get(cProjects.projectReadOne);
+  .get(project.view);
 
 module.exports = router;

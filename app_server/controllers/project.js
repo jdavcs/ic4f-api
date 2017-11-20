@@ -27,6 +27,7 @@ const blog = function(req, res) {
 
 const projectList = function(req, res) {
 
+
   res.render('projects', {title: 'My Projects'});
 
   //const requestOptions = {
