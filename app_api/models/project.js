@@ -51,7 +51,7 @@ Project.virtual('url').get(function() {
   return 'projects/' + this._id;
 });
 
-Project.statics.getList = function(cb) {
+Project.statics.getList = function(callback) {
   return this.
     find({},{content:0}).
     sort({'_id': 1}).
@@ -70,19 +70,19 @@ Project.statics.getList = function(cb) {
       select: "id name",
       options: {sort: { _id: 1 }}
     }).
-    exec(cb);
+    exec(callback);
 };
 
-Project.statics.countByLanguage = function(language, cb) {
-  return this.count({'languages':  language} , cb);
+Project.statics.countByLanguage = function(language, callback) {
+  return this.count({'languages':  language} , callback);
 };
 
-Project.statics.countByFramework = function(framework, cb) {
-  return this.count({'frameworks': framework} , cb);
+Project.statics.countByFramework = function(framework, callback) {
+  return this.count({'frameworks': framework} , callback);
 };
 
-Project.statics.countByDatabase = function(database, cb) {
-  return this.count({'database': database} , cb);
+Project.statics.countByDatabase = function(database, callback) {
+  return this.count({'database': database} , callback);
 };
 
 mongoose.model('Project', Project, 'projects');
