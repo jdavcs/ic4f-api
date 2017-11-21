@@ -10,6 +10,7 @@
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "ejs": "^2.5.7",
     "express": "~4.15.5",
     "mongoose": "^4.13.1",
     "mongoose-seed": "^0.4.0",

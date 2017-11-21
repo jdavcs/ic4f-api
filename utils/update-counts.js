@@ -21,30 +21,21 @@ async.parallel([
 function processLanguages(callback) {
   Language.getList((err, languages) => {
     if (err) throw err;
-    async.each(languages, updateLanguage, (err) => {
-      if (err) throw err;
-      callback(null);
-    });
+    async.each(languages, updateLanguage, callback);
   });
 }
 
 function processFrameworks(callback) {
   Framework.getList((err, frameworks) => {
     if (err) throw err;
-    async.each(frameworks, updateFramework, (err) => {
-      if (err) throw err;
-      callback(null);
-    });
+    async.each(frameworks, updateFramework, callback);
   });
 }
 
 function processDatabases(callback) {
   Database.getList((err, databases) => {
     if (err) throw err;
-    async.each(databases, updateDatabase, (err) => {
-      if (err) throw err;
-      callback(null);
-    });
+    async.each(databases, updateDatabase, callback);
   });
 }
 
@@ -52,11 +43,8 @@ function updateLanguage(lang, callback) {
   Project.countByLanguage(lang['_id'], (err, count) => {
     if (err) throw err;
     lang.projects = count;
-    lang.save(function onUpdated(err) { 
-      if (err) throw err;
-      console.log('Updated COUNTS for ' + lang['_id']);
-      callback(null);
-    });
+    lang.save(callback);
+    console.log('Updating COUNTS for ' + lang['_id']);
   });
 };
 
@@ -64,11 +52,8 @@ function updateFramework(frmk, callback) {
   Project.countByFramework(frmk['_id'], (err, count) => {
     if (err) throw err;
     frmk.projects = count;
-    frmk.save(function(err) {
-      if (err) throw err;
-      console.log('Updated COUNTS for ' + frmk['_id']);
-      callback(null);
-    });
+    frmk.save(callback);
+    console.log('Updating COUNTS for ' + frmk['_id']);
   });
 };
 
@@ -76,10 +61,7 @@ function updateDatabase(db, callback) {
   Project.countByDatabase(db['_id'], (err, count) => {
     if (err) throw err;
     db.projects = count;
-    db.save(function(err) {
-      if (err) throw err;
-      console.log('Updated COUNTS for ' + db['_id']);
-      callback(null);
-    });
+    db.save(callback);
+    console.log('Updating COUNTS for ' + db['_id']);
   });
 };

@@ -1,11 +1,10 @@
+const async = require('async');
 const request = require('request');
-
-
-
 const mongoose = require('mongoose');
 const Project = mongoose.model('Project');
-
-
+const Language = mongoose.model('Language');
+const Framework = mongoose.model('Framework');
+const Database = mongoose.model('Database');
 
 const apiOptions = {
   server : 'http://localhost:3000'
@@ -15,48 +14,42 @@ if (process.env.NODE_ENV === 'production') {
   apiOptions.server = 'https://pure-temple-67771.herokuapp.com';
 }
 
+exports.projects = function projectData(req, res, next) {
 
-const about = function(req, res) {
-  res.render('about', {title: 'About Me'});
+  async.parallel({
+    projects: callback => getData('projects', callback),
+    languages: callback => getData('languages', callback),
+    frameworks: callback => getData('frameworks', callback),
+    databases: callback => getData('databases', callback)
+  }, function (err, results) { 
+    if (err) { return next(err); }
+    renderProjects(req, res, results);
+  });
 }
 
-
-const blog = function(req, res) {
-  res.send('asdgsdg');
-}
-
-const projectList = function(req, res) {
-
-
-  res.render('projects', {title: 'My Projects'});
-
-  //const requestOptions = {
-  //  url: apiOptions.server + '/api/projects',
-  //  json: {}
-  //};
-
-  //request(
-  //  requestOptions, 
-  //  (err, response, body) => {
-  //    if (response.statusCode === 200) {
-  //      renderProjectList(req,res, body);
-  //    }
-  //  }
-  //);
-
+function getData(collection, callback) {
+  const requestOptions = {
+    url: apiOptions.server + '/api/' + collection,
+    json: {}
+  };
+  request(
+    requestOptions, 
+    (err, response, body) => {
+      if (err) {
+        callback(err); //TODO do i need a return here?
+      } else {
+        callback(null, body);
+      } 
+    }
+  );
 };
 
-
-//const renderProjectList = function(req, res, responseBody) {
-//  //console.log(body);
-//  res.render('projects', { title: 'My Projects',
-//    content:  responseBody}
-//  );
-//};
-
-
-module.exports = {
-  projectList,
-  about, 
-  blog
+function renderProjects(req, res, data) {
+  res.render('projects', { 
+    title: 'My Projects', 
+    projects: data.projects,
+    languages: data.languages,
+    frameworks: data.frameworks,
+    databases: data.databases
+  });
 };

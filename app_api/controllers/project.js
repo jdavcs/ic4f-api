@@ -36,7 +36,6 @@ function databaseList(req, res, next) {
 
 
 function list(req, res, next){
-  console.log('api called');
   Project.getList((err, data) => {
     if (err) {
       res.status(404);

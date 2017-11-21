@@ -19,13 +19,13 @@ const Project = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  yearEnd: Number,
+  year_end: Number,
   status: {
     type: String,
     required: true
   },
-  websiteUrl: String,
-  githubUrl: String,
+  website_url: String,
+  github_url: String,
   featured: {
     type: Boolean,
     default: false,
@@ -82,7 +82,7 @@ Project.statics.countByFramework = function(framework, callback) {
 };
 
 Project.statics.countByDatabase = function(database, callback) {
-  return this.count({'database': database} , callback);
+  return this.count({'databases': database} , callback);
 };
 
 mongoose.model('Project', Project, 'projects');

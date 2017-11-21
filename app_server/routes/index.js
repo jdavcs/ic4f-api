@@ -1,11 +1,11 @@
-console.log('router file');
 //TODO change all this to match new style
 
 var express = require('express');
 var router = express.Router();
 
 var project = require('../controllers/project');
-router.get('/projects/', project.projectList);
+router.get('/projects/', project.projects);
+
 //router.get('/about/', cProject.about);
 //router.get('/', cProject.blog);
 

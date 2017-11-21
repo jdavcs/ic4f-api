@@ -60,7 +60,7 @@
             "sass"
         ],
         "frameworks":  ["node", "express", "angular", "bootstrap"],
-        "databases":   ["mongodb"]
+        "databases":   ["mongodb", "access"]
       }, {
         "_id":         "alina_site1",
         "name":        "alinaavanesyan.com",
@@ -75,7 +75,7 @@
         "databases":   ["mysql"]
       }, {
         "_id":         "kronofoto",   
-        "name":        "x", 
+        "name":        "Kronofoto", 
         "year_start":   2017,
         "status":      "completed", 
         "website_url": "", 
@@ -94,7 +94,7 @@
         "databases":   ["mysql"]
       }, {
         "_id":         "csm",   
-        "name":        "x", 
+        "name":        "CSM", 
         "year_start":   2017,
         "status":      "completed", 
         "website_url": "", 
@@ -111,7 +111,7 @@
         "databases":   ["mysql"]
       }, {
         "_id":         "playerc",   
-        "name":        "x", 
+        "name":        "playerc", 
         "year_start":   2017,
         "status":      "completed", 
         "website_url": "", 
@@ -133,18 +133,6 @@
         "languages":   [
           "bash",      
           "c",         
-          "c_sharp",   
-          "java",      
-          "javascript",
-          "mumps",     
-          "php",       
-          "python",    
-          "ruby",      
-          "typescript",
-          "vbscript",  
-          "vimscript", 
-          "sql",       
-          "html",      
           "css",       
           "sass",      
           "yaml"     

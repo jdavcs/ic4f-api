@@ -19,7 +19,8 @@ const apiRoutes = require('./app_api/routes/index');
 const app = express();
 
 app.set('views', path.join(__dirname, 'app_server', 'views'));
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
+//app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -30,24 +31,25 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', webRoutes);
 app.use('/api', apiRoutes);
 
-// TODO change this to display a friendly 404 page
-// catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  const err = new Error('Not Found'); //add requested url
+  const err = new Error('Not Found');
+  err.message = 'The requested resource does not exist: ' + req.hostname + req.url;
   err.status = 404;
   next(err);
 });
 
-// error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
+  //TODO remove console call
+  console.log(err.stack);
+
   // render the error page
   res
     .status(err.status || 500)
-    .render('error');
+    .render('error', {error: err, title: 'Error'});
 });
 
 //app.use(function(req, res, next){
