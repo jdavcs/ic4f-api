@@ -28,30 +28,24 @@
 <table class="table table-bordered">
   <tr>
     <th>#</th>
-    <th>project name</th>
+    <th>project</th>
     <th>type</th>
     <th>years</th>
     <th>languages</th>
-    <th>frameworks</th>
+    <th>frameworks+</th>
     <th>database</th>
-    <th>status</th>
     <th>github</th>
   </tr>
 
 <% for (let p of projects) { %>
   <tr>
     <td class="text-center">0</td>
-    <td><%= p.name %></td>
+    <td><a href="<%= p._id %>"><%= p.name %></a></td>
     <td><%= p.types %></td>
     <td><%= p.year_start %></td>
-    <td>
-      <% for (let foo of p.languages) { %>
-        <%= foo.name %>, 
-      <% } %>
-    </td>
-    <td><%= p.frameworks %></td>
-    <td><%= p.databases %></td>
-    <td><%= p.status %></td>
+    <td><%= makeList(p.languages, 'name') %></td>
+    <td><%= makeList(p.frameworks, 'name') %></td>
+    <td><%= makeList(p.databases, 'name') %></td>
     <td><%= p.github_url %></td>
   </tr>
 <% } %>

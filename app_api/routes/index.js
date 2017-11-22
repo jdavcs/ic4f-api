@@ -19,7 +19,7 @@ router
   .get(project.list);
 
 router
-  .route('/projects/:id')
+  .route('/projects/:projectId')
   .get(project.view);
 
 module.exports = router;

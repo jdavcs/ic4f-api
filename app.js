@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 //db connection 
 require('./db');
 // register all models
+require('./app_api/models/post');
 require('./app_api/models/project');
 require('./app_api/models/language');
 require('./app_api/models/framework');

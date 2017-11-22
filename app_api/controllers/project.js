@@ -48,6 +48,7 @@ function list(req, res, next){
 };
 
 function view(req, res, next){
+  console.log('call 3');
   if (req.params && req.params.id) {
     Project
       .findById(req.params.id)

@@ -14,6 +14,16 @@ if (process.env.NODE_ENV === 'production') {
   apiOptions.server = 'https://pure-temple-67771.herokuapp.com';
 }
 
+exports.viewProject = function viewProject(req, res, next) {
+  const address = 'projects/' + req.params.projectId;
+  async.parallel({
+    project: callback => getData(address, callback)
+  }, function (err, results) { 
+    if (err) { return next(err); }
+    renderOneProject(req, res, results);
+  });
+}
+
 exports.projects = function projectData(req, res, next) {
 
   async.parallel({
@@ -27,14 +37,15 @@ exports.projects = function projectData(req, res, next) {
   });
 }
 
-function getData(collection, callback) {
+function getData(address, callback) {
   const requestOptions = {
-    url: apiOptions.server + '/api/' + collection,
+    url: apiOptions.server + '/api/' + address,
     json: {}
   };
   request(
     requestOptions, 
     (err, response, body) => {
+     // console.log(body);
       if (err) {
         callback(err); //TODO do i need a return here?
       } else {
@@ -44,12 +55,28 @@ function getData(collection, callback) {
   );
 };
 
+function renderOneProject(req, res, data) {
+  res.render('projectView', { 
+    title: 'My Projects', 
+    project: data.project
+  });
+};
+
 function renderProjects(req, res, data) {
   res.render('projects', { 
     title: 'My Projects', 
     projects: data.projects,
     languages: data.languages,
     frameworks: data.frameworks,
-    databases: data.databases
+    databases: data.databases,
+    makeList: makeListOfProperties
   });
 };
+
+function makeListOfProperties(items, property) {
+  return items
+    .map(function(i) { return i[property]; })
+    .join(', ');
+};
+
+
