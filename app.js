@@ -13,6 +13,8 @@ require('./app_api/models/project');
 require('./app_api/models/language');
 require('./app_api/models/framework');
 require('./app_api/models/database');
+require('./app_api/models/page');
+require('./app_api/models/post');
 
 const webRoutes = require('./app_server/routes/index');
 const apiRoutes = require('./app_api/routes/index');

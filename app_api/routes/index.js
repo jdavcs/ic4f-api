@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const project = require('../controllers/project');
+const page = require('../controllers/page');
 
 router
   .route('/languages')
@@ -21,5 +22,10 @@ router
 router
   .route('/projects/:projectId')
   .get(project.view);
+
+router
+  .route('/:route')
+  .get(page.view);
+
 
 module.exports = router;
