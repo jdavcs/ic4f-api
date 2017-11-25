@@ -48,10 +48,10 @@ function updateProject(projectId, data) {
 }
 
 function done() {
-    toProcess--; 
-    if (toProcess === 0) {
-      mongoose.disconnect();
-    }
+  toProcess--; 
+  if (toProcess === 0) {
+    mongoose.disconnect();
+  }
 }
 
 main();

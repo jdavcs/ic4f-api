@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 
 const Post = new mongoose.Schema({
-  _id: {
-    type: String,
-    lowercase: true,
-  },
   title: {
     type: String,
     required: true
+  },
+  slug: {
+    type: String,
+    required: true,
+    lowercase: true
   },
   date: {
     type: Date,
@@ -19,7 +20,7 @@ const Post = new mongoose.Schema({
     default: 'Sergey Golitsynskiy'
   },
   tags: [String],
-  content: String
+  body: String
 });
 
 mongoose.model('Post', Post, 'posts');
