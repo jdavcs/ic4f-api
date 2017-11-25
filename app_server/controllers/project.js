@@ -26,6 +26,8 @@ exports.viewProject = function viewProject(req, res, next) {
 
 exports.projects = function projectData(req, res, next) {
 
+  console.log('server called for lists');
+
   async.parallel({
     projects: callback => getData('projects', callback),
     languages: callback => getData('languages', callback),

@@ -1,10 +1,10 @@
 //TODO change all this to match new style
 
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var project = require('../controllers/project');
-var blog = require('../controllers/blog');
+const project = require('../controllers/project');
+const blog = require('../controllers/blog');
 
 router.get('/', blog.posts);
 router.get('/projects/', project.projects);

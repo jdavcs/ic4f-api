@@ -42,12 +42,12 @@ function processFile(filename) {
   const projectId = path.basename(filename, fileExt);
   const filePath = path.resolve(dataDir, filename);
 
-  arr = filename.match(re);
-  y = parseInt(arr[1]);
-  m = parseInt(arr[2]);
-  d = parseInt(arr[3]);
-  date = new Date(y, m - 1, d);
-  slug = arr[4];
+  const arr = filename.match(re);
+  const y = parseInt(arr[1]);
+  const m = parseInt(arr[2]);
+  const d = parseInt(arr[3]);
+  const date = new Date(y, m - 1, d);
+  const slug = arr[4];
 
   fs.readFile(filePath, 'utf8', (err, content) => {
     if (err) throw err;
