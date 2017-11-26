@@ -1,15 +1,8 @@
-// This scirpt:
-// 1. Get list of filenames from the 'data/posts' directory
-// 2. For each filename:
-//    2.1. Extract date + slug from filename
-//    2.1. Read the file content
-//    2.2. Update the corresponding post in the db.
-// 3. When all files are processed, close db connection.
-
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 const fm = require('front-matter');
+const md = require('marked');
 require('../db');
 require('../app_api/models/post');
 
@@ -18,6 +11,7 @@ const dataDir = '../data/posts/';
 const fileExt = '.md';
 
 const re = /(\d{4})-(\d{2})-(\d{2})-([\w-]+)/;
+const separator = '<!--more-->';
 
 let toProcess = 0; //this global is annoying...
 
@@ -39,7 +33,6 @@ function clearPosts() {
 }
 
 function processFile(filename) {
-  const projectId = path.basename(filename, fileExt);
   const filePath = path.resolve(dataDir, filename);
 
   const arr = filename.match(re);
@@ -47,22 +40,32 @@ function processFile(filename) {
   const m = parseInt(arr[2]);
   const d = parseInt(arr[3]);
   const date = new Date(y, m - 1, d);
-  const slug = arr[4];
+  const id = arr[1] + '/' + arr[2] + '/' + arr[4];
 
   fs.readFile(filePath, 'utf8', (err, content) => {
     if (err) throw err;
     const data = fm(content);
     title = data.attributes.title;
     body = data.body;
-    updatePost(slug, date, title, body);
+    excerpt = extractExcerpt(body);
+    updatePost(id, date, title, excerpt, body);
   });
 }
 
-function updatePost(slug, date, title, body) {
+function extractExcerpt(body) {
+  let i = body.indexOf(separator);
+  if (i == -1) {
+    i = body.indexOf('\n\n');
+  }
+  return body.substring(0, i);
+}
+
+function updatePost(id, date, title, excerpt, body) {
   const post = new Post({
-    'slug': slug,
+    '_id': id,
     'date': date, 
     'title': title,
+    'excerpt': excerpt,
     'body': body
   });
   post.save( (err) => {

@@ -160,3 +160,74 @@ h4, h5, h6 {
   font-weight: bold;
 }
 
+
+.ic4f-blog-date {
+  color: $gray2;
+  font-size: .8rem;
+  margin: -10px 0 5px 0;
+}
+
+.ic4f-blog-list-date {
+  color: $gray2;
+  font-size: .8rem;
+  margin-bottom: 0;
+  line-height: 1rem;
+}
+
+.ic4f-blog-list-excerpt {
+  font-size: .9rem;
+}
+
+.ic4f-blog-list-more {
+  font-size: .8rem;
+}
+
+.ic4f-blog-list-title {
+  font-size: 1.1rem;
+  margin: 0;
+
+  a {
+    color: $blue;
+  }
+  a:hover {
+    color: red; 
+  }
+}
+
+.ic4f-blog-sidebar {
+
+  h2 {
+    font-size: 1rem;
+    color: $gray2;
+  }
+
+  ul {
+    font-size: .8rem;
+    line-height: 1rem;
+    padding-left: 1.1rem;
+  }
+
+  li {
+    margin-bottom: .5rem;
+
+    a.active {
+      color: $blue;
+    }
+    a.active:hover {
+      color: red;
+    }
+  }
+
+  li:last-child {
+    list-style: none;
+
+    a {
+      color: $gray2;
+    }
+    a:hover {
+      color: $blue;
+    }
+  }
+}
+
+

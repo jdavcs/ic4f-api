@@ -99,7 +99,7 @@
         "databases":   ["mysql"]
       }, {
         "_id":         "csm",   
-        "name":        "CSM", 
+        "name":        "Collegiate Sports Marketing", 
         "year_start":   2017,
         "status":      "completed", 
         "website_url": "", 

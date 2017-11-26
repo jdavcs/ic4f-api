@@ -2,14 +2,10 @@
 
 
 <% for (let p of posts) { %>
-
-<p>url: <%= p.url %>
-<p class="ic4f-blog-list-date"><%= p.date %></p>
-<p class="ic4f-blog-list-title"><a href="<%= p.url %>"><%= p.title %></a></p>
-<p class="ic4f-blog-list-excerpt">It has been 5 weeks of Planting Science program and my online mentorship of high school
-students teams in their plant investigations.
-  <a class="ic4f-blog-list-more" href="<%= p.url %>">...read more</a></p>
-
+  <p class="ic4f-blog-list-date"><%= dateFormat(p.date, 'mmmm d, yyyy') %></p>
+  <p class="ic4f-blog-list-title"><a href="<%= p.url %>"><%= p.title %></a></p>
+  <p class="ic4f-blog-list-excerpt"><%= p.excerpt %>
+    <a class="ic4f-blog-list-more" href="<%= p.url %>">...read more</a></p>
 <% } %>
 
 

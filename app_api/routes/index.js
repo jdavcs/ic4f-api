@@ -25,11 +25,15 @@ router
   .get(project.view);
 
 router
+  .route('/pages/:pageId')
+  .get(page.view);
+
+router
   .route('/posts')
   .get(post.list);
 
 router
-  .route('/posts/:year/:month/:slug')
+  .route('/blog/:year/:month/:slug')
   .get(post.view);
 
 router

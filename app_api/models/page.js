@@ -1,16 +1,16 @@
 const mongoose = require('mongoose');
 
 const Page = new mongoose.Schema({
-  route: {
+  _id: { //this is the path
     type: String,
-    lowercase: true,
-    required: true
+    required: true,
+    lowercase: true
   },
   title: {
     type: String,
     required: true
   },
-  content: String
+  body: String
 });
 
 mongoose.model('Page', Page, 'pages');

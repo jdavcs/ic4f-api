@@ -36,6 +36,7 @@ function databaseList(req, res, next) {
 
 
 function list(req, res, next){
+  console.log('API 1');
   Project.getList((err, data) => {
     if (err) {
       res.status(404);
@@ -48,9 +49,9 @@ function list(req, res, next){
 };
 
 function view(req, res, next){
-  if (req.params && req.params.id) {
+  if (req.params && req.params.projectId) {
     Project
-      .findById(req.params.id)
+      .findById(req.params.projectId)
       .exec((err, doc) => {
         if (!doc) {
           res

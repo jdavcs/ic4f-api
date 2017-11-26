@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const Page = mongoose.model('Page');
 
 function view(req, res, next){
-  console.log('call 3');
-  if (req.params && req.params.route) {
+  console.log(req.params);
+  if (req.params && req.params.pageId) {
     Page
-      .findOne({'route': req.params.route})
+      .findOne({'_id': req.params.pageId})
       .exec((err, doc) => {
         if (!doc) {
           res
@@ -25,7 +25,7 @@ function view(req, res, next){
   } else {
     res
       .status(404)
-      .json({"message": "page route not in request"});
+      .json({"message": "pdage route not in request"});
   }
 };
 

@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
+const blogPrefix = '/blog'; //needs refactoring: duplicate
+
 const Post = new mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  slug: {
+  _id: { //this is the path: /yyyy/mm/slug
     type: String,
     required: true,
     lowercase: true
@@ -14,20 +12,24 @@ const Post = new mongoose.Schema({
     type: Date,
     required: true
   },
+  title: {
+    type: String,
+    required: true,
+  },
   author: {
     type: String,
     required: true,
     default: 'Sergey Golitsynskiy'
+  },
+  excerpt: {
+    type: String
   },
   tags: [String],
   body: String
 });
 
 Post.virtual('url').get(function() {
-  return 'blog/' + 
-    this.date.getFullYear() + '/' + 
-    (this.date.getMonth() + 1) + '/' + 
-    this.slug;
+  return blogPrefix + '/' + this._id;
 });
 
 Post.statics.getList = function(callback) {

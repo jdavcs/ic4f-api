@@ -16,10 +16,12 @@ if (process.env.NODE_ENV === 'production') {
 
 exports.viewProject = function viewProject(req, res, next) {
   const address = 'projects/' + req.params.projectId;
+  console.log('ADDRESS: ' + address);
   async.parallel({
     project: callback => getData(address, callback)
   }, function (err, results) { 
     if (err) { return next(err); }
+    console.log('MARKER 2');
     renderOneProject(req, res, results);
   });
 }
@@ -44,6 +46,7 @@ function getData(address, callback) {
     url: apiOptions.server + '/api/' + address,
     json: {}
   };
+    console.log('OPTIONS: ' + requestOptions.url);
   request(
     requestOptions, 
     (err, response, body) => {
@@ -51,6 +54,8 @@ function getData(address, callback) {
       if (err) {
         callback(err); //TODO do i need a return here?
       } else {
+
+        console.log('MARKER 1 ' + body);
         callback(null, body);
       } 
     }
@@ -59,7 +64,7 @@ function getData(address, callback) {
 
 function renderOneProject(req, res, data) {
   res.render('projectView', { 
-    title: 'My Projects', 
+    title: data.project.name,
     project: data.project
   });
 };

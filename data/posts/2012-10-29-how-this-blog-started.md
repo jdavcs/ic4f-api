@@ -5,7 +5,7 @@ title: "Professor Sprout: How this blog started"
 At first this blog was anonymous. It lived at www.professorsprout.me – an address which
 captured my attachment to biology and, yes, the Harry Potter books. Eventually I decided to move it to
 this new website that has a more formal name. But I’m keeping my first post unchanged – with all its Harry Potter
-references – for the sake of a little bit of magic.<!--more-->
+references – for the sake of a little bit of magic.
 
 ## Original Post
 
