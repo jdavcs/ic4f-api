@@ -5,17 +5,7 @@ const fm = require('front-matter');
 const md = require('marked');
 const Db = require('../db');
 
-
-//setup db connection 
-if (process.env.NODE_ENV === 'production') {
-  let dbURI = 'something else';
-} else {
-  let dbURI = 'mongodb://localhost/ic4f';
-}
-
-let dbURI = 'mongodb://localhost/ic4f';
-const db = new Db(dbURI);
-db.connect();
+new Db().connect();
 
 
 

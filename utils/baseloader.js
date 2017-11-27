@@ -3,6 +3,7 @@ const fm = require('front-matter');
 const md = require('marked');
 const path = require('path');
 const mongoose = require('mongoose');
+const Db = require('../db');
 
 class BaseContentLoader {
 

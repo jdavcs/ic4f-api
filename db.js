@@ -1,11 +1,20 @@
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+
 
 module.exports = class DbConnection {
-  constructor(dbURI) {
-    mongoose.Promise = global.Promise;
-    this.dbURI = dbURI;
+  constructor() {
+    this.dbURI = this.getDbURI();
     this.listenToConnEvents();
     this.listenToProcessEnd();
+  }
+
+  getDbURI() {
+    if (process.env.NODE_ENV === 'production') {
+      return 'something else';
+    } else {
+      return 'mongodb://localhost/ic4f';
+    }
   }
 
   connect(callback) {

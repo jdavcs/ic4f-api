@@ -4,13 +4,9 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const Db = require('./db');
 
-//setup db connection 
-const DB = require('./db');
-
-let dbURI = 'mongodb://localhost/ic4f';
-const db = new DB(dbURI);
-db.connect();
+new Db().connect();
 
 // register all models
 require('./app_api/models/page');
