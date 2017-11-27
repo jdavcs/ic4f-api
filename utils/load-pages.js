@@ -4,15 +4,19 @@ const mongoose = require('mongoose');
 const fm = require('front-matter');
 const md = require('marked');
 require('../db');
-require('../app_api/models/page');
 
+
+require('../app_api/models/page');
 const Page = mongoose.model('Page');
 const dataDir = '../data/pages/';
+
+
+
 
 let toProcess = 0; //this global is annoying...
 
 function main() {
-  clearPages();
+  clearCollection(Page);
   fs.readdir(dataDir, (err, files) => {
     if (err) throw err;
     toProcess = files.length; 
@@ -22,8 +26,8 @@ function main() {
   });
 }
 
-function clearPages() {
-  Page.remove({}, (err) => {
+function clearCollection(coll) {
+  coll.remove({}, (err) => {
     if (err) throw err; 
   });
 }

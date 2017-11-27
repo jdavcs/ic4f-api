@@ -5,16 +5,20 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-//db connection 
-require('./db');
+//setup db connection 
+const DB = require('./db');
+
+let dbURI = 'mongodb://localhost/ic4f';
+const db = new DB(dbURI);
+db.connect();
+
 // register all models
+require('./app_api/models/page');
 require('./app_api/models/post');
 require('./app_api/models/project');
 require('./app_api/models/language');
 require('./app_api/models/framework');
 require('./app_api/models/database');
-require('./app_api/models/page');
-require('./app_api/models/post');
 
 const webRoutes = require('./app_server/routes/index');
 const apiRoutes = require('./app_api/routes/index');
@@ -23,7 +27,6 @@ const app = express();
 
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'ejs');
-//app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -42,22 +45,19 @@ app.use(function(req, res, next) {
 });
 
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
+  // set locals, only providing error + printing the error stack in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  //TODO remove console call
-  console.log(err.stack);
+  if (req.app.get('env') === 'development') {
+    res.locals.error = err;
+    console.log(err.stack);
+  } else {
+    res.locals.error = {};
+  }
 
-  // render the error page
   res
     .status(err.status || 500)
     .render('error', {error: err, title: 'Error'});
 });
-
-//app.use(function(req, res, next){
-//  res.status(404).render('404', { url: req.originalUrl });
-//});
-
 
 module.exports = app;

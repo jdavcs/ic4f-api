@@ -1,15 +1,16 @@
+//TODO replace this with your own code
+
 const seeder = require('mongoose-seed');
 const fs = require('fs');
 
 let dbURI = 'mongodb://localhost/ic4f';
 
-seeder.connect(dbURI, { useMongoClient: true, }, () => {
+seeder.connect(dbURI, {useMongoClient: true}, () => {
   seeder.loadModels([
     '../app_api/models/language.js',
     '../app_api/models/framework.js',
     '../app_api/models/database.js',
-    '../app_api/models/project.js',
-    '../app_api/models/page.js'
+    '../app_api/models/project.js'
   ]);
   seeder.clearModels(['Language', 'Framework', 'Database', 'Project'], () => {
     const mycontent = fs.readFileSync('../data/project-data.json');

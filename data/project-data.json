@@ -1,10 +1,5 @@
 [
   {
-    "model": "Page",
-    "documents": [
-      { "route": "about", "title": "About" }
-    ]
-  }, {
     "model": "Language",
     "documents": [
       {"_id": "bash",       "name": "Bash",       "order": 0},

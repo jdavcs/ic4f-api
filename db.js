@@ -1,43 +1,59 @@
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-let dbURI = 'mongodb://localhost/ic4f';
-mongoose.connect(dbURI, { useMongoClient: true, });
+module.exports = class DbConnection {
+  constructor(dbURI) {
+    mongoose.Promise = global.Promise;
+    this.dbURI = dbURI;
+    this.listenToConnEvents();
+    this.listenToProcessEnd();
+  }
 
-//display connection status
-mongoose.connection.on('connected', () => {
-  console.log(`Mongoose connected to ${dbURI}`);
-});
+  connect(callback) {
+    mongoose.connect(this.dbURI, {useMongoClient: true,}, callback);
+  }
 
-mongoose.connection.on('error', err => {
-  console.log('Mongoose connection error:', err);
-});
-mongoose.connection.on('disconnected', () => {
-  console.log('Mongoose disconnected');
-});
+  disconnect(callback) {
+    mongoose.disconnect(callback);
+  }
 
-const gracefulShutdown = (msg, callback) => {
-  mongoose.connection.close( () => {
-    console.log(`Mongoose disconnected through ${msg}`);
-    callback();
-  });
-};
+  listenToConnEvents() {
+    mongoose.connection.on('connected', () => {
+      console.log(`Mongoose connected to ${this.dbURI}`);
+    });
 
-// For nodemon restarts                                 
-process.once('SIGUSR2', () => {
-  gracefulShutdown('nodemon restart', () => {
-    process.kill(process.pid, 'SIGUSR2');
-  });
-});
-// For app termination
-process.on('SIGINT', () => {
-  gracefulShutdown('app termination', () => {
-    process.exit(0);
-  });
-});
-// For Heroku app termination
-process.on('SIGTERM', () => {
-  gracefulShutdown('Heroku app shutdown', () => {
-    process.exit(0);
-  });
-});
+    mongoose.connection.on('error', err => {
+      console.log('Mongoose connection error:', err);
+    });
+
+    mongoose.connection.on('disconnected', () => {
+      console.log('Mongoose disconnected');
+    });
+  }
+
+  listenToProcessEnd() {
+    process.once('SIGUSR2', () => {
+      this.shutdown('nodemon restart', () => {
+        process.kill(process.pid, 'SIGUSR2');
+      });
+    });
+
+    process.on('SIGINT', () => {
+      this.shutdown('app termination', () => {
+        process.exit(0);
+      });
+    });
+
+    process.on('SIGTERM', () => {
+      this.shutdown('Heroku app shutdown', () => {
+        process.exit(0);
+      });
+    });
+  }
+
+  shutdown(msg, callback) {
+    mongoose.connection.close( () => {
+      console.log(`Mongoose disconnected through ${msg}`);
+      callback();
+    });
+  };
+}

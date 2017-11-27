@@ -3,12 +3,27 @@ const path = require('path');
 const mongoose = require('mongoose');
 const fm = require('front-matter');
 const md = require('marked');
-require('../db');
-require('../app_api/models/post');
+const Db = require('../db');
 
+
+//setup db connection 
+if (process.env.NODE_ENV === 'production') {
+  let dbURI = 'something else';
+} else {
+  let dbURI = 'mongodb://localhost/ic4f';
+}
+
+let dbURI = 'mongodb://localhost/ic4f';
+const db = new Db(dbURI);
+db.connect();
+
+
+
+
+
+require('../app_api/models/post');
 const Post = mongoose.model('Post');
 const dataDir = '../data/posts/';
-const fileExt = '.md';
 
 const re = /(\d{4})-(\d{2})-(\d{2})-([\w-]+)/;
 const separator = '<!--more-->';
@@ -16,7 +31,7 @@ const separator = '<!--more-->';
 let toProcess = 0; //this global is annoying...
 
 function main() {
-  clearPosts();
+  clearCollection(Post);
   fs.readdir(dataDir, (err, files) => {
     if (err) throw err;
     toProcess = files.length; 
@@ -26,13 +41,21 @@ function main() {
   });
 }
 
-function clearPosts() {
-  Post.remove({}, (err) => {
+function clearCollection(coll) {
+  coll.remove({}, (err) => {
     if (err) throw err; 
   });
 }
 
 function processFile(filename) {
+
+  let fileExt = '';
+  if (filename.endsWith('.md')) {
+    fileExt = '.md';
+  } else if  (filename.endsWith('.html')) {
+    fileExt = '.html';
+  }
+
   const filePath = path.resolve(dataDir, filename);
 
   const arr = filename.match(re);
