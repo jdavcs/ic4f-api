@@ -2,88 +2,83 @@ const fs = require('fs');
 const fm = require('front-matter');
 const md = require('marked');
 const path = require('path');
-const mongoose = require('mongoose');
-const Db = require('../db');
+
+// requires an open connection
 
 // base (abstract) class for loading pages/posts/project pages into mongodb
 module.exports = class BaseContentLoader {
   constructor(model, dataDirectory) {
     this.model = model;
     this.dataDir =  dataDirectory;
-    this.toProcess = 0;
-    this.db = new Db();
+    this.filesToProcess = 0;
   }
 
-  //TODO pass the callback to the end
-  load(callback) {
-    this.db.connect();
-    this.clearCollection();
+  //step 0: call first step
+  load(clear, callback) {
+    if (clear) {
+      this.clearCollection(callback);
+    } else {
+      this.processDir(callback);
+    }
   }
 
-  //step 1:
-  //- removes collection from db
-  //- then calls processDir
-  clearCollection() {
+  //step 1: remove collection from db; then call processDir
+  clearCollection(callback) {
     this.model.remove({}, (err) => {
       if (err) throw err; 
-      console.log('clearCollection done');
-      this.processDir();
+      this.processDir(callback);
     });
   }
 
-  //step 2:
-  //- reads contents of dir as files 
-  //- then calls processFile for each file in files
-  processDir() {
-    console.log('processDir called');
+  //step 2: read contents of dir; then call processFile for each file
+  processDir(callback) {
     fs.readdir(this.dataDir, (err, files) => {
       if (err) throw err;
-      this.toProcess = files.length; 
+      this.filesToProcess = files.length; 
       for (let f of files) {
-        this.processFile(f);
+        this.processFile(f, callback);
       }
     });
   }
 
-  //step 3 (after dataDir is read)
-  processFile(filename) {
+  //step 3: process common stuff, then call processData (in subclass)
+  processFile(filename, callback) {
     const filePath = path.resolve(this.dataDir, filename);
     fs.readFile(filePath, 'utf8', (err, content) => {
       if (err) throw err;
 
-      //process front-matter
+      //extract front-matter
       const data = fm(content);
-      const attributes = data.attributes;
-      const body = data.body;
 
-      //process markdown
+      //get extension and basename
+      let basename = filename;
+      const i = filename.lastIndexOf('.');
+      if (i > 0) {
+        let extension = filename.substring(i);
+        basename = path.basename(filename, extension);
+        //if markdown: convert to html
+        if (extension === '.md') {
+          data.body = md(data.body);
+        }
+      }
 
-      //send to concrete subclass to process data
-      console.log(this);
-      this.processData(this.done);
+      //send to subclass to process data
+      this.processData(basename, data.attributes, data.body, callback);
     });
-
-    //read file, then:
-    //  1.apply fm, get data
-    //  2. apply md to data.body based on file extension 
-    //  3. call subclass method to process specific content and update db. 
-    //  4. pass done() as callback to #3.
-    //
-    //const err = new Error('processFile method must be implemented by a subclass');
-    //throw err;
   }
 
+  //step 4: save to database (must be implemented in a subclass)
   processData() {
+    const err = new Error('processData must be implemented in a subclass');
+    throw err;
   }
 
-  done() {
-    console.log('processing done');
-    this.toProcess--; 
-    if (this.toProcess === 0) {
-      mongoose.disconnect();
+  //step 5: close connection after last file is processed
+  done(callback) {
+    this.filesToProcess--; 
+    if (this.filesToProcess === 0) {
+      console.log('Collection documents loaded');
+      callback();
     }
   }
-
-
 }
-

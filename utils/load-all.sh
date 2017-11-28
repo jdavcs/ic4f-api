@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-node load-project-data.js
-node load-projects.js
+printf "\nEXECUTING load-data.js................\n\n"
+node load-data.js
+printf "\nEXECUTING load-content.js.............\n\n"
+node load-content.js
+printf "\nEXECUTING update-counts.js............\n"
 node update-counts.js
-node load-posts.js
-node load-pages.js
+printf "\nDONE\n"

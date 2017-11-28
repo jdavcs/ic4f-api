@@ -1,9 +1,9 @@
-//TODO replace this with your own code
-
 const seeder = require('mongoose-seed');
 const fs = require('fs');
 
-let dbURI = 'mongodb://localhost/ic4f';
+const Db = require('../db');
+const db = new Db();
+let dbURI = db.getDbURI();
 
 seeder.connect(dbURI, {useMongoClient: true}, () => {
   seeder.loadModels([
