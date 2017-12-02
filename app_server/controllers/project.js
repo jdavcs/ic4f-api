@@ -85,18 +85,15 @@ function renderProjects(req, res, data) {
 
 //TODO remove this
 function tmpScreen() {
+
+  let min = Math.ceil(1);
+  let max = Math.floor(20);
+  let foo = Math.floor(Math.random() * (max - min)) + min;
+
+
+
   let str = ''
-  let x = Math.random();
-  if (x < 0.2) {
-    str = '';
-  }
-  else if (x < 0.5) {
-    str = '<img class="tmpScreenThumb" src="/screens/1.jpg">';
-    str += '<img class="tmpScreenThumb" src="/screens/2.jpg">';
-  }
-  else {
-    str = '<img class="tmpScreenThumb" src="/screens/1.jpg">';
-  }
+    str = '<img class="tmpScreenThumb" src="/screens/' + foo + '.jpg">';
   return str;
 }
 //TODO remove this

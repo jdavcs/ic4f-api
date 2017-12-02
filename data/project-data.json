@@ -45,7 +45,7 @@
     "documents": [
       {
         "_id":         "icode4fun",
-        "name":        "icode4.fun",
+        "name":        "this",
         "year_start":   2017,
         "status":      "active",
         "website_url": "http://icode4.fun",
@@ -94,7 +94,7 @@
         "databases":   ["mysql"]
       }, {
         "_id":         "csm",   
-        "name":        "Collegiate Sports Marketing", 
+        "name":        "Collegiate Sports Online", 
         "year_start":   2017,
         "status":      "completed", 
         "website_url": "", 
@@ -111,7 +111,7 @@
         "databases":   ["mysql"]
       }, {
         "_id":         "playerc",   
-        "name":        "playerc", 
+        "name":         "Compliler for Player",   
         "year_start":   2017,
         "status":      "completed", 
         "website_url": "", 
@@ -122,14 +122,14 @@
         "frameworks":  [],
         "databases":   ["mysql"]
       }, {
-        "_id":         "codegen",   
-        "name":        "x", 
+        "_id":         "vim-plugins",   
+        "name":        "Vim plugins (3)", 
         "year_start":   2017,
         "status":      "completed", 
         "website_url": "", 
         "github_url":  "", 
         "featured":    "", 
-        "types":       ["website"],
+        "types":       ["plugin"],
         "languages":   [
           "bash",      
           "c",         
@@ -138,7 +138,7 @@
           "yaml"     
         ],
         "frameworks":  [],
-        "databases":   ["mysql"]
+        "databases":   []
       }
     ]
   }

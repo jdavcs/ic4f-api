@@ -56,7 +56,8 @@ const projects = [
   'kronofoto',
   'playerc',
   'vim_journal',
-  'vim_timestamp'
+  'vim_timestamp',
+  'vim-plugins'
 ];
 
 module.exports = {languages, frameworks, databases, projects};

@@ -11,6 +11,10 @@ $blue:   #1E76D4;
 $blue2: $blue * 0.9;
 
 
+table.ic4f-projects td {
+  padding: 6px;
+}
+
 .tmpScreenLink {
   color: $blue2;
 }
@@ -24,7 +28,7 @@ $blue2: $blue * 0.9;
 }
 
 .tmpScreenThumb {
-  width:50px;
+  width:65px;
   margin: 5px;
 }
 
