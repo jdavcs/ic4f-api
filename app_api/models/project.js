@@ -44,6 +44,10 @@ const Project = new mongoose.Schema({
     type: String,
     ref: 'Database',
     enum: database_ids}],
+  has_content: [{
+    type: Boolean,
+    required: true,
+    default: false}],
   content: String
 });
 

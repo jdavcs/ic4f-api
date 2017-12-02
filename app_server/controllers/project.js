@@ -85,17 +85,28 @@ function renderProjects(req, res, data) {
 
 //TODO remove this
 function tmpScreen() {
-  let str = '<img class="tmpScreenThumb" src="/screens/1.jpg">';
-  str += '<img class="tmpScreenThumb" src="/screens/2.jpg">';
-  str += '<img class="tmpScreenThumb" src="/screens/3.jpg">';
-
+  let str = ''
+  let x = Math.random();
+  if (x < 0.2) {
+    str = '';
+  }
+  else if (x < 0.5) {
+    str = '<img class="tmpScreenThumb" src="/screens/1.jpg">';
+    str += '<img class="tmpScreenThumb" src="/screens/2.jpg">';
+  }
+  else {
+    str = '<img class="tmpScreenThumb" src="/screens/1.jpg">';
+  }
   return str;
 }
 //TODO remove this
 function tmpLink(name) {
   let x = Math.random();
   if (x > 0.6) {
-    return '<a href="">' + name + '</a>';
+    let str = '<b><a href="" class="tmpScreenLink">' + name + '</a></b>';
+    //str += '<a href="" class="tmpScreenLinkMore">click for details</a>';
+    str += '<a href="" class="tmpScreenLinkMore">...read more</a>';
+    return str;
   } else {
     return name;
   }

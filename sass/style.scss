@@ -8,6 +8,20 @@ $gray5:  #eaeaea;
 $gray6:  #f1f1f1;
 $gray7:  #f8f8f8;
 $blue:   #1E76D4;
+$blue2: $blue * 0.9;
+
+
+.tmpScreenLink {
+  color: $blue2;
+}
+.tmpScreenLinkMore {
+  color: $blue2;
+  font-size: 0.7em;
+  display: block;
+  margin:0px;
+  padding: 0;
+  line-height: 1em;
+}
 
 .tmpScreenThumb {
   width:50px;
@@ -16,6 +30,7 @@ $blue:   #1E76D4;
 
 .tmpScreenCell {
   white-space: nowrap;
+  text-align:center;
 }
 
 
