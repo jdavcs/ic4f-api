@@ -1,4 +1,13 @@
 @import url("https://fonts.googleapis.com/css?family=Handlee|Raleway:300");
+.tmpScreenThumb {
+  width: 50px;
+  margin: 5px;
+}
+
+.tmpScreenCell {
+  white-space: nowrap;
+}
+
 .ic4f-logo-row {
   margin-top: 0px;
 }

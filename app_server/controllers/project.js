@@ -76,9 +76,43 @@ function renderProjects(req, res, data) {
     languages: data.languages,
     frameworks: data.frameworks,
     databases: data.databases,
-    makeList: makeListOfProperties
+    makeList: makeListOfProperties,
+    tmpScreen: tmpScreen,                    //TODO remove this
+    tmpLink: tmpLink                     //TODO remove this
   });
 };
+
+
+//TODO remove this
+function tmpScreen() {
+  let str = '<img class="tmpScreenThumb" src="/screens/1.jpg">';
+  str += '<img class="tmpScreenThumb" src="/screens/2.jpg">';
+  str += '<img class="tmpScreenThumb" src="/screens/3.jpg">';
+
+  return str;
+}
+//TODO remove this
+function tmpLink(name) {
+  let x = Math.random();
+  if (x > 0.6) {
+    return '<a href="">' + name + '</a>';
+  } else {
+    return name;
+  }
+}
+
+
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
+
+
+
+
 
 function makeListOfProperties(items, property) {
   return items

@@ -29,25 +29,31 @@
   <tr>
     <th>#</th>
     <th>project</th>
-    <th>type</th>
-    <th>years</th>
+    <th nowrap>what is it</th>
+    <th nowrap>when was it</th>
     <th>languages</th>
-    <th>frameworks+</th>
+    <th nowrap>frameworks &amp; tools</th>
     <th>database</th>
-    <th>github</th>
+    <th>screenshots</th>
   </tr>
 
-<% for (let p of projects) { %>
+
+<% let num = 1; %>
+<% for (let i=0; i<15; i++) { %>
+<% for (let p of projects) {  %>
+
   <tr>
-    <td class="text-center">0</td>
-    <td><a href="<%= p._id %>"><%= p.name %></a></td>
+    <td class="text-center"><%= num %></td>
+    <td><%- tmpLink(p.name) %></td>
     <td><%= p.types %></td>
     <td><%= p.year_start %></td>
     <td><%= makeList(p.languages, 'name') %></td>
     <td><%= makeList(p.frameworks, 'name') %></td>
     <td><%= makeList(p.databases, 'name') %></td>
-    <td><%= p.github_url %></td>
+    <td class="tmpScreenCell"><%- tmpScreen() %></td>
   </tr>
+<% num++; %>
+<% } %>
 <% } %>
 
 </table>
