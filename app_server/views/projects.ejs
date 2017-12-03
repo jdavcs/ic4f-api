@@ -1,6 +1,21 @@
 <%- include('includes/layout-header.ejs') %>
 
 
+<select class="custom-select">
+  <option selected>all years</option>
+  <% for (let i = 2017; i > 1998; i--) { %>
+  <option value="<%= i %>"><%= i %> (<%= 12 %>)</option>
+  <% } %>
+</select>
+
+
+<select class="custom-select">
+  <option selected>all types</option>
+  <% for (let foo of languages) { %>
+  <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
+  <% } %>
+</select>
+
 
 <select class="custom-select">
   <option selected>all languages</option>
@@ -23,6 +38,8 @@
   <% } %>
 </select>
 
+<button>reset</button>
+
   <p>
 
 <table class="table table-bordered ic4f-projects">
@@ -34,23 +51,24 @@
     <th>languages</th>
     <th nowrap>frameworks &amp; tools</th>
     <th>database</th>
-    <th>view/info</th>
+    <th>description</th>
   </tr>
 
 
 <% let num = 1; %>
-<% for (let i=0; i<15; i++) { %>
+<% for (let i=0; i<6; i++) { %>
 <% for (let p of projects) {  %>
 
   <tr>
     <td class="text-center"><%= num %></td>
     <td><%- tmpLink(p.name) %></td>
     <td><%= p.types %></td>
-    <td><%= p.year_start %></td>
-    <td><%= makeList(p.languages, 'name') %></td>
-    <td><%= makeList(p.frameworks, 'name') %></td>
-    <td><%= makeList(p.databases, 'name') %></td>
-    <td class="tmpScreenCell"><%- tmpScreen() %></td>
+    <td>2016 - 2017</td>
+    <td><%- makeList(p.languages, 'name') %></td>
+    <td><%- makeList(p.frameworks, 'name') %></td>
+    <td><%- makeList(p.databases, 'name') %></td>
+    <td>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque
+      laudantium.</td>
   </tr>
 <% num++; %>
 <% } %>

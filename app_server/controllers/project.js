@@ -99,14 +99,13 @@ function tmpScreen() {
 //TODO remove this
 function tmpLink(name) {
   let x = Math.random();
-  if (x > 0.6) {
-    let str = '<b><a href="" class="tmpScreenLink">' + name + '</a></b>';
-    //str += '<a href="" class="tmpScreenLinkMore">click for details</a>';
-    str += '<a href="" class="tmpScreenLinkMore">...read more</a>';
+  //if (x > 0.6) {
+    let str = '<a href="" class="tmpScreenLink"><b>' + name + '</b>';
+    str += '<span class="tmpScreenLinkMore">...see github</span></a>';
     return str;
-  } else {
-    return name;
-  }
+  //} else {
+  //  return name;
+ // }
 }
 
 
@@ -125,7 +124,7 @@ function getRandomInt(min, max) {
 function makeListOfProperties(items, property) {
   return items
     .map(function(i) { return i[property]; })
-    .join(', ');
+    .join('<br> ');
 };
 
 
