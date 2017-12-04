@@ -23,6 +23,7 @@ const languages = [
   'ruby',
   'sql',
   'typescript',
+  'vb.net',
   'vbscript',
   'vimscript',
   'yaml'
@@ -31,11 +32,12 @@ const languages = [
 const frameworks = [
   'angular',
   'asp',
+  'asp.net',
   'bootstrap',
   'django',
-  'dot_net',
   'express',
-  'flask',
+  'jekyll',
+  'jquery',
   'node'
 ];
   
@@ -47,17 +49,39 @@ const databases = [
 ]; 
   
 const projects = [
-  'alina_site1',
-  'alina_site2',
+  'algorithm-vis',
+  'alina',
+  'asp.net-controls',
   'avocado',
-  'codegen',
+  'blog-crawler',
+  'ca-programs',
+  'codegenerator',
   'csm',
-  'icode4fun',
+  'fellowship',
+  'fortepan-ia',
+  'ir-asu',
+  'ir-uni',
+  'ir-uni-medline',
+  'jobcenter',
   'kronofoto',
+  'phd',
   'playerc',
-  'vim_journal',
-  'vim_timestamp',
-  'vim-plugins'
+  'prssa-cms',
+  'static-websites',
+  'this',
+  'twentiment',
+  'uni-accounts',
+  'uni-alumniassoc',
+  'uni-chfatech',
+  'uni-foundation',
+  'uni-printservices',
+  'uni-sergey',
+  'vim-journal',
+  'vim-timestamp',
+  'vim-write',
+  'websites-cms',
+  'wikipedia-knn',
+  'witness-id'
 ];
 
 module.exports = {languages, frameworks, databases, projects};

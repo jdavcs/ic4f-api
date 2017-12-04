@@ -15,11 +15,11 @@ const Project = new mongoose.Schema({
     type: String,
     required: true
   },
-  year_start: {
+  date_start: {
     type: Number,
     required: true,
   },
-  year_end: Number,
+  date_end: Number,
   status: {
     type: String,
     required: true

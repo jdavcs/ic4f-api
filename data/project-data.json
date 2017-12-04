@@ -13,7 +13,8 @@
       {"_id": "ruby",       "name": "Ruby",       "order": 8},
       {"_id": "typescript", "name": "TypeScript", "order": 9},
       {"_id": "vbscript",   "name": "VBScript",   "order": 10},
-      {"_id": "vimscript",  "name": "Vimscript",  "order": 11},
+      {"_id": "vb.net",     "name": "VB.Net",     "order": 11},
+      {"_id": "vimscript",  "name": "Vimscript",  "order": 12},
       {"_id": "sql",        "name": "SQL",        "order": 30},
       {"_id": "html",       "name": "HTML",       "order": 40},
       {"_id": "css",        "name": "CSS",        "order": 41},
@@ -24,18 +25,19 @@
     "model": "Framework",
     "documents": [
       {"_id": "asp",       "name": "ASP",       "order": 0},
-      {"_id": "dot_net",   "name": ".NET",      "order": 1},
+      {"_id": "asp.net",   "name": "ASP.NET",   "order": 1},
       {"_id": "django",    "name": "Django",    "order": 10},
-      {"_id": "flask",     "name": "Flask",     "order": 11},
+      {"_id": "jekyll",    "name": "Jekyll",    "order": 11},
       {"_id": "node",      "name": "Node",      "order": 20},
       {"_id": "express",   "name": "Express",   "order": 21},
       {"_id": "angular",   "name": "Angular",   "order": 22},
+      {"_id": "jquery",    "name": "jQuery",    "order": 11},
       {"_id": "bootstrap", "name": "Bootstrap", "order": 30}
     ]
   }, { 
     "model": "Database",
     "documents": [
-      {"_id": "access",     "name": "MS Access"},
+      {"_id": "access",     "name": "Access"},
       {"_id": "sql_server", "name": "SQL Server"},
       {"_id": "mysql",      "name": "MySQL"},
       {"_id": "mongodb",    "name": "MongoDB"}
@@ -44,101 +46,18 @@
     "model": "Project",
     "documents": [
       {
-        "_id":         "icode4fun",
-        "name":        "this",
-        "year_start":   2017,
+        "_id":         "algorithm-vis",
+        "name":        "algorithm visualization tools",
+        "date_start":   2004,
+        "date_end":     2004,
         "status":      "active",
-        "website_url": "http://icode4.fun",
-        "github_url":  "https://github.com/ic4f/ic4f",
-        "featured":     true,
-        "types":       ["website"],
-        "languages":   [
-            "javascript", 
-            "typescript", 
-            "html", 
-            "css", 
-            "sass"
-        ],
-        "frameworks":  ["node", "express", "angular", "bootstrap"],
-        "databases":   ["mongodb", "access"]
+        "github_url":  "https://github.com/ic4f/oldcode/tree/master/algorithm-vis",
+        "types":       ["algotithm visualization"],
+        "languages":   [ "java" ],
+        "status": "ok"
+
       }, {
-        "_id":         "alina_site1",
-        "name":        "alinaavanesyan.com",
-        "year_start":   2017,
-        "status":      "active",
-        "website_url": "http://alinaavanesyan.com",
-        "github_url":  "https://github.com/ic4f/aw4s",
-        "featured":     true,
-        "types":       ["website"],
-        "languages":   ["javascript", "ruby", "html", "css", "sass", "yaml"],
-        "frameworks":  ["bootstrap"],
-        "databases":   ["mysql"]
-      }, {
-        "_id":         "kronofoto",   
-        "name":        "Kronofoto", 
-        "year_start":   2017,
-        "status":      "completed", 
-        "website_url": "", 
-        "github_url":  "", 
-        "featured":    "", 
-        "types":       ["website"],
-        "languages":   [
-          "bash",
-          "javascript",
-          "python",
-          "sql",
-          "html",
-          "css"
-        ],
-        "frameworks":  [],
-        "databases":   ["mysql"]
-      }, {
-        "_id":         "csm",   
-        "name":        "Collegiate Sports Online", 
-        "year_start":   2017,
-        "status":      "completed", 
-        "website_url": "", 
-        "github_url":  "", 
-        "featured":    "", 
-        "types":       ["website"],
-        "languages":   [
-          "c_sharp", 
-          "sql", 
-          "html",
-          "css"
-        ],
-        "frameworks":  [],
-        "databases":   ["mysql"]
-      }, {
-        "_id":         "playerc",   
-        "name":         "Compliler for Player",   
-        "year_start":   2017,
-        "status":      "completed", 
-        "website_url": "", 
-        "github_url":  "", 
-        "featured":    "", 
-        "types":       ["website"],
-        "languages":   ["java"],
-        "frameworks":  [],
-        "databases":   ["mysql"]
-      }, {
-        "_id":         "vim-plugins",   
-        "name":        "Vim plugins (3)", 
-        "year_start":   2017,
-        "status":      "completed", 
-        "website_url": "", 
-        "github_url":  "", 
-        "featured":    "", 
-        "types":       ["plugin"],
-        "languages":   [
-          "bash",      
-          "c",         
-          "css",       
-          "sass",      
-          "yaml"     
-        ],
-        "frameworks":  [],
-        "databases":   []
+
       }
     ]
   }
