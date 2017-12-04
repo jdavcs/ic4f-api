@@ -1,11 +1,17 @@
 const parse = require('csv-parse/lib/sync');
 const fs = require('fs');
 
+require('../app_api/models/project');
+//const Db = require('../db');
+//const db = new Db();
+
 const DB_PREFIX = '_db: '; // databases
 const FT_PREFIX = '_ft: '; // frameworks & tools
 const LN_PREFIX = '_ln: '; // languages
 
 function main(csvFile) {
+
+
   const csvData = fs.readFileSync(csvFile, 'utf8')
   
   //const data = parse(csvData, {columns:true});
@@ -44,19 +50,25 @@ function main(csvFile) {
   for (let i=1; i<data.length; i++) {
     console.log(data[i][3]);
 
+    project = {};
+
     for (let j=lnMin; j<=lnMax; j++) {
       if (data[i][j] === '1') {
-        console.log('\t' + lns.get(j));
+        //console.log('\t' + lns.get(j));
       }
     }
 
 
+    project.save();
   }
 
-  
-  
- }
+}
 
+
+function updateDb(docs) {
+
+
+}
 
 function isDatabase(key) {
   return key.startsWith(DB_PREFIX);

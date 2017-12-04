@@ -10,7 +10,7 @@ const Project = new mongoose.Schema({
   _id: {
     type: String,
     lowercase: true,
-    enum: project_ids
+   // enum: project_ids
   },
   name: {
     type: String,
@@ -19,7 +19,7 @@ const Project = new mongoose.Schema({
   group_id: {
     type: String,
     lowercase: true,
-    enum: project_ids
+    //enum: group_ids
   },
   group_name: {
     type: String,
@@ -34,12 +34,8 @@ const Project = new mongoose.Schema({
     required: true,
   },
   date_end: Date,
-  status: {
-    type: String,
-    required: true
-  },
   github_repo: String,
-  is_subrepo: [{
+  subrepo: [{
     type: Boolean,
     default: false}],
   languages: [{
@@ -58,6 +54,16 @@ const Project = new mongoose.Schema({
 
 Project.virtual('url').get(function() {
   return 'projects/' + this._id;
+});
+
+Project.virtual('years').get(function() {
+  const start = this.date_start.getFullYear();
+  const end = this.date_end.getFullYear();
+  if (start === end) {
+    return start.toString();
+  } else {
+    return start + ' - '  + end;
+  }
 });
 
 Project.statics.getList = function(callback) {

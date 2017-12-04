@@ -27,7 +27,7 @@ async.series([
   },
   function(callback) {
     const model = mongoose.model('Project');
-    new ProjectLoader('test/projects.csv').load(false, callback); //TODO change location
+//    new ProjectLoader(model, '../data/project-pages/').load(false, callback);
   },
   function(callback) {
     db.disconnect(callback);

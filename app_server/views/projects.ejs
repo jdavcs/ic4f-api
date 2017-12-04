@@ -56,22 +56,20 @@
 
 
 <% let num = 1; %>
-<% for (let i=0; i<6; i++) { %>
 <% for (let p of projects) {  %>
 
   <tr>
     <td class="text-center"><%= num %></td>
     <td><%- tmpLink(p.name) %></td>
-    <td><%= p.types %></td>
-    <td>2016 - 2017</td>
+    <td><%= p.group_name %></td>
+    <td><%= p.years %></td>
     <td><%- makeList(p.languages, 'name') %></td>
     <td><%- makeList(p.frameworks, 'name') %></td>
     <td><%- makeList(p.databases, 'name') %></td>
-    <td>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque
-      laudantium.</td>
+
+    <td><%= p.group_description %></td>
   </tr>
 <% num++; %>
-<% } %>
 <% } %>
 
 </table>

@@ -42,23 +42,5 @@
       {"_id": "mysql",      "name": "MySQL"},
       {"_id": "mongodb",    "name": "MongoDB"}
     ]
-  }, {
-    "model": "Project",
-    "documents": [
-      {
-        "_id":         "algorithm-vis",
-        "name":        "algorithm visualization tools",
-        "date_start":   2004,
-        "date_end":     2004,
-        "status":      "active",
-        "github_url":  "https://github.com/ic4f/oldcode/tree/master/algorithm-vis",
-        "types":       ["algotithm visualization"],
-        "languages":   [ "java" ],
-        "status": "ok"
-
-      }, {
-
-      }
-    ]
   }
 ]
