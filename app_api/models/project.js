@@ -6,6 +6,7 @@ const framework_ids = ids.frameworks;
 const database_ids  = ids.databases;
 
 const Project = new mongoose.Schema({
+  // _id = project-id in data file
   _id: {
     type: String,
     lowercase: true,
@@ -15,23 +16,32 @@ const Project = new mongoose.Schema({
     type: String,
     required: true
   },
+  group_id: {
+    type: String,
+    lowercase: true,
+    enum: project_ids
+  },
+  group_name: {
+    type: String,
+    required: true
+  },
+  group_description: {
+    type: String,
+    required: true
+  },
   date_start: {
-    type: Number,
+    type: Date,
     required: true,
   },
-  date_end: Number,
+  date_end: Date,
   status: {
     type: String,
     required: true
   },
-  website_url: String,
-  github_url: String,
-  featured: {
+  github_repo: String,
+  is_subrepo: [{
     type: Boolean,
-    default: false,
-  },
-  types: [String],
-
+    default: false}],
   languages: [{
     type: String,
     ref: 'Language',
@@ -43,12 +53,7 @@ const Project = new mongoose.Schema({
   databases: [{
     type: String,
     ref: 'Database',
-    enum: database_ids}],
-  has_content: [{
-    type: Boolean,
-    required: true,
-    default: false}],
-  content: String
+    enum: database_ids}]
 });
 
 Project.virtual('url').get(function() {
