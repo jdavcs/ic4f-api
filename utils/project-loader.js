@@ -10,20 +10,24 @@ const DB_PREFIX = '_db: '; // databases
 const FT_PREFIX = '_ft: '; // frameworks & tools
 const LN_PREFIX = '_ln: '; // languages
 
-const POS_PROJECT_ID      =  0;
-const POS_PROJECT_NAME    =  1;
-const POS_PROJECT_DESC    =  2;
-const POS_PROJECT_DETAILS =  3;
-const POS_DATE_START      =  4;
-const POS_DATE_END        =  5;
-const POS_GITHUB_REPO     =  6;
-const POS_SUBREPO         =  7;
-const POS_DB_START        =  8;
-const POS_DB_END          = 11;
-const POS_FT_START        = 12;
-const POS_FT_END          = 20;
-const POS_LN_START        = 21;
-const POS_LN_END          = 38;
+const POS_ID             =  0;
+const POS_NAME           =  1;
+const POS_DESC           =  2;
+const POS_ISGROUP        =  3;
+const POS_PROJECT_NAME   =  4;
+const POS_ORDER          =  5;
+
+const POS_DATE_START     =  6;
+const POS_DATE_END       =  7;
+const POS_GITHUB_REPO    =  8;
+const POS_GITHUB_OLDCODE =  9;
+
+const POS_DB_START       = 10;
+const POS_DB_END         = 13;
+const POS_FT_START       = 14;
+const POS_FT_END         = 22;
+const POS_LN_START       = 23;
+const POS_LN_END         = 40;
 
 
 module.exports = class ProjectLoader {
@@ -60,7 +64,7 @@ module.exports = class ProjectLoader {
         this.updateArrays(parent.frameworks, project.frameworks);
         this.updateArrays(parent.databases, project.databases);
         this.updateDates(parent, project);
-        parent.subproject_count++;
+        parent.project_count++;
 
       } else {
          projectMap.set(project._id, project);
@@ -99,17 +103,19 @@ module.exports = class ProjectLoader {
 
   readProjectFromCSV(row) {
     const p = new Project();
-    p._id         = row[POS_PROJECT_ID];
-    p.name        = row[POS_PROJECT_NAME];
-    p.description = row[POS_PROJECT_DESC];
-    p.details     = row[POS_PROJECT_DETAILS];
-    p.date_start  = row[POS_DATE_START];
-    p.date_end    = row[POS_DATE_END];
-    p.github_repo = row[POS_GITHUB_REPO];
-    p.subrepo     = row[POS_SUBREPO];
-    p.languages   = this.getArrayItems(row, POS_LN_START, POS_LN_END, this.lns);
-    p.frameworks  = this.getArrayItems(row, POS_FT_START, POS_FT_END, this.fts);
-    p.databases   = this.getArrayItems(row, POS_DB_START, POS_DB_END, this.dbs);
+    p._id            = row[POS_ID];
+    p.name           = row[POS_NAME];
+    p.description    = row[POS_DESC];
+    p.is_group       = row[POS_ISGROUP];
+    p.project_name   = row[POS_PROJECT_NAME];
+    p.order          = row[POS_ORDER];
+    p.date_start     = row[POS_DATE_START];
+    p.date_end       = row[POS_DATE_END];
+    p.github_repo    = row[POS_GITHUB_REPO];
+    p.github_oldcode = row[POS_GITHUB_OLDCODE];
+    p.languages      = this.getArrayItems(row, POS_LN_START, POS_LN_END, this.lns);
+    p.frameworks     = this.getArrayItems(row, POS_FT_START, POS_FT_END, this.fts);
+    p.databases      = this.getArrayItems(row, POS_DB_START, POS_DB_END, this.dbs);
     return p;
   }
 

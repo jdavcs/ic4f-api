@@ -11,6 +11,10 @@ const Database = new mongoose.Schema({
     type: String,
     required: true
   },
+  order: {
+    type: Number,
+    default: 0
+  },
   projects: {
     type: Number,
     default: 0
@@ -20,7 +24,7 @@ const Database = new mongoose.Schema({
 Database.statics.getList = function(cb) {
   return this
     .find({})
-    .sort({'_id': 1})
+    .sort({'order': 1})
     .exec(cb);
 };
 

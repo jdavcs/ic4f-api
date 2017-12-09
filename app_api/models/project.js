@@ -6,7 +6,6 @@ const framework_ids = ids.frameworks;
 const database_ids  = ids.databases;
 
 const Project = new mongoose.Schema({
-  // _id = project-id in data file
   _id: {
     type: String,
     lowercase: true,
@@ -20,10 +19,18 @@ const Project = new mongoose.Schema({
     type: String,
     required: true
   },
-  details: String,
-  subproject_count: {
+  is_group: {
+    type: Boolean,
+    default: false
+  },
+  project_name: String,
+  project_count: {
     type: Number,
     default: 1
+  },
+  order : {
+    type: Number,
+    default: 0
   },
   date_start: {
     type: Date,
@@ -31,27 +38,31 @@ const Project = new mongoose.Schema({
   },
   date_end: Date,
   github_repo: String,
-  subrepo: [{
+  github_oldcode: [{
     type: Boolean,
-    default: false}],
+    default: false
+  }],
   languages: [{
     type: String,
     ref: 'Language',
-    enum: language_ids}],
+    enum: language_ids
+  }],
   frameworks: [{
     type: String,
     ref: 'Framework',
-    enum: framework_ids}],
+    enum: framework_ids
+  }],
   databases: [{
     type: String,
     ref: 'Database',
-    enum: database_ids}]
+    enum: database_ids
+  }]
 });
 
 Project.statics.getList = function(callback) {
   return this
     .find({},{content:0})
-    .sort({'date_start': -1})
+    .sort({'order': 1})
     .populate({
       path: 'languages',
       select: 'id name',

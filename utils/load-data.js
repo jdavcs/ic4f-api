@@ -10,9 +10,8 @@ seeder.connect(dbURI, {useMongoClient: true}, () => {
     '../app_api/models/language.js',
     '../app_api/models/framework.js',
     '../app_api/models/database.js',
-//    '../app_api/models/project.js'
   ]);
-  seeder.clearModels(['Language', 'Framework', 'Database', 'Project'], () => {
+  seeder.clearModels(['Language', 'Framework', 'Database'], () => {
     const mycontent = fs.readFileSync('../data/project-data.json');
     const data = JSON.parse(mycontent);
     seeder.populateModels(data, () => seeder.disconnect() );
