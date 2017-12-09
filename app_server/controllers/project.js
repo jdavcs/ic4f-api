@@ -71,16 +71,36 @@ function renderOneProject(req, res, data) {
 
 function renderProjects(req, res, data) {
   res.render('projects', { 
-    title: 'My Projects', 
+    title: 'Selected Projects', 
     projects: data.projects,
     languages: data.languages,
     frameworks: data.frameworks,
     databases: data.databases,
     makeList: makeListOfProperties,
-    tmpScreen: tmpScreen,                    //TODO remove this
-    tmpLink: tmpLink                     //TODO remove this
+    getYears: getYears,
+    tmpLink: tmpLink,
+    classActive: ''
+
   });
 };
+
+
+function getYears(project) {
+  start = new Date(project.date_start).getFullYear();
+  end = new Date(project.date_end).getFullYear();
+
+  //take care of ongoing projects
+  const now = new Date().getFullYear();
+  if (end > now) {
+    end = now;
+  }
+
+  if (start === end) {
+    return start.toString();
+  } else {
+    return start + '–'  + end;
+  }
+}
 
 
 //TODO remove this
@@ -97,15 +117,15 @@ function tmpScreen() {
   return str;
 }
 //TODO remove this
-function tmpLink(name) {
-  let x = Math.random();
-  //if (x > 0.6) {
-    let str = '<a href="" class="tmpScreenLink"><b>' + name + '</b>';
+function tmpLink(name, count) {
+
+    let subs = '';
+    if (count > 1) {
+      subs = '<span class="number-of-projects"> (' + count + ' projects)</span>';
+    }
+    let str = '<a href="" class="tmpScreenLink"><b>' + name + subs + '</b>';
     str += '<span class="tmpScreenLinkMore">...see github</span></a>';
     return str;
-  //} else {
-  //  return name;
- // }
 }
 
 
@@ -123,8 +143,11 @@ function getRandomInt(min, max) {
 
 function makeListOfProperties(items, property) {
   return items
-    .map(function(i) { return i[property]; })
-    .join('<br> ');
+    .map(function(i) { 
+      return i[property]; 
+      //return '<img class="myicon" src="/icons/' + i['_id'] + '.svg">';
+    })
+    .join(', ');
 };
 
 

@@ -16,18 +16,22 @@ const Project = new mongoose.Schema({
     type: String,
     required: true
   },
-  group_id: {
+  description: {
+    type: String,
+    required: true
+  },
+  subproject_id: {
     type: String,
     lowercase: true,
     //enum: group_ids
   },
-  group_name: {
+  subproject_name: {
     type: String,
     required: true
   },
-  group_description: {
-    type: String,
-    required: true
+  subproject_count: {
+    type: Number,
+    default: 1
   },
   date_start: {
     type: Date,
@@ -52,24 +56,10 @@ const Project = new mongoose.Schema({
     enum: database_ids}]
 });
 
-Project.virtual('url').get(function() {
-  return 'projects/' + this._id;
-});
-
-Project.virtual('years').get(function() {
-  const start = this.date_start.getFullYear();
-  const end = this.date_end.getFullYear();
-  if (start === end) {
-    return start.toString();
-  } else {
-    return start + ' - '  + end;
-  }
-});
-
 Project.statics.getList = function(callback) {
   return this
     .find({},{content:0})
-    .sort({'_id': 1})
+    .sort({'date_start': -1})
     .populate({
       path: 'languages',
       select: 'id name',

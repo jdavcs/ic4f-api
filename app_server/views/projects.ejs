@@ -10,14 +10,6 @@
 
 
 <select class="custom-select">
-  <option selected>all types</option>
-  <% for (let foo of languages) { %>
-  <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
-  <% } %>
-</select>
-
-
-<select class="custom-select">
   <option selected>all languages</option>
   <% for (let foo of languages) { %>
   <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
@@ -38,36 +30,31 @@
   <% } %>
 </select>
 
-<button>reset</button>
+<p>
 
-  <p>
-
-<table class="table table-bordered ic4f-projects">
+<table class="table table-bordered table-striped ic4f-projects">
   <tr>
     <th>#</th>
     <th>project</th>
-    <th nowrap>what is it</th>
-    <th nowrap>when was it</th>
-    <th>languages</th>
-    <th nowrap>frameworks &amp; tools</th>
-    <th>database</th>
+    <th nowrap>years</th>
     <th>description</th>
+    <th nowrap>languages</th>
+    <th nowrap>frameworks & tools</th>
+    <th>databases</th>
   </tr>
-
 
 <% let num = 1; %>
 <% for (let p of projects) {  %>
 
   <tr>
     <td class="text-center"><%= num %></td>
-    <td><%- tmpLink(p.name) %></td>
-    <td><%= p.group_name %></td>
-    <td><%= p.years %></td>
-    <td><%- makeList(p.languages, 'name') %></td>
-    <td><%- makeList(p.frameworks, 'name') %></td>
-    <td><%- makeList(p.databases, 'name') %></td>
+    <td><%- tmpLink(p.name, p.subproject_count) %></td>
+    <td class="cell-years"><%= getYears(p) %></td>
+    <td><%- p.description %></td>
+    <td class="cell-ln"><%- makeList(p.languages, 'name') %></td>
+    <td class="cell-ft"><%- makeList(p.frameworks, 'name') %></td>
+    <td nowrap class="cell-db"><%- makeList(p.databases, 'name') %></td>
 
-    <td><%- p.group_description %></td>
   </tr>
 <% num++; %>
 <% } %>

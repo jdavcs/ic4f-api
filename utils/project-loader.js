@@ -5,15 +5,33 @@ const mongoose = require('mongoose');
 require('../app_api/models/project');
 const Project = mongoose.model('Project');
 
+//spreadsheet specs
 const DB_PREFIX = '_db: '; // databases
 const FT_PREFIX = '_ft: '; // frameworks & tools
 const LN_PREFIX = '_ln: '; // languages
+
+const POS_PROJECT_ID      =  0;
+const POS_PROJECT_NAME    =  1;
+const POS_PROJECT_DESC    =  2;
+const POS_SUBPROJECT_ID   =  3;
+const POS_SUBPROJECT_NAME =  4;
+const POS_DATE_START      =  5;
+const POS_DATE_END        =  6;
+const POS_GITHUB_REPO     =  7;
+const POS_SUBREPO         =  8;
+const POS_DB_START        =  9;
+const POS_DB_END          = 12;
+const POS_FT_START        = 13;
+const POS_FT_END          = 21;
+const POS_LN_START        = 22;
+const POS_LN_END          = 39;
+
 
 module.exports = class ProjectLoader {
   constructor(csvFile) {
     this.loadData(csvFile);
   }
-  //step 0: call first step
+
   load(clear, callback) {
     if (clear) {
       this.clearCollection(callback);
@@ -22,7 +40,6 @@ module.exports = class ProjectLoader {
     }
   }
 
-  //step 1: remove collection from db; then call processDir
   clearCollection(callback) {
     Project.remove({}, (err) => {
       if (err) throw err; 
@@ -31,62 +48,88 @@ module.exports = class ProjectLoader {
   }
 
   loadProjects(callback) {
+    const projectMap = new Map();
 
-    const projects = [];
-
+    // Accumulate data in a map: update counts/dates for projects w/subprojects
     for (let i=1; i<this.data.length; i++) {
-      const row = this.data[i];
-      //create empty project
-      const p = new Project();
-      projects.push(p);
 
-      p.group_id = row[0];
-      p.group_name = row[1];
-      p.group_description = row[2];
-      p._id = row[3];
-      p.name = row[4];
-      p.date_start = row[5];
-      p.date_end = row[6];
-      p.github_repo = row[7];
-      p.subrepo = row[8];
+      const project = this.readProjectFromCSV(this.data[i]);
 
-      console.log(p);
-      p.save(callback);
-//      break;
+      if (projectMap.has(project._id)) {
+        const parent = projectMap.get(project._id);
+        this.updateArrays(parent.languages, project.languages);
+        this.updateArrays(parent.frameworks, project.frameworks);
+        this.updateArrays(parent.databases, project.databases);
+        this.updateDates(parent, project);
+        parent.subproject_count++;
 
-
-      for (let j=this.lnMin; j<=this.lnMax; j++) {
-        if (this.data[i][j] === '1') {
-          //console.log('\t' + lns.get(j));
-        }
+      } else {
+         projectMap.set(project._id, project);
       }
     }
 
-    //now try to use update many
+    const projects = [];
+    for (let p of projectMap.values()) {
+      projects.push(p);
+    }
 
+    Project.insertMany(projects)
+      .then( () => callback() )
+      .catch((e) => {
+        console.error(e.message); //TODO use this error handling in other files.
+        callback();
+    });
+  }
 
-//    Project.update({_id: basename}, {content: body}, (err, dbResponse) => {
-//      if (err) throw err;
-//      console.log('Updated project page: ' + basename);
-//      super.done(callback);
-//    });
- //   callback();
+  updateArrays(parentArr, newArr) {
+    for (let item of newArr) {
+      if (!parentArr.includes(item)) {
+        parentArr.push(item);
+      }
+    }
+  }
+
+  updateDates(parent, newProject) {
+    if (newProject.date_start < parent.date_start) {
+      parent.date_start = newProject.date_start;
+    }
+    if (newProject.date_end < parent.date_end) {
+      parent.date_end = newProject.date_end;
+    }
+  }
+
+  readProjectFromCSV(row) {
+    const p = new Project();
+    p._id             = row[POS_PROJECT_ID];
+    p.name            = row[POS_PROJECT_NAME];
+    p.description     = row[POS_PROJECT_DESC];
+    p.subproject_id   = row[POS_SUBPROJECT_ID];
+    p.subproject_name = row[POS_SUBPROJECT_NAME];
+    p.date_start      = row[POS_DATE_START];
+    p.date_end        = row[POS_DATE_END];
+    p.github_repo     = row[POS_GITHUB_REPO];
+    p.subrepo         = row[POS_SUBREPO];
+    p.languages       = this.getArrayItems(row, POS_LN_START, POS_LN_END, this.lns);
+    p.frameworks      = this.getArrayItems(row, POS_FT_START, POS_FT_END, this.fts);
+    p.databases       = this.getArrayItems(row, POS_DB_START, POS_DB_END, this.dbs);
+    return p;
+  }
+
+  getArrayItems(row, pos_start, pos_end, collection) {
+    const items = [];
+    for (let i=pos_start; i<=pos_end; i++) {
+      if (row[i] === '1') {
+        items.push(collection.get(i));
+      }
+    }
+    return items;
   }
 
   loadData(csvFile) {
-    //Load csv data
     const csvData = fs.readFileSync(csvFile, 'utf8')
     this.data = parse(csvData);
 
-    // Load column numbers (I can assume that indexes of db/ft/ln columns are sequential)
-    //    and maps for array data (databases, frameworks, and languages.
-    this.dbMin = Number.MAX_VALUE;
-    this.dbMax = 0;
-    this.ftMin = Number.MAX_VALUE;
-    this.ftMax = 0;
-    this.lnMin = Number.MAX_VALUE;
-    this.lnMax = 0;
-
+    // load array item names from header row
     this.dbs = new Map();
     this.fts = new Map();
     this.lns = new Map();
@@ -95,16 +138,10 @@ module.exports = class ProjectLoader {
       const key = this.data[0][i];
       if (this.isDatabase(key)) {
         this.dbs.set(i, this.extractTerm(key, DB_PREFIX));
-        this.dbMin = Math.min(this.dbMin, i);
-        this.dbMax = Math.max(this.dbMax, i);
       } else if (this.isFramework(key)) {
         this.fts.set(i, this.extractTerm(key, FT_PREFIX));
-        this.ftMin = Math.min(this.ftMin, i);
-        this.ftMax = Math.max(this.ftMax, i);
       } else if (this.isLanguage(key)) {
         this.lns.set(i, this.extractTerm(key, LN_PREFIX));
-        this.lnMin = Math.min(this.lnMin, i);
-        this.lnMax = Math.max(this.lnMax, i);
       }
     }
   }

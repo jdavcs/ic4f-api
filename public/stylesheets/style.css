@@ -1,6 +1,29 @@
 @import url("https://fonts.googleapis.com/css?family=Handlee|Raleway:300");
+.number-of-projects {
+  white-space: nowrap;
+  font-size: 0.9em;
+}
+
+table.table-striped > tbody > tr:nth-child(odd) > td,
+table.table-striped > tbody > tr:nth-child(odd) > th,
+tr.found {
+  background-color: #f8f8f8;
+}
+
+.cell-db {
+  text-align: center;
+  width: 50px;
+}
+
+table.ic4f-projects {
+  font-size: .9em;
+}
 table.ic4f-projects td {
   padding: 6px;
+}
+table.ic4f-projects td.cell-years {
+  text-align: center;
+  white-space: nowrap;
 }
 
 .tmpScreenLink {
@@ -89,7 +112,6 @@ table.ic4f-projects td {
 }
 .ic4f-nav a:hover {
   color: #1E76D4;
-  background: #f1f1f1;
   border-top: 1px solid #eaeaea;
 }
 .ic4f-nav a.active {
