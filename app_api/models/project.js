@@ -20,15 +20,7 @@ const Project = new mongoose.Schema({
     type: String,
     required: true
   },
-  subproject_id: {
-    type: String,
-    lowercase: true,
-    //enum: group_ids
-  },
-  subproject_name: {
-    type: String,
-    required: true
-  },
+  details: String,
   subproject_count: {
     type: Number,
     default: 1

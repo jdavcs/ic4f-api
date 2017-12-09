@@ -13,18 +13,17 @@ const LN_PREFIX = '_ln: '; // languages
 const POS_PROJECT_ID      =  0;
 const POS_PROJECT_NAME    =  1;
 const POS_PROJECT_DESC    =  2;
-const POS_SUBPROJECT_ID   =  3;
-const POS_SUBPROJECT_NAME =  4;
-const POS_DATE_START      =  5;
-const POS_DATE_END        =  6;
-const POS_GITHUB_REPO     =  7;
-const POS_SUBREPO         =  8;
-const POS_DB_START        =  9;
-const POS_DB_END          = 12;
-const POS_FT_START        = 13;
-const POS_FT_END          = 21;
-const POS_LN_START        = 22;
-const POS_LN_END          = 39;
+const POS_PROJECT_DETAILS =  3;
+const POS_DATE_START      =  4;
+const POS_DATE_END        =  5;
+const POS_GITHUB_REPO     =  6;
+const POS_SUBREPO         =  7;
+const POS_DB_START        =  8;
+const POS_DB_END          = 11;
+const POS_FT_START        = 12;
+const POS_FT_END          = 20;
+const POS_LN_START        = 21;
+const POS_LN_END          = 38;
 
 
 module.exports = class ProjectLoader {
@@ -100,18 +99,17 @@ module.exports = class ProjectLoader {
 
   readProjectFromCSV(row) {
     const p = new Project();
-    p._id             = row[POS_PROJECT_ID];
-    p.name            = row[POS_PROJECT_NAME];
-    p.description     = row[POS_PROJECT_DESC];
-    p.subproject_id   = row[POS_SUBPROJECT_ID];
-    p.subproject_name = row[POS_SUBPROJECT_NAME];
-    p.date_start      = row[POS_DATE_START];
-    p.date_end        = row[POS_DATE_END];
-    p.github_repo     = row[POS_GITHUB_REPO];
-    p.subrepo         = row[POS_SUBREPO];
-    p.languages       = this.getArrayItems(row, POS_LN_START, POS_LN_END, this.lns);
-    p.frameworks      = this.getArrayItems(row, POS_FT_START, POS_FT_END, this.fts);
-    p.databases       = this.getArrayItems(row, POS_DB_START, POS_DB_END, this.dbs);
+    p._id         = row[POS_PROJECT_ID];
+    p.name        = row[POS_PROJECT_NAME];
+    p.description = row[POS_PROJECT_DESC];
+    p.details     = row[POS_PROJECT_DETAILS];
+    p.date_start  = row[POS_DATE_START];
+    p.date_end    = row[POS_DATE_END];
+    p.github_repo = row[POS_GITHUB_REPO];
+    p.subrepo     = row[POS_SUBREPO];
+    p.languages   = this.getArrayItems(row, POS_LN_START, POS_LN_END, this.lns);
+    p.frameworks  = this.getArrayItems(row, POS_FT_START, POS_FT_END, this.fts);
+    p.databases   = this.getArrayItems(row, POS_DB_START, POS_DB_END, this.dbs);
     return p;
   }
 
