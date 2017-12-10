@@ -3,8 +3,16 @@ const fs = require('fs');
 const async = require('async');
 
 const mongoose = require('mongoose');
+
 require('../app_api/models/project');
+require('../app_api/models/language');
+require('../app_api/models/framework');
+require('../app_api/models/database');
+
 const Project = mongoose.model('Project');
+const Language = mongoose.model('Language');
+const Framework = mongoose.model('Framework');
+const Database = mongoose.model('Database');
 
 //spreadsheet specs
 const DB_PREFIX = '_db: '; // databases
@@ -33,55 +41,132 @@ const POS_LN_END         = 40;
 
 module.exports = class ProjectLoader {
   constructor(csvFile) {
-    this.loadData(csvFile);
+    this.loadFile(csvFile); //parse csv file
+    this.loadIds();         //load lang + frmk + db IDs from header row
+    this.loadCounts();      //load lang + frmk + db project counts
+  }
+
+  loadFile(csvFile) {
+    const csvData = fs.readFileSync(csvFile, 'utf8')
+    this.data = parse(csvData);
+  }
+
+  loadIds() {
+    this.dbIds = new Map();
+    this.ftIds = new Map();
+    this.lnIds = new Map();
+
+    const extractId = (key, prefix) => { 
+      return key.substring(prefix.length);
+    }
+
+    for (let i=0; i<this.data[0].length; i++) {
+      const heading = this.data[0][i];
+      if (heading.startsWith(DB_PREFIX)) {
+        this.dbIds.set(i, extractId(heading, DB_PREFIX));
+      } else if (heading.startsWith(FT_PREFIX)) {
+        this.ftIds.set(i, extractId(heading, FT_PREFIX));
+      } else if (heading.startsWith(LN_PREFIX)) {
+        this.lnIds.set(i, extractId(heading, LN_PREFIX));
+      }
+    }
+  }
+
+  loadCounts() {
     this.dbProjectCounts = new Map();
     this.ftProjectCounts = new Map();
     this.lnProjectCounts = new Map();
+
+    const countItems = (row, start, end, ids, counts) => {
+      for (let i=start; i<=end; i++) {
+        if (row[i] === '1') {
+          const id = ids.get(i);
+          if (counts.has(id)) {
+            counts.set(id, counts.get(id) + 1);
+          } else {
+            counts.set(id, 1);
+          }
+        }
+      }
+    }
+
+    for (let i=1; i<this.data.length; i++) { //skipping header row
+      countItems(this.data[i], POS_DB_START, POS_DB_END, this.dbIds, this.dbProjectCounts);
+      countItems(this.data[i], POS_FT_START, POS_FT_END, this.ftIds, this.ftProjectCounts); 
+      countItems(this.data[i], POS_LN_START, POS_LN_END, this.lnIds, this.lnProjectCounts);
+    }
   }
 
   load(clearProjects, callback) {
-
-
-
-
-    //TODO after projects are loaded, must update counts (arrays are loaded)
-
-
-
     if (clearProjects) {
-      this.clearCollection(callback);
+      Project.remove({}, (err) => {
+        if (err) throw err; 
+        this.loadProjects(callback);
+      });
     } else {
       this.loadProjects(callback);
     }
   }
 
-  clearCollection(callback) {
-    Project.remove({}, (err) => {
-      if (err) throw err; 
-      this.loadProjects(callback);
-    });
-  }
-
   loadProjects(callback) {
+    const loadProjectFields = (row) => {
+      const p = new Project();
+      p._id            = row[POS_ID];
+      p.name           = row[POS_NAME];
+      p.description    = row[POS_DESC];
+      p.is_group       = row[POS_ISGROUP];
+      p.project_name   = row[POS_PROJECT_NAME];
+      p.order          = row[POS_ORDER];
+      p.year_start     = row[POS_YEAR_START];
+      p.year_end       = row[POS_YEAR_END];
+      p.github_repo    = row[POS_GITHUB_REPO];
+      p.github_oldcode = row[POS_GITHUB_OLDCODE];
+      p.languages      = getArrayItems(row, POS_LN_START, POS_LN_END, this.lnIds);
+      p.frameworks     = getArrayItems(row, POS_FT_START, POS_FT_END, this.ftIds);
+      p.databases      = getArrayItems(row, POS_DB_START, POS_DB_END, this.dbIds);
+      return p;
+    }
+
+    const getArrayItems = (row, start, end, ids) => {
+      const items = [];
+      for (let i=start; i<=end; i++) {
+        if (row[i] === '1') {
+          items.push(ids.get(i));
+        }
+      }
+      return items;
+    }
+
+    const updateArrays = (parentArr, newArr) => {
+      for (let item of newArr) {
+        if (!parentArr.includes(item)) {
+          parentArr.push(item);
+        }
+      }
+    }
+
+    const updateDates = (parent, newProject) => {
+      if (newProject.year_start < parent.year_start) {
+        parent.year_start = newProject.year_start;
+      }
+      if (newProject.year_end > parent.year_end) {
+        parent.year_end = newProject.year_end;
+      }
+    }
+
+    // Accumulate data in a map: update counts/dates for projects + project groups
     const projectMap = new Map();
 
-    // Accumulate data in a map: update counts/dates for projects w/subprojects
     for (let i=1; i<this.data.length; i++) {
-
-      const project = this.readProjectFromCSV(this.data[i]);
-
-      this.updateProjectCounts(project.databases, this.dbProjectCounts);
-      this.updateProjectCounts(project.frameworks, this.ftProjectCounts);
-      this.updateProjectCounts(project.languages, this.lnProjectCounts);
+      const project = loadProjectFields(this.data[i]);
 
       if (projectMap.has(project._id)) {
         const parent = projectMap.get(project._id);
-        this.updateArrays(parent.languages, project.languages);
-        this.updateArrays(parent.frameworks, project.frameworks);
-        this.updateArrays(parent.databases, project.databases);
-        this.updateDates(parent, project);
+        updateArrays(parent.languages, project.languages);
+        updateArrays(parent.frameworks, project.frameworks);
+        updateArrays(parent.databases, project.databases);
+        updateDates(parent, project);
         parent.project_count++;
-
       } else {
          projectMap.set(project._id, project);
       }
@@ -95,126 +180,58 @@ module.exports = class ProjectLoader {
   }
 
   saveData(projects, callback) {
+  // in parallel:
+    // - insertMany: projects
+    // - each database: update project count
+    // - each framework: update project count
+    // - each language: update project count
+
+    const saveProjects = (projects, callback) => {
+      Project.insertMany(projects)
+        .then(() => callback())
+        .catch((e) => {
+          console.error(e.message); //TODO use this error handling in other files.
+          callback();
+      });
+    }
+
+    const saveDbCounts = (callback) => {
+      async.each(this.dbProjectCounts.entries(), updateDb, callback);
+    }
+
+    const saveFtCounts = (callback) => {
+      async.each(this.ftProjectCounts.entries(), updateFt, callback);
+    }
+
+    const saveLnCounts = (callback) => {
+      async.each(this.lnProjectCounts.entries(), updateLn, callback);
+    }
+
+    const updateDb = (entry, callback) => {
+      Database.updateOne({_id: entry[0]}, {'projects': entry[1]}, callback);
+    }
+
+    const updateFt = (entry, callback) => {
+      Framework.updateOne({_id: entry[0]}, {'projects': entry[1]}, callback);
+    }
+
+    const updateLn = (entry, callback) => {
+      Language.updateOne({_id: entry[0]}, {'projects': entry[1]}, callback);
+    }
+
     async.parallel([
       function(callback) {
-        Project.insertMany(projects)
-          .then( () => callback() )
-          .catch((e) => {
-            console.error(e.message); //TODO use this error handling in other files.
-            callback();
-        });
-       // this.saveProjects(projects);
+        saveProjects(projects, callback);
+      },
+      function(callback) {
+        saveDbCounts(callback);
+      },
+      function(callback) {
+        saveFtCounts(callback);
+      },
+      function(callback) {
+        saveLnCounts(callback);
       }
-  //    this.saveLanguages,
-  //    this.saveFrameworks,
-  //    this.saveDatabases
-    ], err => console.log('fix this')
-    );
-  }
-
-  saveProjects(projects, callback) {
-    Project.insertMany(projects)
-      .then( () => this.saveCounts(callback) )
-      .catch((e) => {
-        console.error(e.message); //TODO use this error handling in other files.
-        callback();
-    });
-  }
-
-
-  saveCounts(callback) {
-    callback();
-  }
-
-  updateProjectCounts(projectItems, itemMap) {
-    for (let item of projectItems) {
-      if (itemMap.has(item)) {
-        itemMap.set(item, itemMap.get(item) + 1);
-      } else {
-        itemMap.set(item, 1);
-      }
-    }
-  }
-
-  updateArrays(parentArr, newArr) {
-    for (let item of newArr) {
-      if (!parentArr.includes(item)) {
-        parentArr.push(item);
-      }
-    }
-  }
-
-  updateDates(parent, newProject) {
-    if (newProject.year_start < parent.year_start) {
-      parent.year_start = newProject.year_start;
-    }
-    if (newProject.year_end > parent.year_end) {
-      parent.year_end = newProject.year_end;
-    }
-  }
-
-  readProjectFromCSV(row) {
-    const p = new Project();
-    p._id            = row[POS_ID];
-    p.name           = row[POS_NAME];
-    p.description    = row[POS_DESC];
-    p.is_group       = row[POS_ISGROUP];
-    p.project_name   = row[POS_PROJECT_NAME];
-    p.order          = row[POS_ORDER];
-    p.year_start     = row[POS_YEAR_START];
-    p.year_end       = row[POS_YEAR_END];
-    p.github_repo    = row[POS_GITHUB_REPO];
-    p.github_oldcode = row[POS_GITHUB_OLDCODE];
-    p.languages      = this.getArrayItems(row, POS_LN_START, POS_LN_END, this.lns);
-    p.frameworks     = this.getArrayItems(row, POS_FT_START, POS_FT_END, this.fts);
-    p.databases      = this.getArrayItems(row, POS_DB_START, POS_DB_END, this.dbs);
-    return p;
-  }
-
-  getArrayItems(row, pos_start, pos_end, collection) {
-    const items = [];
-    for (let i=pos_start; i<=pos_end; i++) {
-      if (row[i] === '1') {
-        items.push(collection.get(i));
-      }
-    }
-    return items;
-  }
-
-  loadData(csvFile) {
-    const csvData = fs.readFileSync(csvFile, 'utf8')
-    this.data = parse(csvData);
-
-    // load array item names from header row
-    this.dbs = new Map();
-    this.fts = new Map();
-    this.lns = new Map();
-
-    for (let i=0; i<this.data[0].length; i++) {
-      const key = this.data[0][i];
-      if (this.isDatabase(key)) {
-        this.dbs.set(i, this.extractTerm(key, DB_PREFIX));
-      } else if (this.isFramework(key)) {
-        this.fts.set(i, this.extractTerm(key, FT_PREFIX));
-      } else if (this.isLanguage(key)) {
-        this.lns.set(i, this.extractTerm(key, LN_PREFIX));
-      }
-    }
-  }
-
-  isDatabase(key) {
-    return key.startsWith(DB_PREFIX);
-  }
-  
-  isFramework(key) {
-    return key.startsWith(FT_PREFIX);
-  }
-  
-  isLanguage(key) {
-    return key.startsWith(LN_PREFIX);
-  }
-  
-  extractTerm(key, prefix) {
-    return key.substring(prefix.length);
+    ], callback);
   }
 }

@@ -12,6 +12,10 @@ const ProjectLoader = require('./project-loader');
 const Db = require('../db');
 const db = new Db();
 
+const PAGES_DIR = '../data/pages/';
+const POSTS_DIR = '../data/posts/';
+const PROJECTS_FILE = '../data/projects.csv';
+
 async.series([
   function(callback) {
     console.log('Start data loading');
@@ -19,15 +23,15 @@ async.series([
   },
   function(callback) {
     const model = mongoose.model('Page');
-    new PageLoader(model, '../data/pages/').load(true, callback);
+    new PageLoader(model, PAGES_DIR).load(true, callback);
   },
   function(callback) {
     const model = mongoose.model('Post');
-    new PostLoader(model, '../data/posts/').load(true, callback);
+    new PostLoader(model, POSTS_DIR).load(true, callback);
   },
   function(callback) {
     const model = mongoose.model('Project');
-    new ProjectLoader('test/projects2.csv').load(true, callback); //TODO change location
+    new ProjectLoader(PROJECTS_FILE).load(true, callback); //TODO change location
   },
   function(callback) {
     db.disconnect(callback);
