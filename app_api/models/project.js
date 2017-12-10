@@ -32,11 +32,11 @@ const Project = new mongoose.Schema({
     type: Number,
     default: 0
   },
-  date_start: {
-    type: Date,
+  year_start: {
+    type: Number,
     required: true,
   },
-  date_end: Date,
+  year_end: Number,
   github_repo: String,
   github_oldcode: [{
     type: Boolean,
@@ -76,7 +76,7 @@ Project.statics.getList = function(callback) {
     .populate({
       path: 'databases',
       select: 'id name',
-      options: {sort: { _id: 1 }}
+      options: {sort: { order: 1 }}
     })
     .exec(callback);
 };

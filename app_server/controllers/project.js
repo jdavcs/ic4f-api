@@ -86,8 +86,8 @@ function renderProjects(req, res, data) {
 
 
 function getYears(project) {
-  start = new Date(project.date_start).getFullYear();
-  end = new Date(project.date_end).getFullYear();
+  start = project.year_start;
+  end = project.year_end;
 
   //take care of ongoing projects
   const now = new Date().getFullYear();

@@ -1,15 +1,17 @@
 const async = require('async');
 const mongoose = require('mongoose');
-require('../db');
-require('../app_api/models/project');
+
 require('../app_api/models/language');
 require('../app_api/models/framework');
 require('../app_api/models/database');
 
-const Project = mongoose.model('Project');
 const Language = mongoose.model('Language');
 const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
+
+module.exports = updateCounts(callback) {
+
+}
 
 async.parallel([
   processLanguages,
