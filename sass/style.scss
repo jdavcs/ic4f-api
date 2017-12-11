@@ -7,17 +7,10 @@ $gray4:  #ccc;
 $gray5:  #eaeaea;
 $gray6:  #f1f1f1;
 $gray7:  #f8f8f8;
+$gray8:  #777;
 $blue:   #1E76D4;
 $blue2: $blue * 0.9;
-
-
-
-.number-of-projects {
-  white-space: nowrap;
-  font-size: 0.9em;
-
-}
-
+$blue3: #007bff; /* bootstrap */
 
 
 table.table-striped>tbody>tr:nth-child(odd)>td,
@@ -26,60 +19,78 @@ tr.found{
     background-color: $gray7; 
 }
 
-
-.cell-ft {
-}
-
-.cell-db {
+.ic4f-h-filter-container {
+  margin-bottom: 1em;
   text-align: center;
-  width: 50px;
+
+  select, option {
+    font-size: .9em;
+  }
 }
-
-.cell-ln {
-}
-
-
-
 
 table.ic4f-projects {
   font-size: .9em;
+
+  th {
+    white-space: nowrap;
+  }
+
   td {
     padding: 6px;
   }
+  
+  .cell-project {
+    color: #666;
 
-  td.cell-years {
-    text-align: center;
-  white-space: nowrap;
+    a {
+      color: $blue2;
+      display: block;
+    }
+    a:hover {
+      color: $blue * 1.3; /* because i think this needs to be brighter */
+      text-decoration: none;
+
+      .project-comment-repo {
+        color: $blue3;
+        text-decoration: none;
+      }
+    }
 
   }
-}
 
-.tmpScreenLink {
-  color: $blue2;
-}
-.tmpScreenLinkMore {
-  color: #666;
-  font-size: 0.7em;
-  display: block;
-  margin:0px;
-  padding: 0;
-  line-height: 1em;
-}
+  .cell-years {
+    text-align: center;
+    white-space: nowrap;
+  }
 
-.tmpScreenThumb {
-  width:65px;
-  margin: 5px;
-}
+  .cell-db {
+    text-align: center;
+    width: 5em;
+  }
 
-.tmpScreenCell {
-  white-space: nowrap;
-  text-align:center;
-}
+  .project-name {
+    font-weight: bold;
+    display: block;
+    line-height: 1.3em;
+  }
 
+  .project-count {
+    @extend .project-name;
+    white-space: nowrap;
+    font-size: 0.8em;
+  }
 
+  .project-comment-repo {
+    color: $gray8;
+    font-size: 0.8em;
+    display: block;
+    line-height: 1em;
+  }
 
-.ic4f-logo-row {
-  margin-top: 0px;
+  .project-comment-oldcode {
+    @extend .project-comment-repo;
+    color: $gray8;
+  }
 }
 
 .ic4f-contact-row {
@@ -99,9 +110,8 @@ table.ic4f-projects {
   }
 }
 
-
-
 .ic4f-logo-row {
+  margin-top: 0px;
 
   a.ic4f-logo {
     font-size: 3rem;
@@ -208,7 +218,7 @@ body {
 
 
 h1 {
-  color: #444;
+  color: #666;
   font-size: 1.6rem;
 }
 

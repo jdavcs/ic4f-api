@@ -27,7 +27,7 @@ Language.statics.getList = function(callback) {
   //
   return this
     .find({})
-    .sort({'order': 1})
+    .sort({'name': 1}) //because this is for a long dropdown list
     .exec(callback);
 };
 

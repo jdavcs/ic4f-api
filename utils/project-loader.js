@@ -34,9 +34,9 @@ const POS_GITHUB_OLDCODE =  9;
 const POS_DB_START       = 10;
 const POS_DB_END         = 13;
 const POS_FT_START       = 14;
-const POS_FT_END         = 22;
-const POS_LN_START       = 23;
-const POS_LN_END         = 40;
+const POS_FT_END         = 20;
+const POS_LN_START       = 21;
+const POS_LN_END         = 38;
 
 
 module.exports = class ProjectLoader {

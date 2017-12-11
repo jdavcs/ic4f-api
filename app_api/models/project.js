@@ -38,10 +38,10 @@ const Project = new mongoose.Schema({
   },
   year_end: Number,
   github_repo: String,
-  github_oldcode: [{
+  github_oldcode: {
     type: Boolean,
     default: false
-  }],
+  },
   languages: [{
     type: String,
     ref: 'Language',

@@ -6,6 +6,9 @@ const Language = mongoose.model('Language');
 const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
 
+const GITHUB_REPO_PREFIX    = 'https://github.com/ic4f/';
+const GITHUB_OLDCODE_PREFIX = 'https://github.com/ic4f/oldcode/tree/master/';
+
 const apiOptions = {
   server : 'http://localhost:3000'
 };
@@ -76,16 +79,14 @@ function renderProjects(req, res, data) {
     languages: data.languages,
     frameworks: data.frameworks,
     databases: data.databases,
-    makeList: makeListOfProperties,
-    getYears: getYears,
-    tmpLink: tmpLink,
-    classActive: ''
-
+    getProject: getProjectCellHTML,
+    getYears: getYearsCellHTML,
+    makeList: makeListOfProperties
   });
 };
 
 
-function getYears(project) {
+function getYearsCellHTML(project) {
   start = project.year_start;
   end = project.year_end;
 
@@ -103,43 +104,32 @@ function getYears(project) {
 }
 
 
-//TODO remove this
-function tmpScreen() {
-
-  let min = Math.ceil(1);
-  let max = Math.floor(20);
-  let foo = Math.floor(Math.random() * (max - min)) + min;
-
-
-
-  let str = ''
-    str = '<img class="tmpScreenThumb" src="/screens/' + foo + '.jpg">';
-  return str;
-}
-//TODO remove this
-function tmpLink(name, count) {
-
-    let subs = '';
+function getProjectCellHTML(p) {
+  const getName = (count, name) => {
+    let html = '<span class="project-name">' + name + '</span>';
     if (count > 1) {
-      subs = '<span class="number-of-projects"> (' + count + ' projects)</span>';
+      return html + '<span class="project-count"> (~' + count + ' projects)</span>';
     }
-    let str = '<a href="" class="tmpScreenLink"><b>' + name + subs + '</b>';
-    str += '<span class="tmpScreenLinkMore">...see github</span></a>';
-    return str;
+    return html;
+  }
+
+  const makeLink = (id, github_repo, github_oldcode, nameHTML) => {
+    let link = '';
+    let comment = '';
+
+    if (github_repo) {
+      link = '<a href="' + GITHUB_REPO_PREFIX + github_repo + '">';
+      comment = '<span class="project-comment-repo">– Project on GitHub</span></a>';
+    } else if (github_oldcode) {
+      link = '<a href="' + GITHUB_OLDCODE_PREFIX + id + '">';
+      comment =  '<span class="project-comment-oldcode">– Sample code on GitHub</span></a>';
+    }
+    return link + nameHTML + comment;
+  }
+
+  const html = getName(p.project_count, p.name);
+  return makeLink(p._id, p.github_repo, p.github_oldcode, html);
 }
-
-
-
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-}
-
-
-
-
-
 
 function makeListOfProperties(items, property) {
   return items
@@ -149,5 +139,3 @@ function makeListOfProperties(items, property) {
     })
     .join(', ');
 };
-
-

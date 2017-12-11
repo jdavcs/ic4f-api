@@ -1,48 +1,37 @@
 <%- include('includes/layout-header.ejs') %>
 
-
-<select class="custom-select">
-  <option selected>all years</option>
-  <% for (let i = 2017; i > 1998; i--) { %>
-  <option value="<%= i %>"><%= i %> (<%= 12 %>)</option>
-  <% } %>
-</select>
-
-
-<select class="custom-select">
-  <option selected>all languages</option>
-  <% for (let foo of languages) { %>
-  <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
-  <% } %>
-  <option value=""><span style="color:red;">llgasd</span>gadsg</option>
-</select>
-
-<select class="custom-select">
-  <option selected>all frameworks</option>
-  <% for (let foo of  frameworks) { %>
-  <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
-  <% } %>
-</select>
-
-<select class="custom-select">
-  <option selected>all databases</option>
-  <% for (let foo of databases) { %>
-  <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
-  <% } %>
-</select>
-
-
-<p>
+<div class="ic4f-h-filter-container">
+  <select class="custom-select">
+    <option selected>all languages</option>
+    <% for (let foo of languages) { %>
+    <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
+    <% } %>
+  </select>
+  
+  <select class="custom-select">
+    <option selected>all frameworks +</option>
+    <% for (let foo of  frameworks) { %>
+    <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
+    <% } %>
+  </select>
+  
+  <select class="custom-select">
+    <option selected>all databases</option>
+    <% for (let foo of databases) { %>
+    <option value="<%= foo._id %>"><%= foo.name %> (<%= foo.projects %>)</option>
+    <% } %>
+  </select>
+</div>
 
 <table class="table table-bordered table-striped ic4f-projects">
   <tr>
-    <th>#</th>
-    <th>project</th>
-    <th nowrap>years</th>
-    <th>description</th>
-    <th nowrap>languages</th>
-    <th nowrap>frameworks & tools</th>
-    <th>databases</th>
+    <th class="text-center">#</th>
+    <th>what</th>
+    <th class="text-center">when</th>
+    <th>what is it</th>
+    <th>languages</th>
+    <th>frameworks +</th>
+    <th class="text-center">databases</th>
   </tr>
 
 <% let num = 1; %>
@@ -50,7 +39,7 @@
 
   <tr>
     <td class="text-center"><%= num %></td>
-    <td><%- tmpLink(p.name, p.project_count) %></td>
+    <td class="cell-project"><%- getProject(p) %></td>
     <td class="cell-years"><%= getYears(p) %></td>
     <td><%- p.description %></td>
     <td class="cell-ln"><%- makeList(p.languages, 'name') %></td>

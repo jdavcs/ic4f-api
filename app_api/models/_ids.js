@@ -33,10 +33,8 @@ const frameworks = [
   'angular',
   'asp',
   'asp.net',
-  'bootstrap',
   'django',
   'express',
-  'jekyll',
   'jquery',
   'node'
 ];
