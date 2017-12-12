@@ -7,7 +7,7 @@ const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
 
 const GITHUB_REPO_PREFIX    = 'https://github.com/ic4f/';
-const GITHUB_OLDCODE_PREFIX = 'https://github.com/ic4f/oldcode/tree/master/';
+const GITHUB_OLDCODE_PREFIX = 'https://github.com/ic4f/oldcode-draft/tree/master/';
 
 const apiOptions = {
   server : 'http://localhost:3000'
@@ -119,12 +119,14 @@ function getProjectCellHTML(p) {
 
     if (github_repo) {
       link = '<a href="' + GITHUB_REPO_PREFIX + github_repo + '">';
-      comment = '<span class="project-comment-repo">– Project on GitHub</span></a>';
+      //comment = '<span class="project-comment-repo">– Project on GitHub</span></a>';
+      comment = '<a href=""><span class="project-comment-repo">– Project on GitHub</span></a>';
     } else if (github_oldcode) {
       link = '<a href="' + GITHUB_OLDCODE_PREFIX + id + '">';
       comment =  '<span class="project-comment-oldcode">– Sample code on GitHub</span></a>';
     }
-    return link + nameHTML + comment;
+    return nameHTML + comment;
+    //return link + nameHTML + comment;
   }
 
   const html = getName(p.project_count, p.name);
