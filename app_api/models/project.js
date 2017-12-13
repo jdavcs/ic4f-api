@@ -19,10 +19,7 @@ const Project = new mongoose.Schema({
     type: String,
     required: true
   },
-  is_group: {
-    type: Boolean,
-    default: false
-  },
+  group: String,
   project_name: String,
   project_count: {
     type: Number,
@@ -42,7 +39,6 @@ const Project = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  project_group: String,
   languages: [{
     type: String,
     ref: 'Language',

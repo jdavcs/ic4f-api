@@ -22,7 +22,7 @@ const LN_PREFIX = '_ln: '; // languages
 const POS_ID             =  0;
 const POS_NAME           =  1;
 const POS_DESC           =  2;
-const POS_ISGROUP        =  3;
+const POS_GROUP          =  3;
 const POS_PROJECT_NAME   =  4;
 const POS_ORDER          =  5;
 
@@ -38,7 +38,6 @@ const POS_FT_END         = 20;
 const POS_LN_START       = 21;
 const POS_LN_END         = 38;
 
-const POS_PROJECT_GROUP  = 39;
 
 
 module.exports = class ProjectLoader {
@@ -116,14 +115,13 @@ module.exports = class ProjectLoader {
       p._id            = row[POS_ID];
       p.name           = row[POS_NAME];
       p.description    = row[POS_DESC];
-      p.is_group       = row[POS_ISGROUP];
+      p.group          = row[POS_GROUP];
       p.project_name   = row[POS_PROJECT_NAME];
       p.order          = row[POS_ORDER];
       p.year_start     = row[POS_YEAR_START];
       p.year_end       = row[POS_YEAR_END];
       p.github_repo    = row[POS_GITHUB_REPO];
       p.github_oldcode = row[POS_GITHUB_OLDCODE];
-      p.project_group  = row[POS_PROJECT_GROUP];
       p.languages      = getArrayItems(row, POS_LN_START, POS_LN_END, this.lnIds);
       p.frameworks     = getArrayItems(row, POS_FT_START, POS_FT_END, this.ftIds);
       p.databases      = getArrayItems(row, POS_DB_START, POS_DB_END, this.dbIds);
