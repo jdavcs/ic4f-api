@@ -42,6 +42,7 @@ const Project = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  project_group: String,
   languages: [{
     type: String,
     ref: 'Language',

@@ -38,6 +38,8 @@ const POS_FT_END         = 20;
 const POS_LN_START       = 21;
 const POS_LN_END         = 38;
 
+const POS_PROJECT_GROUP  = 39;
+
 
 module.exports = class ProjectLoader {
   constructor(csvFile) {
@@ -121,6 +123,7 @@ module.exports = class ProjectLoader {
       p.year_end       = row[POS_YEAR_END];
       p.github_repo    = row[POS_GITHUB_REPO];
       p.github_oldcode = row[POS_GITHUB_OLDCODE];
+      p.project_group  = row[POS_PROJECT_GROUP];
       p.languages      = getArrayItems(row, POS_LN_START, POS_LN_END, this.lnIds);
       p.frameworks     = getArrayItems(row, POS_FT_START, POS_FT_END, this.ftIds);
       p.databases      = getArrayItems(row, POS_DB_START, POS_DB_END, this.dbIds);

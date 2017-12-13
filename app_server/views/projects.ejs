@@ -2,37 +2,70 @@
 
 
 
+<style>
+.foo42 {
+  font-size: .8em;
+  color: #777;
+}
+
+.test42 {
+  padding-top: 1em;
+  padding-bottom: 1.5em;
+  font-size: .9em;
+}
+
+.test43 {
+}
+
+.test44 {
+  font-size: .8em;
+
+}
+
+.test45 {
+  display: block;
+    text-align:right;
+      line-height: 1em;
+}
 
 
-These projects represent my work so far. 
-<ul>
-<li>latest websites with content generation (3) 
-<li>digital image archives (2)
-<li>text analysis and IR (7)
-<li>ORM and code generation (1)
-<li>content management systems (20)
-<li>other IR (crawlers + search + retrieval: ASU + UNI + UMD)
-<li>ediscovery (1)
-<li>Plugins for Vim (3) 
-<li>other stuff (compiler, algorithm vis, ... (3)
-<li>and static websites (30)
-</ul>
+</style>
 
 
+<div class="row test42 justify-content-md-center">
 
 
+  <div class="col-md-auto test43">
+    <a href="">This website++</a> <span class="foo42">(3 projects)</span><br>
+    <a href="">Digital image archive</a> <span class="foo42">(2 projects)</span><br>
+    <a href="">Text analysis &amp; IR</a> <span class="foo42">(8 projects)</span><br>
+  </div>
+  <div class="col-md-auto test43">
+    <a href="">E-discovery</a> <span class="foo42">(1 project)</span><br>
+    <a href="">Cool school stuff</a> <span class="foo42">(3 projects)</span><br>
+    <a href="">Plugins for Vim</a> <span class="foo42">(3 projects)</span><br>
+  </div>
+  <div class="col-md-auto test43">
+    <a href="">ORM &amp; code generation</a> <span class="foo42">(1 project)</span><br>
+    <a href="">Content management</a> <span class="foo42">(32 projects)</span><br>
+    <a href="">Static websites</a> <span class="foo42">(30 projects)</span><br>
+  </div>
+
+</div>
 
 <div class="ic4f-h-filter-container">
 
   <select class="custom-select">
-    <option selected>read about...</option>
-    <option value="">digital archives (2)</option>
-    <option value="">text analysis (4)</option>
-    <option value="">projects on IR (6)</option>
-    <option value="">ORM (1)</option>
-    <option value="">CMS (20)</option>
-    <option value="">Compilers, and more (6)</option>
-    <option value="">Static websites (30)</option>
+    <option selected>all project groups</option>
+    <option>This website++
+    <option>Digital image archive
+    <option>Text analysis &amp; IR
+    <option>E-discovery
+    <option>Cool school stuff
+    <option>Plugins for Vim
+    <option>ORM &amp; code generation
+    <option>Content management
+    <option>Static websites
   </select>
   
 
@@ -76,7 +109,8 @@ These projects represent my work so far.
     <td class="text-center"><%= num %></td>
     <td class="cell-project"><%- getProject(p) %></td>
     <td class="cell-years"><%= getYears(p) %></td>
-    <td><%- p.description %></td>
+    <td><%- p.description %> <span class="test45">
+        <a class="test44" href=""><%= p.project_group %></a></span></td>
     <td class="cell-ln"><%- makeList(p.languages, 'name') %></td>
     <td class="cell-ft"><%- makeList(p.frameworks, 'name') %></td>
     <td nowrap class="cell-db"><%- makeList(p.databases, 'name') %></td>
