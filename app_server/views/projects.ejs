@@ -1,6 +1,41 @@
 <%- include('includes/layout-header.ejs') %>
 
+
+
+
+
+These projects represent my work so far. 
+<ul>
+<li>latest websites with content generation (3) 
+<li>digital image archives (2)
+<li>text analysis and IR (7)
+<li>ORM and code generation (1)
+<li>content management systems (20)
+<li>other IR (crawlers + search + retrieval: ASU + UNI + UMD)
+<li>ediscovery (1)
+<li>Plugins for Vim (3) 
+<li>other stuff (compiler, algorithm vis, ... (3)
+<li>and static websites (30)
+</ul>
+
+
+
+
+
 <div class="ic4f-h-filter-container">
+
+  <select class="custom-select">
+    <option selected>read about...</option>
+    <option value="">digital archives (2)</option>
+    <option value="">text analysis (4)</option>
+    <option value="">projects on IR (6)</option>
+    <option value="">ORM (1)</option>
+    <option value="">CMS (20)</option>
+    <option value="">Compilers, and more (6)</option>
+    <option value="">Static websites (30)</option>
+  </select>
+  
+
   <select class="custom-select">
     <option selected>all languages</option>
     <% for (let foo of languages) { %>
@@ -26,9 +61,9 @@
 <table class="table table-bordered table-striped ic4f-projects">
   <tr>
     <th class="text-center">#</th>
-    <th>what</th>
-    <th class="text-center">when</th>
-    <th>what is it</th>
+    <th>project</th>
+    <th class="text-center">years</th>
+    <th>description</th>
     <th>languages</th>
     <th>frameworks +</th>
     <th class="text-center">databases</th>
