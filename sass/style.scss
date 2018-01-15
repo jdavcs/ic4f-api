@@ -9,8 +9,16 @@ $gray6:  #f1f1f1;
 $gray7:  #f8f8f8;
 $gray8:  #777;
 $blue:   #1E76D4;
-$blue2: $blue * 0.9;
-$blue3: #007bff; /* bootstrap */
+$blue2: $blue * .9;
+$blue3: green; /* bootstrap */
+/*$blue3: #007bff;*/ /* bootstrap */
+$blue5:   #1E76D4;
+$blue15: #4f9ce8;
+
+
+a {
+  color: $blue;
+}
 
 
 table.table-striped>tbody>tr:nth-child(odd)>td,
@@ -129,7 +137,7 @@ table.ic4f-projects {
   }
 
   .part-c {
-    color: $blue * .9;
+    color: $blue5;
     opacity: .8;
   }
 
@@ -137,7 +145,7 @@ table.ic4f-projects {
     @extend .part;
     margin-left: -1px;
     margin-right: -5px;
-    color: $blue * .9; 
+    color: $blue5; 
   }
 
   .part-dot {
@@ -170,7 +178,7 @@ table.ic4f-projects {
     border-top: 1px solid $gray5;
   }
   a.active {
-    color: $blue;
+    color: $blue5;
     font-weight: normal;
   }
   a.active:hover {
@@ -189,7 +197,10 @@ body {
 }
 
 .ic4f-container {}
-.ic4f-main-heading {}
+
+.ic4f-main-heading {
+  margin: .3em 0 1em 0;
+}
 
 
 .ic4f-hline {

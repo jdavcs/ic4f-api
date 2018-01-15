@@ -11,7 +11,7 @@ module.exports = class DbConnection {
 
   getDbURI() {
     if (process.env.NODE_ENV === 'production') {
-      return 'something else';
+      return 'something else'; //TODO
     } else {
       return 'mongodb://localhost/ic4f';
     }
