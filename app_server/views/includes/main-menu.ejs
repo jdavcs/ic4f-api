@@ -1,6 +1,29 @@
 <nav class="ic4f-nav">
-  <a href="/">blog</a>
-  <a class="active" href="/projects/">projects</a>
-  <a href="/about/">about</a>
-  <a href="http://sergey.cs.uni.edu">.edu</a>
+
+<% 
+// This constructs the menu html.
+// TODO: This code belongs in the controller.
+
+const items = [
+  {'title': 'blog', 'url': '/'},
+  {'title': 'projects', 'url': '/projects/'},
+  {'title': 'about', 'url': '/about/'},
+  {'title': '.edu', 'url': 'http://sergey.cs.uni.edu'},
+  {'title': 'github', 'url': 'http://github.com/ic4f'},
+];
+
+let html = [];
+for (let i=0; i<items.length; i++) {
+  let active = '';
+  if (parentMenu === i) {
+    active = 'class="active"';
+  } else {
+    active = '';
+  }
+  html.push(`<a href="${items[i]['url']}" ${active} >${items[i]['title']}</a>`);
+}
+%>
+
+<%- html.join('') %> 
+
 </nav>
