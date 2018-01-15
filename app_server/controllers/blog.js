@@ -39,7 +39,8 @@ function renderOnePost(req, res, data) {
   res.render('postView', { 
     title: data.post.title, 
     post: data.post,
-    dateFormat: dateFormat
+    dateFormat: dateFormat,
+    parentMenu: 0
   });
 };
 
@@ -47,7 +48,8 @@ function renderPosts(req, res, data) {
   res.render('posts', { 
     title: 'Recent Posts', 
     posts: data.posts,
-    dateFormat: dateFormat
+    dateFormat: dateFormat,
+    parentMenu: 0
   });
 };
 

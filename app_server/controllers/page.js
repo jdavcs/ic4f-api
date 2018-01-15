@@ -25,7 +25,8 @@ function renderOnePage(req, res, data) {
   console.log('marker 1' + data.page.title);
   res.render('pageView', { 
     title: data.page.title, 
-    body: data.page.body
+    body: data.page.body,
+    parentMenu: 2
   });
 };
 

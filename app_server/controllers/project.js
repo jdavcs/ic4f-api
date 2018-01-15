@@ -68,7 +68,8 @@ function getData(address, callback) {
 function renderOneProject(req, res, data) {
   res.render('projectView', { 
     title: data.project.name,
-    project: data.project
+    project: data.project,
+    parentMenu: 1
   });
 };
 
@@ -81,7 +82,8 @@ function renderProjects(req, res, data) {
     databases: data.databases,
     getProject: getProjectCellHTML,
     getYears: getYearsCellHTML,
-    makeList: makeListOfProperties
+    makeList: makeListOfProperties,
+    parentMenu: 1
   });
 };
 
