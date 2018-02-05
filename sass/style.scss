@@ -129,8 +129,12 @@ table.ic4f-projects {
   a.ic4f-logo:hover {
     text-decoration: none;
     color: $blue;
-  }
 
+    .part-c,
+    .part-ode {
+      color:$gray8;
+    }
+  }
 
   .part {
     font-size: .7rem;

@@ -75,6 +75,8 @@ table.ic4f-projects .project-comment-oldcode {
 .ic4f-logo-row a.ic4f-logo:hover {
   text-decoration: none;
   color: #1E76D4; }
+.ic4f-logo-row a.ic4f-logo:hover .part-c, .ic4f-logo-row a.ic4f-logo:hover .part-ode {
+  color: #777; }
 .ic4f-logo-row .part, .ic4f-logo-row .part-ode, .ic4f-logo-row .part-dot, .ic4f-logo-row .part-un {
   font-size: .7rem; }
 .ic4f-logo-row .part-c {
