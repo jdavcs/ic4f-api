@@ -24,11 +24,10 @@
   }, { 
     "model": "Framework",
     "documents": [
-      {"_id": "node",      "name": "Node",        "order": 0},
       {"_id": "express",   "name": "Express",     "order": 1},
       {"_id": "angular",   "name": "Angular",     "order": 2},
       {"_id": "django",    "name": "Django",      "order": 3},
-      {"_id": "jquery",    "name": "jQuery",      "order": 10},
+      {"_id": "slim",      "name": "Slim",        "order": 10},
       {"_id": "asp.net",   "name": "ASP.NET",     "order": 40},
       {"_id": "asp",       "name": "Classic ASP", "order": 41}
     ]

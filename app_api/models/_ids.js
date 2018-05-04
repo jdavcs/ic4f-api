@@ -35,8 +35,7 @@ const frameworks = [
   'asp.net',
   'django',
   'express',
-  'jquery',
-  'node'
+  'slim'
 ];
   
 const databases = [
@@ -61,7 +60,9 @@ const projects = [
   'ir-uni',
   'ir-uni-medline',
   'jobcenter',
-  'kronofoto',
+  'kronofoto-admin',
+  'kronofoto-api',
+  'kronofoto-ng',
   'phd',
   'playerc',
   'prssa-cms',
