@@ -5,6 +5,10 @@ const page = require('../controllers/page');
 const post = require('../controllers/post');
 
 router
+  .route('/groups')
+  .get(project.groupList);
+
+router
   .route('/languages')
   .get(project.languageList);
 

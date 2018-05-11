@@ -1,5 +1,18 @@
 [
   {
+    "model": "Group",
+    "documents": [
+      {"_id": "algvis",   "name": "Algorithm visualization",     "order": 0},
+      {"_id": "compiler", "name": "Compiler/code generator/ORM", "order": 1},
+      {"_id": "cms",      "name": "Content management systems",  "order": 2},
+      {"_id": "dpa",      "name": "Digital photo archives",      "order": 3},
+      {"_id": "edisco",   "name": "E-discovery",                 "order": 4},
+      {"_id": "play",     "name": "Personal website/playground", "order": 5},
+      {"_id": "vim",      "name": "Plugins for Vim",             "order": 6},
+      {"_id": "static",   "name": "Static websites",             "order": 7},
+      {"_id": "ir",       "name": "Text analysis & IR",          "order": 8}
+    ]
+  }, { 
     "model": "Language",
     "documents": [
       {"_id": "bash",       "name": "Bash",       "order": 0},

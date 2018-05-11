@@ -41,7 +41,7 @@ function getData(address, callback) {
       if (err) {
         callback(err); //TODO do i need a return here?
       } else {
-        console.log('m2 ' + JSON.stringify(body));
+//        console.log('m2 ' + JSON.stringify(body));
         callback(null, body);
       } 
     }

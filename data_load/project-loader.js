@@ -5,11 +5,13 @@ const async = require('async');
 const mongoose = require('mongoose');
 
 require('../app_api/models/project');
+require('../app_api/models/group');
 require('../app_api/models/language');
 require('../app_api/models/framework');
 require('../app_api/models/database');
 
 const Project = mongoose.model('Project');
+const Group = mongoose.model('Group');
 const Language = mongoose.model('Language');
 const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
@@ -43,8 +45,11 @@ const POS_LN_END         = 37;
 module.exports = class ProjectLoader {
   constructor(csvFile) {
     this.loadFile(csvFile); //parse csv file
+    /* project langs, frmks, dbs: many-to-many relationship */
     this.loadIds();         //load lang + frmk + db IDs from header row
     this.loadCounts();      //load lang + frmk + db project counts
+    /* project groups: this is a one-to-many relationship, so handle differently */
+    this.loadGroupCounts(); 
   }
 
   loadFile(csvFile) {
@@ -82,11 +87,7 @@ module.exports = class ProjectLoader {
       for (let i=start; i<=end; i++) {
         if (row[i] === '1') {
           const id = ids.get(i);
-          if (counts.has(id)) {
-            counts.set(id, counts.get(id) + 1);
-          } else {
-            counts.set(id, 1);
-          }
+          this.incrementMapItem(counts, id);
         }
       }
     }
@@ -95,6 +96,22 @@ module.exports = class ProjectLoader {
       countItems(this.data[i], POS_DB_START, POS_DB_END, this.dbIds, this.dbProjectCounts);
       countItems(this.data[i], POS_FT_START, POS_FT_END, this.ftIds, this.ftProjectCounts); 
       countItems(this.data[i], POS_LN_START, POS_LN_END, this.lnIds, this.lnProjectCounts);
+    }
+  }
+
+  loadGroupCounts() {
+    this.groupProjectCounts = new Map();
+    for (let i=1; i<this.data.length; i++) {
+      const id = this.data[i][POS_GROUP];
+      this.incrementMapItem(this.groupProjectCounts, id);
+    }
+  }
+
+  incrementMapItem(counts, item) {
+    if (counts.has(item)) {
+      counts.set(item, counts.get(item) + 1);
+    } else {
+      counts.set(item, 1);
     }
   }
 
@@ -155,7 +172,7 @@ module.exports = class ProjectLoader {
       }
     }
 
-    // Accumulate data in a map: update counts/dates for projects + project groups
+    // Accumulate data in a map: update counts/dates for projects and project groups (if grouped)
     const projectMap = new Map();
 
     for (let i=1; i<this.data.length; i++) {
@@ -169,7 +186,7 @@ module.exports = class ProjectLoader {
         updateDates(parent, project);
         parent.project_count++;
       } else {
-         projectMap.set(project._id, project);
+        projectMap.set(project._id, project);
       }
     }
 
@@ -181,11 +198,12 @@ module.exports = class ProjectLoader {
   }
 
   saveData(projects, callback) {
-  // in parallel:
+    // in parallel:
     // - insertMany: projects
     // - each database: update project count
     // - each framework: update project count
     // - each language: update project count
+    // - each project group: update project count
 
     const saveProjects = (projects, callback) => {
       Project.insertMany(projects)
@@ -193,7 +211,7 @@ module.exports = class ProjectLoader {
         .catch((e) => {
           console.error(e.message); //TODO use this error handling in other files.
           callback();
-      });
+        });
     }
 
     const saveDbCounts = (callback) => {
@@ -208,6 +226,10 @@ module.exports = class ProjectLoader {
       async.each(this.lnProjectCounts.entries(), updateLn, callback);
     }
 
+    const saveGrCounts = (callback) => {
+      async.each(this.groupProjectCounts.entries(), updateGr, callback);
+    }
+
     const updateDb = (entry, callback) => {
       Database.updateOne({_id: entry[0]}, {'projects': entry[1]}, callback);
     }
@@ -218,6 +240,10 @@ module.exports = class ProjectLoader {
 
     const updateLn = (entry, callback) => {
       Language.updateOne({_id: entry[0]}, {'projects': entry[1]}, callback);
+    }
+
+    const updateGr = (entry, callback) => {
+      Group.updateOne({_id: entry[0]}, {'projects': entry[1]}, callback);
     }
 
     async.parallel([
@@ -232,6 +258,9 @@ module.exports = class ProjectLoader {
       },
       function(callback) {
         saveLnCounts(callback);
+      },
+      function(callback) {
+        saveGrCounts(callback);
       }
     ], callback);
   }

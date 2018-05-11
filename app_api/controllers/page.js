@@ -25,7 +25,7 @@ function view(req, res, next){
   } else {
     res
       .status(404)
-      .json({"message": "pdage route not in request"});
+      .json({"message": "page route not in request"});
   }
 };
 

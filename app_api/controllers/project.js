@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 const Project = mongoose.model('Project');
+const Group = mongoose.model('Group');
 const Language = mongoose.model('Language');
 const Framework = mongoose.model('Framework');
 const Database = mongoose.model('Database');
 
 //TODO: decide HOW to handle errors: use api on webpages, and then decide.
+
+function groupList(req, res, next) {
+  Group.getList((err, data) => {
+    if (err) return next(err); 
+    res.status(200);
+    res.json(data);
+  });
+};
 
 function languageList(req, res) {
   Language.getList((err, data) => {
@@ -36,7 +45,6 @@ function databaseList(req, res, next) {
 
 
 function list(req, res, next){
-  console.log('API 1');
   Project.getList((err, data) => {
     if (err) {
       res.status(404);
@@ -76,6 +84,7 @@ function view(req, res, next){
 };
 
 module.exports = {
+  groupList,
   languageList,
   frameworkList,
   databaseList,

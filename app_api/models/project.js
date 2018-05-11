@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const ids = require('./_ids');
 const project_ids   = ids.projects;
+const group_ids     = ids.groups;
 const language_ids  = ids.languages;
 const framework_ids = ids.frameworks; 
 const database_ids  = ids.databases;
@@ -9,7 +10,7 @@ const Project = new mongoose.Schema({
   _id: {
     type: String,
     lowercase: true,
-   // enum: project_ids
+    enum: project_ids
   },
   name: {
     type: String,
@@ -19,7 +20,11 @@ const Project = new mongoose.Schema({
     type: String,
     required: true
   },
-  group: String,
+  group: [{
+    type: String,
+    ref: 'Group',
+    enum: group_ids
+  }],
   project_name: String,
   project_count: {
     type: Number,
@@ -61,6 +66,11 @@ Project.statics.getList = function(callback) {
     .find({},{content:0})
     .sort({'order': 1})
     .populate({
+      path: 'group',
+      select: 'id name',
+      options: {sort: { order: 1 }}
+    })
+    .populate({
       path: 'languages',
       select: 'id name',
       options: {sort: { order: 1 }}
@@ -76,6 +86,10 @@ Project.statics.getList = function(callback) {
       options: {sort: { order: 1 }}
     })
     .exec(callback);
+};
+
+Project.statics.countByGroup = function(group, callback) {
+  return this.count({'group': group} , callback);
 };
 
 Project.statics.countByLanguage = function(language, callback) {

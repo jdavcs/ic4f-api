@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
@@ -12,11 +11,12 @@ new Db().connect();
 require('./app_api/models/page');
 require('./app_api/models/post');
 require('./app_api/models/project');
+require('./app_api/models/group');
 require('./app_api/models/language');
 require('./app_api/models/framework');
 require('./app_api/models/database');
 
-const webRoutes = require('./app_server/routes/index');
+//const webRoutes = require('./app_server/routes/index');
 const apiRoutes = require('./app_api/routes/index');
 
 const app = express();
@@ -28,9 +28,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+//TODO adjust this for deployment
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', webRoutes);
+//TODO adjust this for deployment
+//app.use('/', webRoutes); //TODO remove this or redirect
+
 app.use('/api', apiRoutes);
 
 app.use(function(req, res, next) {

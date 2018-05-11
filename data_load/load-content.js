@@ -31,7 +31,7 @@ async.series([
   },
   function(callback) {
     const model = mongoose.model('Project');
-    new ProjectLoader(PROJECTS_FILE).load(true, callback); //TODO change location
+    new ProjectLoader(PROJECTS_FILE).load(true, callback);
   },
   function(callback) {
     db.disconnect(callback);

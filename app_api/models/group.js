@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const language_ids = require('./_ids').languages;
+const group_ids = require('./_ids').groups;
 
-const Language = new mongoose.Schema({
+const Group = new mongoose.Schema({
   _id: {
     type: String, 
     lowercase: true,
-    enum: language_ids
+    enum: group_ids
   },
   name: {
     type: String,
@@ -21,11 +21,11 @@ const Language = new mongoose.Schema({
   }
 });
 
-Language.statics.getList = function(callback) {
+Group.statics.getList = function(callback) {
   return this
     .find({})
-    .sort({'name': 1}) //because this is for a long dropdown list
+    .sort({'order': 1}) 
     .exec(callback);
 };
 
-mongoose.model('Language', Language, 'languages');
+mongoose.model('Group', Group, 'groups');
