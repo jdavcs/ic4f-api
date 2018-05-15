@@ -2,15 +2,18 @@
   {
     "model": "Group",
     "documents": [
-      {"_id": "algvis",   "name": "Algorithm visualization",     "order": 0},
-      {"_id": "compiler", "name": "Compiler/code generator/ORM", "order": 1},
-      {"_id": "cms",      "name": "Content management systems",  "order": 2},
-      {"_id": "dpa",      "name": "Digital photo archives",      "order": 3},
-      {"_id": "edisco",   "name": "E-discovery",                 "order": 4},
-      {"_id": "play",     "name": "Personal website/playground", "order": 5},
-      {"_id": "vim",      "name": "Plugins for Vim",             "order": 6},
-      {"_id": "static",   "name": "Static websites",             "order": 7},
-      {"_id": "ir",       "name": "Text analysis & IR",          "order": 8}
+      {"_id": "algvis",    "name": "Algorithms & data structures",    "order": 0},
+      {"_id": "compiler",  "name": "Compiler/code generator/ORM",     "order": 1},
+      {"_id": "ir",        "name": "Text analysis & IR",              "order": 2},
+      {"_id": "edisco",    "name": "E-discovery",                     "order": 3},
+      {"_id": "dpa",       "name": "Digital photo archives",          "order": 4},
+      {"_id": "cms",       "name": "Content management systems",      "order": 5},
+      {"_id": "shopping",  "name": "Shopping carts/stores",           "order": 6},
+      {"_id": "community", "name": "Online communities",              "order": 7},
+      {"_id": "play",      "name": "Personal websites",               "order": 8},
+      {"_id": "web_misc",  "name": "Misc. web apps",                  "order": 9},
+      {"_id": "static",    "name": "Static websites",                 "order": 10},
+      {"_id": "vim",       "name": "Plugins for Vim",                 "order": 11}
     ]
   }, { 
     "model": "Language",
@@ -20,13 +23,13 @@
       {"_id": "c_sharp",    "name": "C#",         "order": 2},
       {"_id": "java",       "name": "Java",       "order": 3},
       {"_id": "javascript", "name": "JavaScript", "order": 4},
-      {"_id": "mumps",      "name": "MUMPS",      "order": 5},
+      {"_id": "mumps",      "name": "Mumps",      "order": 5},
       {"_id": "php",        "name": "PHP",        "order": 6},
       {"_id": "python",     "name": "Python",     "order": 7},
       {"_id": "ruby",       "name": "Ruby",       "order": 8},
       {"_id": "typescript", "name": "TypeScript", "order": 9},
       {"_id": "vbscript",   "name": "VBScript",   "order": 10},
-      {"_id": "vb.net",     "name": "VB.Net",     "order": 11},
+      {"_id": "vbnet",      "name": "VB.Net",     "order": 11},
       {"_id": "vimscript",  "name": "Vimscript",  "order": 12},
       {"_id": "sql",        "name": "SQL",        "order": 30},
       {"_id": "yaml",       "name": "YAML",       "order": 40},
@@ -41,7 +44,7 @@
       {"_id": "angular",   "name": "Angular",     "order": 2},
       {"_id": "django",    "name": "Django",      "order": 3},
       {"_id": "slim",      "name": "Slim",        "order": 10},
-      {"_id": "asp.net",   "name": "ASP.NET",     "order": 40},
+      {"_id": "aspnet",    "name": "ASP.NET",     "order": 40},
       {"_id": "asp",       "name": "Classic ASP", "order": 41}
     ]
   }, { 

@@ -40,7 +40,8 @@ const Project = new mongoose.Schema({
   },
   year_end: Number,
   github_repo: String,
-  github_oldcode: {
+  github_oldcode: String,
+  has_content: {
     type: Boolean,
     default: false
   },
@@ -58,7 +59,11 @@ const Project = new mongoose.Schema({
     type: String,
     ref: 'Database',
     enum: database_ids
-  }]
+  }],
+  content: {
+    type: String,
+    required: false
+  }
 });
 
 Project.statics.getList = function(callback) {

@@ -9,15 +9,18 @@
  ****************************************************************************/
 
 const groups = [
- 'algvis',
- 'compiler',
- 'cms',   
- 'dpa',   
- 'edisco',
- 'play',  
- 'vim',   
- 'static',
- 'ir'    
+  'algvis',
+  'cms',   
+  'community',
+  'compiler',
+  'dpa',   
+  'edisco',
+  'ir',    
+  'play',  
+  'shopping',
+  'static',
+  'vim',
+  'web_misc'
 ];
 
 const languages = [
@@ -35,7 +38,7 @@ const languages = [
   'ruby',
   'sql',
   'typescript',
-  'vb.net',
+  'vbnet',
   'vbscript',
   'vimscript',
   'yaml'
@@ -44,32 +47,29 @@ const languages = [
 const frameworks = [
   'angular',
   'asp',
-  'asp.net',
+  'aspnet',
   'django',
   'express',
   'slim'
 ];
-  
+
 const databases = [
   'access',
   'mongodb',
   'mysql',
   'sql_server'
 ]; 
-  
+
 const projects = [
-  'algorithm_vis',
-  'alina_www',
+  'alinaavanesyan',
   'aspnet_controls',
   'blog_crawler',
-  'camp_adventure_2004',
-  'camp_adventure_iyc',
   'codegenerator',
   'cso',
   'datamining_asu',
   'ediscovery',
-  'fellowship_code',
-  'fortepan_ia',
+  'fellowship',
+  'fortepan_iowa',
   'ic4f_api',
   'ic4f_ng',
   'ir_asu',
@@ -79,26 +79,33 @@ const projects = [
   'kronofoto_api',
   'kronofoto_ng',
   'lordofthewebs',
-  'phd_code',
+  'phd',
   'playerc',
-  'prssa_cms',
-  'prssa_websites',
-  'sergey_www_edu',
+  'prsa',
+  'sergeycsuniedu',
   'static_websites',
   'symmetryshowroom',
   'twentiment',
   'uni_accounts',
   'uni_alumniassoc',
   'uni_ask',
+  'uni_ca_2003',
+  'uni_ca_iyc',
+  'uni_ca_mycaccess',
   'uni_chfatech',
   'uni_comstudy',
-  'uni_foundation_cms',
+  'uni_csbs',
+  'uni_foundation',
   'uni_gradcollege',
+  'uni_iowaindtech',
+  'uni_newsroom',
   'uni_printservices',
+  'uni_rrttc',
   'vim_journal',
   'vim_timestamp',
   'vim_write',
-  'websites_cms',
+  'visual_sort',
+  'visual_tree',
   'witness_id'
 ];
 

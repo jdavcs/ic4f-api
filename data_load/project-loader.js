@@ -32,13 +32,14 @@ const POS_YEAR_START     =  6;
 const POS_YEAR_END       =  7;
 const POS_GITHUB_REPO    =  8;
 const POS_GITHUB_OLDCODE =  9;
+const POS_HAS_CONTENT    =  10;
 
-const POS_DB_START       = 10;
-const POS_DB_END         = 13;
-const POS_FT_START       = 14;
-const POS_FT_END         = 19;
-const POS_LN_START       = 20;
-const POS_LN_END         = 37;
+const POS_DB_START       = 11;
+const POS_DB_END         = 14;
+const POS_FT_START       = 15;
+const POS_FT_END         = 20;
+const POS_LN_START       = 21;
+const POS_LN_END         = 38;
 
 
 
@@ -139,6 +140,7 @@ module.exports = class ProjectLoader {
       p.year_end       = row[POS_YEAR_END];
       p.github_repo    = row[POS_GITHUB_REPO];
       p.github_oldcode = row[POS_GITHUB_OLDCODE];
+      p.has_content    = row[POS_HAS_CONTENT];
       p.languages      = getArrayItems(row, POS_LN_START, POS_LN_END, this.lnIds);
       p.frameworks     = getArrayItems(row, POS_FT_START, POS_FT_END, this.ftIds);
       p.databases      = getArrayItems(row, POS_DB_START, POS_DB_END, this.dbIds);

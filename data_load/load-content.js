@@ -8,12 +8,14 @@ require('../app_api/models/project');
 const PageLoader = require('./page-loader');
 const PostLoader = require('./post-loader');
 const ProjectLoader = require('./project-loader');
+const ProjectContentLoader = require('./project-content-loader');
 
 const Db = require('../db');
 const db = new Db();
 
 const PAGES_DIR = '../data/pages/';
 const POSTS_DIR = '../data/posts/';
+const PROJECTS_DIR = '../data/project-content/';
 const PROJECTS_FILE = '../data/projects.csv';
 
 async.series([
@@ -34,8 +36,13 @@ async.series([
     new ProjectLoader(PROJECTS_FILE).load(true, callback);
   },
   function(callback) {
+    const model = mongoose.model('Project');
+    new ProjectContentLoader(model, PROJECTS_DIR).load(false, callback);
+  },
+  function(callback) {
     db.disconnect(callback);
   }
 ], function(err, results) {
   console.log('Data loading complete');
 });
+
