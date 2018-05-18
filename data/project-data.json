@@ -5,13 +5,11 @@
       {"_id": "algvis",    "name": "Algorithms & data structures",    "order": 0},
       {"_id": "compiler",  "name": "Compiler/code generator/ORM",     "order": 1},
       {"_id": "ir",        "name": "Text analysis & IR",              "order": 2},
-      {"_id": "edisco",    "name": "E-discovery",                     "order": 3},
       {"_id": "dpa",       "name": "Digital photo archives",          "order": 4},
       {"_id": "cms",       "name": "Content management systems",      "order": 5},
       {"_id": "shopping",  "name": "Shopping carts/stores",           "order": 6},
       {"_id": "community", "name": "Online communities",              "order": 7},
       {"_id": "play",      "name": "Personal websites",               "order": 8},
-      {"_id": "web_misc",  "name": "Misc. web apps",                  "order": 9},
       {"_id": "static",    "name": "Static websites",                 "order": 10},
       {"_id": "vim",       "name": "Plugins for Vim",                 "order": 11}
     ]
@@ -40,12 +38,12 @@
   }, { 
     "model": "Framework",
     "documents": [
-      {"_id": "express",   "name": "Express",     "order": 1},
-      {"_id": "angular",   "name": "Angular",     "order": 2},
-      {"_id": "django",    "name": "Django",      "order": 3},
-      {"_id": "slim",      "name": "Slim",        "order": 10},
-      {"_id": "aspnet",    "name": "ASP.NET",     "order": 40},
-      {"_id": "asp",       "name": "Classic ASP", "order": 41}
+      {"_id": "express",   "name": "Express", "order": 1},
+      {"_id": "angular",   "name": "Angular", "order": 2},
+      {"_id": "django",    "name": "Django",  "order": 3},
+      {"_id": "slim",      "name": "Slim",    "order": 10},
+      {"_id": "aspnet",    "name": "ASP.NET", "order": 40},
+      {"_id": "asp",       "name": "ASP",     "order": 41}
     ]
   }, { 
     "model": "Database",

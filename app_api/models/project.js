@@ -68,8 +68,9 @@ const Project = new mongoose.Schema({
 
 Project.statics.getList = function(callback) {
   return this
-    .find({},{content:0})
-    .sort({'order': 1})
+    //.find({},{content:0})
+    .find({})
+    .sort({'order': -1})
     .populate({
       path: 'group',
       select: 'id name',

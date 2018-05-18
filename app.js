@@ -31,6 +31,7 @@ app.use(cookieParser());
 
 //TODO adjust this for deployment
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'static')));
 
 //TODO adjust this for deployment
 //app.use('/', webRoutes); //TODO remove this or redirect

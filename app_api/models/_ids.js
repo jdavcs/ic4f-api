@@ -14,13 +14,11 @@ const groups = [
   'community',
   'compiler',
   'dpa',   
-  'edisco',
   'ir',    
   'play',  
   'shopping',
   'static',
-  'vim',
-  'web_misc'
+  'vim'
 ];
 
 const languages = [
@@ -63,11 +61,11 @@ const databases = [
 const projects = [
   'alinaavanesyan',
   'aspnet_controls',
+  'avocado',
   'blog_crawler',
   'codegenerator',
   'cso',
   'datamining_asu',
-  'ediscovery',
   'fellowship',
   'fortepan_iowa',
   'ic4f_api',
@@ -84,12 +82,11 @@ const projects = [
   'prsa',
   'sergeycsuniedu',
   'static_websites',
-  'symmetryshowroom',
-  'twentiment',
+  'symmetry',
+  'twitter_crawler',
   'uni_accounts',
   'uni_alumniassoc',
   'uni_ask',
-  'uni_ca_2003',
   'uni_ca_iyc',
   'uni_ca_mycaccess',
   'uni_chfatech',
