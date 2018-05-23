@@ -27,7 +27,7 @@
       {"_id": "ruby",       "name": "Ruby",       "order": 8},
       {"_id": "typescript", "name": "TypeScript", "order": 9},
       {"_id": "vbscript",   "name": "VBScript",   "order": 10},
-      {"_id": "vbnet",      "name": "VB.Net",     "order": 11},
+      {"_id": "vbnet",      "name": "VB.NET",     "order": 11},
       {"_id": "vimscript",  "name": "Vimscript",  "order": 12},
       {"_id": "sql",        "name": "SQL",        "order": 30},
       {"_id": "yaml",       "name": "YAML",       "order": 40},

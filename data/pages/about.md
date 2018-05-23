@@ -2,8 +2,6 @@
 title: "About Me"
 ---
 
-This is a test.
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Etiam tempor orci eu lobortis elementum nibh tellus. Mi ipsum faucibus vitae
 aliquet nec ullamcorper sit amet. Quis lectus nulla at volutpat diam ut venenatis tellus in.
