@@ -5,6 +5,6 @@ digital archive. It is part of Kronofoto (see kronofoto-ng).
 on Django (see screenshot below), has been around since 2015. So it's time for a rewrite. 
 
 <div class="screenshots">
-  <img class="img-fluid" src="http://localhost:8080/projects/kronofoto_admin/1.jpg">
+  <img class="img-fluid" src="/static/projects/kronofoto_admin/1.jpg">
 </div>
 

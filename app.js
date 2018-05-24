@@ -16,7 +16,7 @@ require('./app_api/models/language');
 require('./app_api/models/framework');
 require('./app_api/models/database');
 
-//const webRoutes = require('./app_server/routes/index');
+//const webRoutes = require('./app_server/routes/index');//TODO deployment
 const apiRoutes = require('./app_api/routes/index');
 
 const app = express();
@@ -29,12 +29,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//TODO adjust this for deployment
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'static')));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 
-//TODO adjust this for deployment
-//app.use('/', webRoutes); //TODO remove this or redirect
+//app.use('/', webRoutes); //TODO deployment
 
 app.use('/api', apiRoutes);
 

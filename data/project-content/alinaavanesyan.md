@@ -22,6 +22,6 @@ project.
 <a href="https://github.com/ic4f/alina/blob/master/assets/js/modals.js" target="_blank">this simple jQuery script</a>.
 
 <div class="screenshots"> 
-  <img class="img-fluid" src="http://localhost:8080/projects/alinaavanesyan/1.jpg"> 
-  <img class="img-fluid" src="http://localhost:8080/projects/alinaavanesyan/2.jpg"> 
+  <img class="img-fluid" src="/static/projects/alinaavanesyan/1.jpg"> 
+  <img class="img-fluid" src="/static/projects/alinaavanesyan/2.jpg"> 
 </div>

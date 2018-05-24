@@ -10,6 +10,8 @@ Penatibus et magnis dis parturient montes nascetur. Blandit libero volutpat sed 
 vivamus. Habitasse platea dictumst vestibulum rhoncus. Bibendum at varius vel pharetra vel turpis
 nunc. Amet volutpat consequat mauris nunc. Eget gravida cum sociis natoque penatibus et magnis dis.
 
+  <img class="img-fluid sergey" src="/static/images/sergey.jpg"> 
+
 Accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Tristique nulla aliquet enim tortor at
 auctor urna nunc id. Urna id volutpat lacus laoreet non. Eu scelerisque felis imperdiet proin
 fermentum. Sit amet volutpat consequat mauris nunc congue nisi. Adipiscing tristique risus nec
@@ -27,3 +29,4 @@ rutrum quisque non. Vulputate dignissim suspendisse in est. Donec ultrices tinci
 sodales neque sodales ut. Sit amet facilisis magna etiam tempor orci eu lobortis. At ultrices mi
 tempus imperdiet. In nibh mauris cursus mattis molestie a iaculis at erat. Sodales neque sodales ut
 etiam sit. Tellus elementum sagittis vitae et leo duis ut diam.
+

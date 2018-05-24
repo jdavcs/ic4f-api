@@ -16,5 +16,5 @@ web applications.
 
 ## Related 
 
-* My thesis: <a href="http://localhost:8080/projects/codegenerator/thesis.pdf" target="_blank">Specification and Automatic Code Generation of the Data Layer for Data-Intensive Web-Based Applications</a>
-* <a href="http://localhost:8080/projects/codegenerator/defense.pdf" target="_blank">My thesis defense</a>
+* My thesis: <a href="/static/projects/codegenerator/thesis.pdf" target="_blank">Specification and Automatic Code Generation of the Data Layer for Data-Intensive Web-Based Applications</a>
+* <a href="/static/projects/codegenerator/defense.pdf" target="_blank">My thesis defense</a>

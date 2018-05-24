@@ -4,10 +4,10 @@ alumni database, placement and industry data, with basic user authentication.
 
 <div class="screenshots row">
   <div class="col-6">
-    <img class="img-fluid" src="http://localhost:8080/projects/uni_comstudy/1.jpg">
+    <img class="img-fluid" src="/static/projects/uni_comstudy/1.jpg">
   </div>
   <div class="col-6">
-    <img class="img-fluid" src="http://localhost:8080/projects/uni_comstudy/2.jpg">
+    <img class="img-fluid" src="/static/projects/uni_comstudy/2.jpg">
   </div>
 </div>
 

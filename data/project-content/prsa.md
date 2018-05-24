@@ -3,15 +3,15 @@ for its parent, the Public Relations Society of America : content management sys
 apps, blogs, news/publication sites, discussion forums, event registration/scheduling systems,
 mini-website generators, etc. 
 
-The <a href="http://localhost:8080/projects/prsa/manual.pdf" target="_blank">system manual</a> 
+The <a href="/static/projects/prsa/manual.pdf" target="_blank">system manual</a> 
 describes the user end of the content management system (its latest version).
 
 <div class="screenshots">
-  <img class="img-fluid" src="http://localhost:8080/projects/prsa/1.jpg">
-  <img class="img-fluid" src="http://localhost:8080/projects/prsa/2.jpg">
-  <img class="img-fluid" src="http://localhost:8080/projects/prsa/3.jpg">
-  <img class="img-fluid" src="http://localhost:8080/projects/prsa/4.png">
-  <img class="img-fluid" src="http://localhost:8080/projects/prsa/5.png">
-  <img class="img-fluid" src="http://localhost:8080/projects/prsa/6.jpg">
+  <img class="img-fluid" src="/static/projects/prsa/1.jpg">
+  <img class="img-fluid" src="/static/projects/prsa/2.jpg">
+  <img class="img-fluid" src="/static/projects/prsa/3.jpg">
+  <img class="img-fluid" src="/static/projects/prsa/4.png">
+  <img class="img-fluid" src="/static/projects/prsa/5.png">
+  <img class="img-fluid" src="/static/projects/prsa/6.jpg">
 </div>
 

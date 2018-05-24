@@ -13,5 +13,5 @@ A new version is being developed, expected to be launched this summer. Current (
 <a href="http://sergey.cs.uni.edu:8080/public/collections" target="_blank">is available here</a>. 
 
 <div class="screenshots">
-  <img class="img-fluid" src="http://localhost:8080/projects/fortepan_iowa/1.jpg">
+  <img class="img-fluid" src="/static/projects/fortepan_iowa/1.jpg">
 </div>

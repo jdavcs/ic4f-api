@@ -11,10 +11,10 @@ for each *foo* there was addFoo, editFoo, deleteFoo, viewAllFoos; and processAdd
 
 <div class="screenshots row">
   <div class="col-6">
-    <img class="img-fluid" src="http://localhost:8080/projects/uni_chfatech/1.png">
+    <img class="img-fluid" src="/static/projects/uni_chfatech/1.png">
   </div>
   <div class="col-6">
-    <img class="img-fluid" src="http://localhost:8080/projects/uni_chfatech/2.png">
+    <img class="img-fluid" src="/static/projects/uni_chfatech/2.png">
   </div>
 </div>
 

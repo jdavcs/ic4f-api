@@ -18,5 +18,5 @@ Here's what I'm working on at the moment:
 * ...and a stream of items from an infinite todo list
 
 <div class="screenshots">
-  <img class="img-fluid" src="http://localhost:8080/projects/kronofoto_ng/1.jpg">
+  <img class="img-fluid" src="/static/projects/kronofoto_ng/1.jpg">
 </div>

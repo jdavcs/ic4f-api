@@ -29,7 +29,7 @@ news articles. This code constructs such a dataset by discovering text sequences
 the press release and the article. Figure 1 (below) displays a sample of such matching sequences.
 
 <div class="screenshots">
-  <img class="img-fluid noborder" src="http://localhost:8080/projects/phd/matches.png">
+  <img class="img-fluid noborder" src="/static/projects/phd/matches.png">
   <p align="center">Figure 1. Displaying matching text sequences between release and article</p>
 </div>
 
@@ -44,7 +44,7 @@ subjectivity lexicon. Successful matches were used to calculate document subject
 scores (see Figure 2). 
 
 <div class="screenshots">
-  <img class="img-fluid" src="http://localhost:8080/projects/phd/sentanalysis1.png"> 
+  <img class="img-fluid" src="/static/projects/phd/sentanalysis1.png"> 
   <p align="center">Figure 2. Calculating document subjectivity and polarity</p>
 </div>
 
