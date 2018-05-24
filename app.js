@@ -16,9 +16,6 @@ require('./app_api/models/language');
 require('./app_api/models/framework');
 require('./app_api/models/database');
 
-//const webRoutes = require('./app_server/routes/index');//TODO deployment
-const apiRoutes = require('./app_api/routes/index');
-
 const app = express();
 
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -31,8 +28,10 @@ app.use(cookieParser());
 
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
+//const webRoutes = require('./app_server/routes/index');//TODO deployment
 //app.use('/', webRoutes); //TODO deployment
 
+const apiRoutes = require('./app_api/routes/index');
 app.use('/api', apiRoutes);
 
 app.use(function(req, res, next) {

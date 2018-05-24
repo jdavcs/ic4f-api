@@ -11,9 +11,19 @@ module.exports = class DbConnection {
 
   getDbURI() {
     if (process.env.NODE_ENV === 'production') {
-      return 'something else'; //TODO
+      return process.env.MONGOLAB_URI;
     } else {
-      return 'mongodb://localhost/ic4f';
+      const user = process.env.DB_USERNAME;
+      const pass = process.env.DB_PASSWORD;
+      let credentials = '';
+      if (user == '' || pass == '') {
+        credentials = `${user}:${pass}@`;
+      }
+      const server = process.env.DB_SERVER;
+      const port = process.env.DB_PORT;
+      const db = process.env.DB_DATABASE;
+
+      return `mongodb://${credentials}${server}:${port}/${db}`;
     }
   }
 
