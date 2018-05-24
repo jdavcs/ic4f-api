@@ -1,3 +1,4 @@
+require('dotenv').config({path: '../.env'});
 const async = require('async');
 const mongoose = require('mongoose');
 

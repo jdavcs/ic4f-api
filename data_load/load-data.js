@@ -1,3 +1,4 @@
+require('dotenv').config({path: '../.env'});
 const seeder = require('mongoose-seed');
 const fs = require('fs');
 
