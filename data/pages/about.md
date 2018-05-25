@@ -10,8 +10,6 @@ Penatibus et magnis dis parturient montes nascetur. Blandit libero volutpat sed 
 vivamus. Habitasse platea dictumst vestibulum rhoncus. Bibendum at varius vel pharetra vel turpis
 nunc. Amet volutpat consequat mauris nunc. Eget gravida cum sociis natoque penatibus et magnis dis.
 
-  <img class="img-fluid sergey" src="/static/images/sergey.jpg"> 
-
 Accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Tristique nulla aliquet enim tortor at
 auctor urna nunc id. Urna id volutpat lacus laoreet non. Eu scelerisque felis imperdiet proin
 fermentum. Sit amet volutpat consequat mauris nunc congue nisi. Adipiscing tristique risus nec
@@ -21,12 +19,21 @@ nunc lobortis mattis aliquam faucibus. Augue interdum velit euismod in pellentes
 Tristique nulla aliquet enim tortor at auctor. Sapien nec sagittis aliquam malesuada bibendum arcu
 vitae.
 
-Orci eu lobortis elementum nibh tellus molestie nunc. Ultricies mi quis hendrerit dolor. Arcu vitae
-elementum curabitur vitae nunc sed velit dignissim. Gravida dictum fusce ut placerat orci nulla
-pellentesque. Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada bibendum.
-Aliquam ultrices sagittis orci a scelerisque purus semper eget. Semper risus in hendrerit gravida
-rutrum quisque non. Vulputate dignissim suspendisse in est. Donec ultrices tincidunt arcu non
-sodales neque sodales ut. Sit amet facilisis magna etiam tempor orci eu lobortis. At ultrices mi
-tempus imperdiet. In nibh mauris cursus mattis molestie a iaculis at erat. Sodales neque sodales ut
-etiam sit. Tellus elementum sagittis vitae et leo duis ut diam.
+<div class="row">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 ic4f-sergey">
+    <img class="img-fluid" src="/static/images/sergey.jpg"> 
+
+    <ul>
+      <li><a href="mailto:sgolitsynskiy@gmail.com">Email</a>
+      <li><a href="https://github.com/ic4f">GitHub</a>
+      <li><a href="https://www.linkedin.com/in/sgolitsynskiy">LinkedIn</a>
+      <li><a href="https://www.facebook.com/sergey.golitsynskiy">Facebook</a>
+    </ul>
+
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+
 

@@ -1,5 +1,4 @@
-//TODO change all this to match new style
-
+/*
 const express = require('express');
 const router = express.Router();
 
@@ -14,3 +13,4 @@ router.get('/projects/:groupId', project.viewProject);
 router.get('/:pageId', page.viewPage);
 
 module.exports = router;
+*/

@@ -26,13 +26,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+//angular
+app.use(express.static(path.join(__dirname, 'ng')));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-//const webRoutes = require('./app_server/routes/index');//TODO deployment
-//app.use('/', webRoutes); //TODO deployment
-
+//api
 const apiRoutes = require('./app_api/routes/index');
 app.use('/api', apiRoutes);
+
+//the rest > angular
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'ng/index.html'));
+});
+
+
 
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
