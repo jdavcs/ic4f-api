@@ -4,6 +4,8 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const Db = require('./db');
+const helmet = require('helmet');
+const compression = require('compression');
 
 new Db().connect();
 
@@ -21,6 +23,8 @@ const app = express();
 app.set('views', path.join(__dirname, 'app_server', 'views'));
 app.set('view engine', 'ejs');
 
+app.use(helmet());
+app.use(compression());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,12 +38,10 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 const apiRoutes = require('./app_api/routes/index');
 app.use('/api', apiRoutes);
 
-//the rest > angular
+//fall back to angular
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'ng/index.html'));
 });
-
-
 
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
