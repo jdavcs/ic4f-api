@@ -57,8 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
-# compiled javascript (angular)
-ng/
-
 .sass-cache/
 public/stylesheets/.sass-cache/
