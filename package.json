@@ -16,18 +16,17 @@
     "dotenv": "^5.0.1",
     "ejs": "^2.6.1",
     "express": "~4.15.5",
-    "front-matter": "^2.3.0",
     "helmet": "^3.12.1",
-    "marked": "^0.3.19",
     "mongoose": "^4.13.14",
-    "mongoose-seed": "^0.4.1",
     "morgan": "~1.9.0",
-    "node-csv-parse": "^1.2.0",
     "request": "^2.87.0",
-    "serve-favicon": "~2.4.5",
-    "striptags": "^3.1.1"
+    "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-    "nodemon": "^1.17.5"
+    "front-matter": "^2.3.0",
+    "marked": "^0.3.19",
+    "mongoose-seed": "^0.4.1",
+    "nodemon": "^1.17.5",
+    "striptags": "^3.1.1"
   }
 }
