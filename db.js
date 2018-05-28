@@ -11,7 +11,7 @@ module.exports = class DbConnection {
 
   getDbURI() {
     if (process.env.NODE_ENV === 'production') {
-      return process.env.MONGOLAB_URI;
+      return process.env.MONGODB_URI;
     } else {
       const user = process.env.DB_USERNAME;
       const pass = process.env.DB_PASSWORD;
