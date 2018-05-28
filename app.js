@@ -30,7 +30,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//angular
+
+
+//temporary TODO remove this
+app.get('/', (req, res) => {
+  res.redirect('http://sergey.cs.uni.edu');
+});
+
+
+
+//angular 
 app.use(express.static(path.join(__dirname, 'ng')));
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
