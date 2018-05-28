@@ -33,9 +33,9 @@ app.use(cookieParser());
 
 
 //temporary TODO remove this
-//app.get('/', (req, res) => {
-//  res.redirect('http://sergey.cs.uni.edu');
-//});
+app.get('/', (req, res) => {
+  res.redirect('http://sergey.cs.uni.edu');
+});
 
 
 
