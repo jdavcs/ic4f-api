@@ -2,6 +2,12 @@
 title: "About Me"
 ---
 
+
+
+
+
+
+
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
 et dolore magna aliqua. Etiam tempor orci eu lobortis elementum nibh tellus. Mi ipsum faucibus vitae
 aliquet nec ullamcorper sit amet. Quis lectus nulla at volutpat diam ut venenatis tellus in.
@@ -10,14 +16,19 @@ Penatibus et magnis dis parturient montes nascetur. Blandit libero volutpat sed 
 vivamus. Habitasse platea dictumst vestibulum rhoncus. Bibendum at varius vel pharetra vel turpis
 nunc. Amet volutpat consequat mauris nunc. Eget gravida cum sociis natoque penatibus et magnis dis.
 
-Accumsan in nisl nisi scelerisque eu ultrices vitae auctor. Tristique nulla aliquet enim tortor at
-auctor urna nunc id. Urna id volutpat lacus laoreet non. Eu scelerisque felis imperdiet proin
-fermentum. Sit amet volutpat consequat mauris nunc congue nisi. Adipiscing tristique risus nec
-feugiat in fermentum posuere urna nec. Et netus et malesuada fames ac. Risus viverra adipiscing at
-in tellus integer feugiat. Lorem ipsum dolor sit amet consectetur adipiscing. Nullam eget felis eget
-nunc lobortis mattis aliquam faucibus. Augue interdum velit euismod in pellentesque massa placerat.
-Tristique nulla aliquet enim tortor at auctor. Sapien nec sagittis aliquam malesuada bibendum arcu
-vitae.
+## Random favorites
+
+*Read:* Tolkien, Vonnegut, Shekley, Adams, Heinlein, H. G. Wells, Le Carre, Martin...  
+*Watch:* The Fellowship of the Ring, all Miyazaki, Dr. Who, Stranger Things...  
+*Play:* Scrabble, The Two Towers (almost never)  
+*Cook:* beef stew  
+*Drink:* IPA  
+*Ski:* Breckenridge  
+*Hike:* Colorado  
+*Bike:* Cedar Falls  
+*Build:* castles with Alice, research tools with Alina, and programs for anything imaginable..   
+Because everything is so interesting.
+
 
 <div class="row">
   <div class="col-md-3"></div>
