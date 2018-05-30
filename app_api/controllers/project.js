@@ -60,6 +60,26 @@ function view(req, res, next){
   if (req.params && req.params.projectId) {
     Project
       .findById(req.params.projectId)
+      .populate({
+        path: 'group',
+        select: 'id name',
+        options: {sort: { order: 1 }}
+      })
+      .populate({
+        path: 'languages',
+        select: 'id name',
+        options: {sort: { order: 1 }}
+      })
+      .populate({
+        path: 'frameworks',
+        select: 'id name',
+        options: {sort: { order: 1 }}
+      })
+      .populate({
+        path: 'databases',
+        select: 'id name',
+        options: {sort: { order: 1 }}
+      })
       .exec((err, doc) => {
         if (!doc) {
           res
