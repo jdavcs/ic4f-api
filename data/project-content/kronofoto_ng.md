@@ -10,7 +10,7 @@ Although built for Fortepan Iowa, Kronofoto is designed to be (mostly) collectio
 be adapted to similar collections.
 
 **Expected Release.** Currently, kronofoto-ng is approaching an alpha release. It's operational
-(<a href="http://sergey.cs.uni.edu:8080/public/collections" target="_blank">current demo version available here</a>). 
+(<a href="http://sergey.cs.uni.edu/kronofoto/public/collections" target="_blank">current demo version available here</a>). 
 Here's what I'm working on at the moment: 
 * pan and scan with SeaDragon
 * Google Maps integration

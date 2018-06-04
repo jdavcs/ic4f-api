@@ -14,6 +14,8 @@ process:
 The system was implemented in C#. It Generates SQL, and C# or VB.Net.  I've used it for multiple
 web applications.
 
+Sample application schemas, as well as generated code (C# and SQL) is <a href="https://github.com/ic4f/codegenerator/tree/master/demo" target="_blank">available here</a>.
+
 ## Related 
 
 * My thesis: <a href="/static/projects/codegenerator/thesis.pdf" target="_blank">Specification and Automatic Code Generation of the Data Layer for Data-Intensive Web-Based Applications</a>

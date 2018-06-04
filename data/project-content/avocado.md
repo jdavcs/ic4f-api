@@ -14,6 +14,7 @@ data for distribution.
 The main data processing stages included the following:
 1. PST file extraction (initial size of the dataset: 282 PST files, 66G)
 1. File deduplication
+1. Email thread reconstruction
 1. MIME-type identification
 1. Archive extraction
 1. Text extraction

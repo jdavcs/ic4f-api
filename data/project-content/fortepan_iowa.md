@@ -10,7 +10,12 @@ staging servers that host the archive.
 The current live version is available at <a href="http://fortepan.us" target="_blank">http://fortepan.us</a>
 
 A new version is being developed, expected to be launched this summer. Current (partially complete) demo version 
-<a href="http://sergey.cs.uni.edu:8080/public/collections" target="_blank">is available here</a>. 
+<a href="http://sergey.cs.uni.edu/kronofoto/public/collections" target="_blank">is available here</a>. 
+
+Related projects:
+<a href="https://github.com/ic4f/kronofoto-ng" target="_blank">kronofoto-ng</a>, 
+<a href="https://github.com/ic4f/kronofoto-api" target="_blank">kronofoto-api</a>, 
+<a href="https://github.com/ic4f/kronofoto-admin" target="_blank">kronofoto-admin</a>. 
 
 <div class="screenshots">
   <img class="img-fluid" src="/static/projects/fortepan_iowa/1.jpg">
