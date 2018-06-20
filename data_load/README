@@ -1,3 +1,5 @@
 These files are used to update (override) the database.
 
 Usage: ./load-all.sh
+
+Source data stored separately; specify path ro data in .env config file.
