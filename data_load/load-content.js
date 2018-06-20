@@ -14,10 +14,12 @@ const ProjectContentLoader = require('./project-content-loader');
 const Db = require('../db');
 const db = new Db();
 
-const PAGES_DIR = '../data/pages/';
-const POSTS_DIR = '../data/posts/';
-const PROJECTS_DIR = '../data/project-content/';
-const PROJECTS_FILE = '../data/projects.csv';
+const dataPath = process.env.DATA_PATH;
+
+const PAGES_DIR =     dataPath + 'pages/';
+const POSTS_DIR =     dataPath + 'posts/';
+const PROJECTS_DIR =  dataPath + 'project-content/';
+const PROJECTS_FILE = dataPath + 'projects.csv';
 
 async.series([
   function(callback) {

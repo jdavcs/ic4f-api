@@ -14,7 +14,7 @@ seeder.connect(dbURI, {useMongoClient: true}, () => {
     '../app_api/models/database.js',
   ]);
   seeder.clearModels(['Group', 'Language', 'Framework', 'Database'], () => {
-    const mycontent = fs.readFileSync('../data/project-data.json');
+    const mycontent = fs.readFileSync(process.env.DATA_PATH + 'project-data.json');
     const data = JSON.parse(mycontent);
     seeder.populateModels(data, () => seeder.disconnect() );
   });
