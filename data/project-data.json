@@ -5,13 +5,12 @@
       {"_id": "algvis",    "name": "Algorithms & data structures",    "order": 0},
       {"_id": "compiler",  "name": "Compiler/code generator/ORM",     "order": 1},
       {"_id": "ir",        "name": "Text analysis & IR",              "order": 2},
-      {"_id": "dpa",       "name": "Digital photo archives",          "order": 4},
-      {"_id": "cms",       "name": "Content management systems",      "order": 5},
-      {"_id": "shopping",  "name": "Shopping carts/stores",           "order": 6},
-      {"_id": "community", "name": "Online communities",              "order": 7},
-      {"_id": "play",      "name": "Personal websites",               "order": 8},
-      {"_id": "static",    "name": "Static websites",                 "order": 10},
-      {"_id": "vim",       "name": "Plugins for Vim",                 "order": 11}
+      {"_id": "dpa",       "name": "Digital photo archives",          "order": 3},
+      {"_id": "cms",       "name": "Content management systems",      "order": 4},
+      {"_id": "shopping",  "name": "Shopping carts/stores",           "order": 5},
+      {"_id": "play",      "name": "Personal websites",               "order": 6},
+      {"_id": "static",    "name": "Static websites",                 "order": 7},
+      {"_id": "vim",       "name": "Plugins for Vim",                 "order": 8}
     ]
   }, { 
     "model": "Language",
