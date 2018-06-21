@@ -41,6 +41,7 @@ function getData(address, callback) {
 function renderOneProject(req, res, data) {
   res.render('projectView', { 
     title: data.name,
+    ogImageUrl: getOGImageURL(data),
     project: data,
     projectYears: getProjectYears(data),
     projectTechnology: getProjectTech(data),
@@ -51,6 +52,12 @@ function renderOneProject(req, res, data) {
     navClassAbout: ''
   });
 };
+
+function getOGImageURL(project) {
+  //TODO move OG filename to config
+  const OG_IMAGE = 'ogimage.png';
+  return `${process.env.WEB_BASEURL}static/projects/${project._id}/${OG_IMAGE}`;
+}
 
 function getProjectYears(project) {
   let yearMax = project.year_end;
