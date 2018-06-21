@@ -61,4 +61,4 @@ typings/
 public/stylesheets/.sass-cache/
 
 # generated css
-static/*.css
+# static/*.css - need this for deployment!
