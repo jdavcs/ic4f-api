@@ -32,11 +32,17 @@ app.use(cookieParser());
 
 //angular 
 app.use(express.static(path.join(__dirname, 'ng')));
+
+//static files
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
 //api
 const apiRoutes = require('./app_api/routes/index');
 app.use('/api', apiRoutes);
+
+//webpages served by express
+const webRoutes = require('./app_server/routes/index');
+app.use('/', webRoutes);
 
 //fall back to angular
 app.get('*', (req, res) => {

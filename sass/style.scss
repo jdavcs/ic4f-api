@@ -1,239 +1,43 @@
-@import url('https://fonts.googleapis.com/css?family=Handlee|Raleway:300');
+$blue:   #1E76D4; /* links, link buttons, logo hover, showless button hover */
+$blue5:  #1E76D4; /* c in logo, hover in nav, active in nav */
+$blue40: #4a91dc; /* show less button */
 
-$gray1:  #555;
-$gray2:  #999;
-$gray3:  #aaa;
-$gray4:  #ccc;
-$gray5:  #eaeaea;
-$gray6:  #f1f1f1;
-$gray7:  #f8f8f8;
-$gray8:  #777;
-$blue:   #1E76D4;
-$blue2: $blue * .9;
-$blue3: green; /* bootstrap */
-/*$blue3: #007bff;*/ /* bootstrap */
-$blue5:   #1E76D4;
-$blue15: #4f9ce8;
+$green:  #26a300; /* link hover */
 
+$gray:   #666;    /* main font color */
+$gray8:  #777;    /* logo hover */
+$gray2:  #999;    /* logo, image border, footer */
+$gray3:  #aaa; /* nav link */
+$gray5:  #eaeaea; /*border on hove in nav, h-line */
+$gray6:  #e4e4e4; /* long quote line */
+$gray7:  #f8f8f8; /* table stripes */
+
+$yellow1: #fffded; /* project detail # background */
+
+
+$blue30: #007bff; /* bootstrap  not used */
+
+
+/* ----------------- common syles ------------------- */
+html { 
+  margin-left: calc(100vw - 100%); /* prevents 'jumping' caused by scroll bar */
+} 
+
+body {
+  color: $gray; 
+  font-size: .95rem;
+  line-height: 1.4rem;
+}
 
 a {
   color: $blue;
 }
 
-
-table.table-striped>tbody>tr:nth-child(odd)>td,
-table.table-striped>tbody>tr:nth-child(odd)>th,
-tr.found{
-    background-color: $gray7; 
+a:hover {
+  color: $green;
 }
-
-.ic4f-h-filter-container {
-  margin-bottom: 1em;
-  text-align: center;
-
-  select, option {
-    font-size: .9em;
-  }
-}
-
-table.ic4f-projects {
-  font-size: .9em;
-
-  th {
-    white-space: nowrap;
-  }
-
-  td {
-    padding: 6px;
-  }
-  
-  .cell-project {
-    color: #666;
-
-    a {
-      color: $blue2;
-      display: block;
-    }
-    a:hover {
-      color: $blue * 1.3; /* because i think this needs to be brighter */
-      text-decoration: none;
-
-      .project-comment-repo {
-        color: $blue3;
-        text-decoration: none;
-      }
-    }
-
-  }
-
-  .cell-years {
-    text-align: center;
-    white-space: nowrap;
-  }
-
-  .cell-db {
-    text-align: center;
-    width: 5em;
-  }
-
-  .project-name {
-    font-weight: bold;
-    display: block;
-    line-height: 1.3em;
-  }
-
-  .project-count {
-    @extend .project-name;
-    white-space: nowrap;
-    font-size: 0.8em;
-  }
-
-  .project-comment-repo {
-    color: $blue;
-    font-size: 0.8em;
-    display: block;
-    line-height: 1em;
-  }
-
-  .project-comment-oldcode {
-    @extend .project-comment-repo;
-    color: $gray8;
-  }
-}
-
-.ic4f-contact-row {
-  text-align: right;
-  margin-top: 8px;
-  visibility: hidden; /* TODO */
-
-  a {
-    color: $gray3;
-    display: inline-block;
-    font-size: .8rem;
-    padding: 0 10px 0 0;
-    margin: 0;
-  }
-  a:hover {
-    color: $blue;
-  }
-}
-
-.ic4f-logo-row {
-  margin-top: 0px;
-
-  a.ic4f-logo {
-    font-size: 3rem;
-    color: #999;
-  }
-
-  a.ic4f-logo:hover {
-    text-decoration: none;
-    color: $blue;
-
-    .part-c,
-    .part-ode {
-      color:$gray8;
-    }
-  }
-
-  .part {
-    font-size: .7rem;
-  }
-
-  .part-c {
-    color: $blue5;
-    opacity: .8;
-  }
-
-  .part-ode {
-    @extend .part;
-    margin-left: -1px;
-    margin-right: -5px;
-    color: $blue5; 
-  }
-
-  .part-dot {
-    @extend .part;
-    margin-left: -3px;
-  }
-  
-  .part-un {
-    @extend .part;
-    margin-left: -3px;
-  }
-}
-
-.ic4f-nav {
-/*  font-family: 'Raleway', sans-serif; */
-  font-size: 1.1rem;
-  padding: 0;
-  text-align: right;
-  margin-top:10px;
-
-  a {
-    color: #aaa;
-    margin: 0;
-    padding: .2rem .5rem;
-    text-decoration: none;
-  }
-  a:hover {
-    color: $blue; 
-
-    border-top: 1px solid $gray5;
-  }
-  a.active {
-    color: $blue5;
-    font-weight: normal;
-  }
-  a.active:hover {
-  }
-}
-
-
-
-
-
-body {
-  color: $gray1;
-  font-family: verdana, sans-serif;
-  font-size: .95rem;
-  line-height: 1.4rem;
-}
-
-.ic4f-container {}
-
-.ic4f-main-heading {
-  margin: .3em 0 1em 0;
-}
-
-
-.ic4f-hline {
-  background: $gray5;
-  height: 1px;
-}
-
-.ic4f-content {
-  margin-bottom: 1rem;
-  margin-top: 1.8rem;
-
-  img {
-    border: 1px solid $gray2;
-  }
-}
-
-.ic4f-footer {
-  color: $gray2;
-  font-size: .8rem;
-  padding-bottom: 1.5rem;
-  padding-top: .7rem;
-  text-align: right;
-}
-
-
-
 
 h1 {
-  color: #666;
   font-size: 1.6rem;
 }
 
@@ -254,74 +58,298 @@ h4, h5, h6 {
   font-weight: bold;
 }
 
+table.table-striped>tbody>tr:nth-child(odd)>td,
+table.table-striped>tbody>tr:nth-child(odd)>th,
+tr.found {
+  background-color: $gray7;  
+}
 
-.ic4f-blog-date {
+.ic4f-top-row {
+  margin-top: 30px;
+}
+
+.ic4f-hline {
+  background: $gray5;
+  height: 1px;
+}
+
+.ic4f-content {
+  margin: 1.8rem 0 1rem 0;
+
+  img {
+    border: 1px solid $gray2;
+  }
+}
+
+.ic4f-main-heading {
+  margin: .3em 0 .6em 0;
+}
+
+.ic4f-footer {
   color: $gray2;
   font-size: .8rem;
-  margin: -10px 0 5px 0;
+  padding: .7rem 0 1.5rem 0;
+  text-align: right;
 }
 
-.ic4f-blog-list-date {
-  color: $gray2;
-  font-size: .8rem;
-  margin-bottom: 0;
-  line-height: 1rem;
+.ic4f-plist {
+  p {
+    margin-bottom: .2em;
+  }
 }
 
-.ic4f-blog-list-excerpt {
-  font-size: .9rem;
-}
 
-.ic4f-blog-list-more {
-  font-size: .8rem;
-}
 
-.ic4f-blog-list-title {
-  font-size: 1.1rem;
-  margin: 0;
 
+/* ------------- end of common styles ---------------- */
+
+/* -----------------------logo ----------------------- */
+.ic4f-logo {
   a {
-    color: $blue;
-  }
-  a:hover {
-    color: red; 
-  }
-}
-
-.ic4f-blog-sidebar {
-
-  h2 {
-    font-size: 1rem;
+    font-size: 3rem;
     color: $gray2;
   }
 
+  a:hover {
+    text-decoration: none;
+    color: $blue;
+
+    .part-c,
+    .part-ode {
+      color:$gray8;
+    }
+  }
+
+  .part {
+    font-size: .7rem;
+  }
+
+  .part-c {
+    color: $blue5;
+    opacity: .8;
+  }
+
+  .part-ode {
+    @extend .part;
+    margin: 0 -5px 0 -1px;
+    color: $blue5; 
+  }
+
+  .part-dot {
+    @extend .part;
+    margin-left: -3px;
+  }
+
+  .part-un {
+    @extend .part;
+    margin-left: -3px;
+  }
+}
+/* ------------------ end of logo -------------------- */
+
+/* -------------------- top nav ---------------------- */
+.ic4f-nav {
+  font-size: 1.1rem;
+  text-align: right;
+  margin-top: 10px;
+
+  a {
+    color: $gray3;
+    padding: .2rem .5rem;
+    text-decoration: none;
+  }
+  a:hover {
+    color: $blue; 
+    border-top: 1px solid $gray5;
+  }
+
+  a.active {
+    color: $blue5;
+  }
+}
+/* -----------------end of top nav ------------------- */
+
+
+/* --------------------- blog ------------------------ */
+.blog-posted {
+  font-size: .9em;
+  color: #999;
+  margin-top: -.8em;
+}
+
+/* ------------------ end of blog -------------------- */
+
+/* ------------------ about page --------------------- */
+.ic4f-sergey {
+  text-align: center;
+
+  img {
+    width: 85%;
+  }
+
   ul {
-    font-size: .8rem;
-    line-height: 1rem;
-    padding-left: 1.1rem;
+    padding: 0;
+    margin-top: 1em;
   }
 
   li {
-    margin-bottom: .5rem;
-
-    a.active {
-      color: $blue;
-    }
-    a.active:hover {
-      color: red;
-    }
-  }
-
-  li:last-child {
-    list-style: none;
-
-    a {
-      color: $gray2;
-    }
-    a:hover {
-      color: $blue;
-    }
+    display: inline-block;
+    margin: 0 .8em;
   }
 }
 
+.ic4f-post1 {
+  font-size: .7em;
+  font-style: italic;
+}
+
+
+/* --------------- end of about page ----------------- */
+
+
+/* ------------------ project list ------------------- */
+.lang-bash { color: #8c4444; }
+.lang-c { color: #ff3d3d; }
+.lang-cs { color: #008080; }
+.lang-htmlcss { color: #909090; }
+.lang-java { color: #f76700; }
+.lang-javascript { color: #f0a404;  }
+.lang-mumps { color: #955734; }
+.lang-php { color: #777bb3;  }
+.lang-python { color: #1258dc; }
+.lang-ruby { color: #c65853; }
+.lang-sass { color: #4e9696; }
+.lang-sql { color: #7f4fc1; }
+.lang-typescript { color: #2e5891; }
+.lang-vbnet { color: #5e9984; }
+.lang-vbscript { color: #af77a0; }
+.lang-vimscript { color: #217f40; }
+.lang-yaml { color: #6191aa; }
+
+.selectedLanguage {
+  font-weight: bold;
+}
+
+.ic4f-filter {
+  margin-bottom: 1.5em; 
+
+  button {
+    color: #495057; /* bootsrap custom select */
+    border: 1px solid #ced4da; /*bootstrap custom select */
+    height: calc(2.25rem + 2px);/*bootstrap custom select */
+  }
+}
+
+table.ic4f-projects {
+  font-size: .9em;
+
+  button.btn-link {
+    color: $blue;
+  }
+
+  td {
+    padding: 0.5em;
+  }
+
+  .cell-years {
+    white-space: nowrap;
+  }
+
+  .cell-codelink {
+    font-size: .85em;
+    line-height: 1.2em;
+
+    a {
+      display: block;
+      width: 100%;
+      padding: .5em 0 .5em 0;
+    }
+  }
+
+  .project-count {
+    font-weight: bold;
+    display: block;
+    line-height: 1.3em;
+    white-space: nowrap;
+  }
+
+  .showmore {
+    padding: 0;
+    font-size: .9em;
+    font-weight: bold;
+    display: block;
+  }
+  .showmore:hover {
+    color: $green;
+  }
+
+  .github {
+    font-weight: bold;
+  }
+}
+/* -------------- end of project list ---------------- */
+
+
+
+
+/* ---------------- project detail ------------------- */
+.cell-project-detail-num {
+  background: $yellow1;
+}
+
+.cell-project-detail {
+  padding: 1.5em!important;
+
+  .btn-showless {
+    float: right;
+    background: $blue40;
+  }
+  .btn-showless:hover {
+    background: $blue;
+  }
+}
+
+.ic4f-project-detail {
+
+  .btn-view-all {
+    padding: 0;
+    font-size: .9em;
+    display: block;
+  }
+  .btn-view-all:hover {
+    color: $green;
+  }
+
+  .project-summary {
+    margin: 1.5em 0 1em 0;
+
+    .subheading {
+      font-weight: bold;
+    }
+
+    p {
+      margin-bottom: .3em;
+    }
+  }
+
+  .screenshots {
+    padding: 0 5%;
+    text-align: center;
+
+    img {
+      margin: 1em 0;
+    }
+
+    img.noborder {
+      border: 0px #fff solid;
+    }
+  }
+
+  .long-quote {
+    border-left: 10px $gray6 solid;
+    padding-left: 1em;
+    margin-left: .5em;
+  }
+}
+/* ------------ end of project detail ---------------- */
 

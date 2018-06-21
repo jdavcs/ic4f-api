@@ -1,6 +1,24 @@
 <%- include('includes/layout-header.ejs') %>
 
-<%- project.content %>
+<div class="ic4f-project-detail" *ngIf="project">
 
+<a href="/projects" class="btn-view-all">View all projects</a>
+
+<h1 class="ic4f-main-heading"> <%= project.name %></h1>
+
+<div class="project-summary">
+  <p><span class="subheading">Developed:</span> <%- projectYears %></p>
+
+  <p><span class="subheading">Technology:</span> <%- projectTechnology %></span></p>
+
+  <% if (projectHasCodeLink) { %>
+    <p><span class="subheading">Code:</span> <%- projectCodeLink %></span></p>
+  <% } %>
+
+</div>
+
+<div><%- project.content %></div>
+
+</div>
 
 <%- include('includes/layout-footer.ejs') %>
